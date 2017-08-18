@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should render header with content 1`] = `
+"<h1 class=\\"
+  color: #f00;
+\\">Zouhir</h1>"
+`;
+
+exports[`Header component should render header with default fallback 1`] = `
+"<h1 class=\\"
+  color: #f00;
+\\">unprovided</h1>"
+`;
