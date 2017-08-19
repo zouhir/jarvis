@@ -1,61 +1,59 @@
-/**
- * MASSIVE FILE OR TRASH CODE
- * DON'T STEP IN HERE UNTIL ZOUHIR IS DONE
- */
 const express = require("express");
 const chalk = require("chalk");
-const config = require("../../webpack.config")("dev");
 const http = require("http");
 const socket = require("socket.io");
-const mri = require("mri");
 const path = require("path");
-const webpack = require("webpack");
-/**
- * solari express server stuff
- */
+const WebpackDevServer = require("webpack-dev-server");
+
 const app = express();
+
 const server = http.Server(app);
 const io = socket(server);
-/**
- * webpack stuff
- */
-const compiler = webpack(config);
-const compilerStatus = {}
+exports.io = io;
 
-let MEM_LEAK_COUTER = 20;
+const compiler = require('./compiler');
+const emitter = require("./emitter");
 
+// ask compiler watch
+// compiler.progress();
+// compiler.watch();
+// TODO: ask compiler to run
+// TODO: compiler.watch('dev')
+
+// servers the Preact dashboard main page
 app.get("/", function(req, res) {
+  // TODO: improve this
   res.sendFile(path.join(__dirname, "../client/index.html"));
 });
 
+/**
+ * Socket.io main connection
+ */
+let MEM_LEAK_COUTER = 20;
 io.on("connection", function(socket) {
   MEM_LEAK_COUTER--;
   if (MEM_LEAK_COUTER < 1) {
-    // BAM! memory leak baby
-    // TODO:  handle properly please
+    console.log("memory leak, open a Github issue please");
     process.exit(1);
   }
-  if (compilerStatus.stats)
-  io.emit("webpack_watch_success", compilerStatus.stats);
+  emitter.emitStats("SUCCESS", compiler.getStats());
 });
 
-compiler.watch(
-  {
-    ignored: "/node_modules/"
-  },
-  (error, stats) => {
-    compilerStatus.watching = true;
-    if (error) {
-      return console.log(error);
-    }
-    let info = stats.toJson();
-    compilerStatus.stats = info
-    io.emit("webpack_watch_success", 
-      info
-    );
-  }
-);
+/**
+ * dev server for the users
+ */
+
+const devServer = new WebpackDevServer(compiler, {
+});
+
+/**
+ * do you see that compiler.compiler?????? I should be arrested for that
+ */
+
+devServer.listen(8080, function() {
+  console.log("Starting Users app on: http://localhost:8080")
+});
 
 server.listen(3000, function() {
-  console.log("listening on *:3000");
+  console.log("Starting Solari on: http://localhost:3000");
 });

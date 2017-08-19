@@ -6,12 +6,11 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const pkg = require('./package.json');
 const babelrc = require('./babel');
-const { webpackPrettyMessage } = require('./src/cli-messages');
 
 module.exports = env => {
 	return {
-    context: path.resolve("demo-app"),
-    entry: ['./index.js', 'webpack-dev-server/client?http://localhost:8080'],
+    context: path.resolve("./"),
+    entry: ['./index.js'],
     output: {
       path: path.resolve("dist"),
       publicPath: '/',
@@ -58,12 +57,7 @@ module.exports = env => {
     },
     plugins: ([
       new WebpackMessages({
-          name: pkg.name,
-          logger: str => console.log(webpackPrettyMessage(str)),
-          onComplete: (name, stats) => {
-            console.log(webpackPrettyMessage(chalk.green(`Completed${name} in ${(stats.endTime - stats.startTime) / 1e3}`)))
-            console.log(webpackPrettyMessage(chalk.yellow(`Serving${name} on localhost:8080`)))
-          }
+          name: pkg.name
       }),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.DefinePlugin({

@@ -11,7 +11,11 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
-      socket.on('webpack_watch_success', function (data) {
+      socket.on('compiler_watch', function (data) {
+        console.log(data);
+      });
+
+      socket.on('compiler_percentage', function (data) {
         console.log(data);
       });
     </script>
