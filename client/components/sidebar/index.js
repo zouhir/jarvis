@@ -5,7 +5,7 @@ import theme from '../../helpers/theme';
 
 const panel = css`
   height: 100vh;
-  width: 300px;
+  width: 80px;
   position: fixed;
   background: ${theme.dark3};
   top: 0;

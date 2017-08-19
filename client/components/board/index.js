@@ -66,21 +66,20 @@ import Compiling from '../compiling';
 const Board = styled('section')`
   width: 100%;
   height: 100vh;
-  // background-image: radial-gradient(600px 600px, #333352 4%, #27273E 81%);
   background-position: top center;
   background-size: 1288px 900px;
   background-repeat: no-repeat;
   background-color: ${theme.dark2}
   padding-top: 150px;
-  padding-left: 300px;
 `;
 
 
 const Navbar = () =>
   <Board>
-    <Sidebar />
     <div className={grid}>
-      <div className={`${cell}`}></div>
+      <div className={`${cell}`}>
+        <Block color='black' /> 
+      </div>
       <div className={`${cell} ${half}`}>
         <Compiling />
       </div>
@@ -88,13 +87,13 @@ const Navbar = () =>
 
     <div className={grid}>
       <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block />
+        <Block color='purple' />
       </div>
       <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block />
+        <Block color='orange' />
       </div>
       <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block />
+        <Block color='green' />
       </div>
     </div>
   </Board>;

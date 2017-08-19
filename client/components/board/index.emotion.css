@@ -30,14 +30,10 @@ display: -ms-flexbox;
 display: -webkit-flex;
 display: flex }
 .css-justifyCenter-xf7v2y { -webkit-justify-content: center; -ms-flex-pack: center; -webkit-box-pack: center; justify-content: center; }
-.css-Board-ns3vaf { width: 100%;
+.css-Board-jejxkh { width: 100%;
   height: 100vh;
-  //: -webkit-radial-gradient(600px 600px, #333352 4%, #27273E 81%);
-  //: -moz-radial-gradient(600px 600px, #333352 4%, #27273E 81%);
-  //: radial-gradient(600px 600px, #333352 4%, #27273E 81%);
   background-position: top center;
   background-size: 1288px 900px;
   background-repeat: no-repeat;
-  background-color: var(--css-Board-ns3vaf-0);
-  padding-top: 150px;
-  padding-left: 300px; }
+  background-color: var(--css-Board-jejxkh-0);
+  padding-top: 150px }
