@@ -1,0 +1,32 @@
+.css-Nav-1tylmoe { height: 60px;
+  background: var(--css-Nav-1tylmoe-0);
+  box-shadow: 0 4px 20px 6px rgba(0,0,0,0.09);
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  -webkit-box-pack: end;
+  justify-content: flex-end;
+  padding: 0px 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 999; }
+.css-Status-8e24na { color: rgba(255, 255, 255, 0.8);
+  background-image: -webkit-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%);
+  background-image: -moz-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%);
+  background-image: linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%);
+  border-radius: 4px;
+  height: 40px;
+  float: right;
+  padding: 0px 15px;
+  font-size: 14px;
+  line-height: 37px;
+  text-align: center;
+  width: 180px; }

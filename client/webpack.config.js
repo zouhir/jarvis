@@ -52,6 +52,13 @@ module.exports = env => {
         {
           test: /\.(xml|html|txt|md)$/,
           use: 'raw-loader'
+        },
+        {
+          test: /\.svg/,
+          use: {
+              loader: 'svg-url-loader',
+              options: {}
+          }
         }
       ]
     },

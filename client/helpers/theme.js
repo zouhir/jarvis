@@ -1,7 +1,7 @@
 const theme = {
-  white: '#f8f9fa',
-  purple: '#8c81d8',
-  gold: '#ffd43b'
+  dark1: '#363455',
+  dark2: '#27273E',
+  dark3: '#212336'
 }
 
 export default theme
