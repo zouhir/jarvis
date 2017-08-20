@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const pkg = require('./package.json');
 const babelrc = require('./babel');
-const { webpackPrettyMessage } = require('./src/cli-messages');
+const PrettyMessage = require('./src/pretty-message');
 
 module.exports = env => {
 	return {
