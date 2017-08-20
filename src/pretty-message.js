@@ -17,5 +17,5 @@ function prefix (str) {
 
 module.exports = (str) => {
   let sym = prefix(str)
-  return `${sym}  ${str}`
+  console.log(`${sym}  ${str}`)
 }

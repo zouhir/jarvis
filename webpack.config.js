@@ -59,10 +59,10 @@ module.exports = env => {
     plugins: ([
       new WebpackMessages({
           name: pkg.name,
-          logger: str => console.log(webpackPrettyMessage(str)),
+          logger: PrettyMessage,
           onComplete: (name, stats) => {
-            console.log(webpackPrettyMessage(chalk.green(`Completed${name} in ${(stats.endTime - stats.startTime) / 1e3}`)))
-            console.log(webpackPrettyMessage(chalk.yellow(`Serving${name} on localhost:8080`)))
+            PrettyMessage(chalk.green(`Completed${name} in ${(stats.endTime - stats.startTime) / 1e3}`))
+            PrettyMessage(chalk.yellow(`Serving${name} on localhost:8080`))
           }
       }),
       new webpack.NoEmitOnErrorsPlugin(),
