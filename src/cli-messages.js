@@ -1,17 +1,21 @@
-exports.webpackPrettyMessage = (str) => {
-  let _str = str.toLowerCase();
-  const emojiKey = {
-    'completed': '✅',
-    'building': '🏗',
-    'failed': '🚫',
-    'serving': '🌏',
-    'default': '📝'
-  }
-  let msg = null
-  for(let key in emojiKey) {
-    if(_str.includes(key)) {
-      msg = `${emojiKey[key]}  ${str}`
+const emojis = {
+  'completed': '✅',
+  'building': '🏗',
+  'failed': '🚫',
+  'serving': '🌏'
+}
+
+function prefix (str) {
+  let _str = str.toLowerCase()
+  for(let key in emojis) {
+    if (_str.includes(key)) {
+      return emojis[key]
     }
   }
-  return msg || `${emojiKey['default']}  ${str}`
+  return '📝'
+}
+
+module.exports = (str) => {
+  let sym = prefix(str)
+  return `${sym}  ${str}`
 }
