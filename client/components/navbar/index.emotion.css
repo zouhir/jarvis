@@ -18,7 +18,7 @@
   position: fixed;
   width: 100%;
   z-index: 999; }
-.css-Status-8e24na { color: rgba(255, 255, 255, 0.8);
+.css-Status-16pvioz { color: rgba(255, 255, 255, 0.8);
   background-image: -webkit-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%);
   background-image: -moz-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%);
   background-image: linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%);
@@ -27,6 +27,6 @@
   float: right;
   padding: 0px 15px;
   font-size: 14px;
-  line-height: 37px;
+  line-height: 40px;
   text-align: center;
   width: 180px; }

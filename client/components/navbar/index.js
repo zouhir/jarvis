@@ -23,7 +23,7 @@ const Status = styled('a')`
   float: right;
   padding: 0px 15px;
   font-size: 14px;
-  line-height: 37px;
+  line-height: 40px;
   text-align: center;
   width: 180px;
 `
