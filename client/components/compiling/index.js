@@ -6,10 +6,10 @@ import { Circle } from 'rc-progress';
 
 const panel = css`
   position: relative;
-  height: 250px;
+  height: 225px;
   margin-left: 80px;
   svg {
-    height: 250px;
+    height: 225px;
   }
 `;
 

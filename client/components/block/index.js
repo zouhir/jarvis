@@ -2,10 +2,13 @@ import { h } from "preact";
 import styled, { css, keyframes } from 'emotion/react'
 import theme from '../../helpers/theme';
 
+import List from '../list';
+
 const panel = css`
   width: 100%;
   height: 400px;
-  background-image: linear-gradient(-180deg, #343350 21%, #27273D 94%);
+  // background-image: linear-gradient(-180deg, #343350 21%, #27273D 94%);
+  background-color: ${theme.dark3};
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   &.black {
@@ -15,7 +18,7 @@ const panel = css`
 `;
 
 const panelHeading = css`
-  height: 80px;
+  height: 60px;
   width: 100%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -38,23 +41,24 @@ const panelHeading = css`
 
 const Count = styled('h2')`
   font-weight: 800;
-  font-size: 80px;
-  line-height: 60px;
+  font-size: 40px;
+  line-height: 30px;
   color: #FFF;
-  opacity: 0.1;
+  opacity: 0.2;
   position: absolute;
   left: -4px;
   bottom: -2px;
 `;
 
 
-const Block = ({color = 'green'}) => {
+const Block = ({color = 'green', title=''}) => {
   
   return (
     <div className={`${panel} ${color}`}>
       <div className={`${panelHeading} ${color}`}>
-        <Count>5x</Count>
+        <Count>{title}</Count>
       </div>
+      <List />
     </div>
   )  
   

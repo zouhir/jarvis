@@ -80,20 +80,20 @@ const Navbar = () =>
       <div className={`${cell}`}>
         <Block color='black' /> 
       </div>
-      <div className={`${cell} ${half}`}>
+      <div className={`${cell} ${half} ${center}`}>
         <Compiling />
       </div>
     </div>
 
     <div className={grid}>
       <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block color='purple' />
+        <Block color='purple' title="Assets" />
       </div>
       <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block color='orange' />
+        <Block color='orange' title="Modules" />
       </div>
       <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block color='green' />
+        <Block color='green' title="Performance" />
       </div>
     </div>
   </Board>;

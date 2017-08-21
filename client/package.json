@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vx/vx": "0.0.137",
     "emotion": "^6.0.3",
     "express": "^4.15.4",
     "preact": "^8.2.1",
