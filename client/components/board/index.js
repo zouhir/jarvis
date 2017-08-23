@@ -1,8 +1,10 @@
-import { h } from "preact";
+import { h, Component } from "preact";
 import styled, { css } from 'emotion/react'
 import theme from '../../helpers/theme';
 import Sidebar from '../sidebar';
 import Block from '../block';
+
+import mockdata from '../../mockdata.json';
 
 const grid = css`
   display: flex;
@@ -73,29 +75,47 @@ const Board = styled('section')`
   padding-top: 150px;
 `;
 
+class BoardComponent extends Component {
+  state = {
+    assetsSize: 0
+  }
+  componentDidMount() {
+    if(mockdata.assets && mockdata.assets.length) {
+      let totalAssetsSize = mockdata.assets.reduce((sum, asset) => {
+        return sum = sum + asset.size
+      }, 0)
+      this.setState({
+        assetsSize: totalAssetsSize
+      })
+    }
+  }
+  render(props, state) {
+    return (
+      <Board>
+        <div className={grid}>
+          <div className={`${cell}`}>
+            <Block color='black' /> 
+          </div>
+          <div className={`${cell} ${half} ${center}`}>
+            <Compiling />
+          </div>
+        </div>
+  
+        <div className={grid}>
+          <div className={`${cell} ${third} ${justifyCenter}`}>
+            <Block color='purple' title="Assets" assets={mockdata.assets || []} assetsSize={state.assetsSize}/>
+          </div>
+          <div className={`${cell} ${third} ${justifyCenter}`}>
+            <Block color='orange' title="Modules" />
+          </div>
+          <div className={`${cell} ${third} ${justifyCenter}`}>
+            <Block color='green' title="Performance" />
+          </div>
+        </div>
+      </Board>
+    )
+  }
+}
+  
 
-const Navbar = () =>
-  <Board>
-    <div className={grid}>
-      <div className={`${cell}`}>
-        <Block color='black' /> 
-      </div>
-      <div className={`${cell} ${half} ${center}`}>
-        <Compiling />
-      </div>
-    </div>
-
-    <div className={grid}>
-      <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block color='purple' title="Assets" />
-      </div>
-      <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block color='orange' title="Modules" />
-      </div>
-      <div className={`${cell} ${third} ${justifyCenter}`}>
-        <Block color='green' title="Performance" />
-      </div>
-    </div>
-  </Board>;
-
-export default Navbar;
+export default BoardComponent;

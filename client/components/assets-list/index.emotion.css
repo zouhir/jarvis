@@ -1,0 +1,12 @@
+.css-UL-2mv0mk { list-style: none;
+  width: 100%;
+  padding: 0px;
+  margin: 0; }
+.css-UL-2mv0mk li { height: 40px; padding: 0px 10px; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-items: center; -ms-flex-align: center; -webkit-box-align: center; align-items: center; color: #FFF; font-size: 13px; }
+.css-UL-2mv0mk li.subheader: { background: rgba(44, 44, 71, 0.3); }
+.css-UL-2mv0mk li span { display: inline-block; width: 20%; }
+.css-UL-2mv0mk li .name { width: 40%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: inline-block; }
+.css-header-8jjsxw { background: rgb(69, 66, 112);
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.8; }

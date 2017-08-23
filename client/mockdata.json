@@ -1,0 +1,12 @@
+{
+  "assets": [
+    {
+      "name": "bundle.js",
+      "size": 426845,
+      "chunks": [0],
+      "chunkNames": ["main"],
+      "emitted": true,
+      "isOverSizeLimit": true
+    }
+  ]
+}

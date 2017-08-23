@@ -14,23 +14,22 @@ const UL = styled('ul')`
     display: flex;
     align-items: center;
     color: #FFF;
+    span {
+      display: inline-block;
+      width: 20%;
+    }
+    .name {
+      width: 40%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 `;
 
-const List = () =>
+const List = (assets = []) =>
   <UL>
-    <li>
-    Preact
-    </li>    
-    <li>
-    Preact
-    </li>    
-    <li>
-    Preact
-    </li>    
-    <li>
-    Preact
-    </li>    
+    <li>Preact</li>
   </UL>;
 
 export default List;

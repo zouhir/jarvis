@@ -5,6 +5,9 @@ const emitter = require("./emitter");
 const compiler = webpack(config("env"));
 const io = require("./index").io;
 
+const util = require('util');
+
+
 let _stats = null;
 
 compiler.apply(
@@ -14,6 +17,7 @@ compiler.apply(
 );
 
 compiler.plugin("done", stats => {
+  console.log(stats.compilation.modules[0]);
   _stats = stats.toJson();
   if (stats.hasErrors() || stats.hasWarnings()) {
     return emitter.emitStats(

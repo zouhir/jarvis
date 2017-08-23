@@ -1,6 +1,8 @@
-.css-UL-lmyi9s { list-style: none;
+.css-UL-5g96nz { list-style: none;
   width: 100%;
   padding: 0px;
   margin: 0; }
-.css-UL-lmyi9s li { height: 40px; padding: 0px 10px; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-items: center; -ms-flex-align: center; -webkit-box-align: center; align-items: center; color: #FFF; }
-.css-UL-lmyi9s li:nth-child(odd) { background: rgba(44, 44, 71, 0.3) }
+.css-UL-5g96nz li { height: 40px; padding: 0px 10px; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-items: center; -ms-flex-align: center; -webkit-box-align: center; align-items: center; color: #FFF; }
+.css-UL-5g96nz li:nth-child(odd) { background: rgba(44, 44, 71, 0.3) }
+.css-UL-5g96nz li span { display: inline-block; width: 20%; }
+.css-UL-5g96nz li .name { width: 40%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }

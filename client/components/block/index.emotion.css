@@ -7,22 +7,65 @@
   border-top-left-radius: 4px;
   border-top-right-radius: 4px; }
 .css-panel-1lh9v8s.black { background-image: none; background-color: var(--css-panel-1lh9v8s-1); }
-.css-panelHeading-16oai8c { height: 60px;
+.css-panelHeading-10lxx2x { height: 60px;
   width: 100%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   box-shadow: 0 2px 10px 4px rgba(0,0,0,0.09);
   position: relative;
-  overflow: hidden; }
-.css-panelHeading-16oai8c.green { background-image: -webkit-linear-gradient(-47deg, #219CC8 0%, #4ACFC5 100%); background-image: -moz-linear-gradient(-47deg, #219CC8 0%, #4ACFC5 100%); background-image: linear-gradient(-47deg, #219CC8 0%, #4ACFC5 100%); }
-.css-panelHeading-16oai8c.orange { background-image: -webkit-linear-gradient(-47deg, #FF6B9A 0%, #FF8370 100%); background-image: -moz-linear-gradient(-47deg, #FF6B9A 0%, #FF8370 100%); background-image: linear-gradient(-47deg, #FF6B9A 0%, #FF8370 100%); }
-.css-panelHeading-16oai8c.purple { background-image: -webkit-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%); background-image: -moz-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%); background-image: linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%); }
-.css-panelHeading-16oai8c.black { background-image: -webkit-linear-gradient(-48deg, #333254 0%, #333254 100%); background-image: -moz-linear-gradient(-48deg, #333254 0%, #333254 100%); background-image: linear-gradient(-48deg, #333254 0%, #333254 100%); }
-.css-Count-un90dh { font-weight: 800;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  padding: 0px 15px; }
+.css-panelHeading-10lxx2x.green { background-image: -webkit-linear-gradient(-47deg, #219CC8 0%, #4ACFC5 100%); background-image: -moz-linear-gradient(-47deg, #219CC8 0%, #4ACFC5 100%); background-image: linear-gradient(-47deg, #219CC8 0%, #4ACFC5 100%); }
+.css-panelHeading-10lxx2x.orange { background-image: -webkit-linear-gradient(-47deg, #FF6B9A 0%, #FF8370 100%); background-image: -moz-linear-gradient(-47deg, #FF6B9A 0%, #FF8370 100%); background-image: linear-gradient(-47deg, #FF6B9A 0%, #FF8370 100%); }
+.css-panelHeading-10lxx2x.purple { background-image: -webkit-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%); background-image: -moz-linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%); background-image: linear-gradient(-47deg, #B154F4 0%, #7D71FC 100%); }
+.css-panelHeading-10lxx2x.black { background-image: -webkit-linear-gradient(-48deg, #333254 0%, #333254 100%); background-image: -moz-linear-gradient(-48deg, #333254 0%, #333254 100%); background-image: linear-gradient(-48deg, #333254 0%, #333254 100%); }
+.css-Box-qzhbmy { background: #FFF;
+  border-radius: 3px;
+  min-width: 26px;
+  height: 26px;
+  line-height: 26px;
+  font-weight: 700;
+  font-size: 13px;
+  text-align: center;
+  color: var(--css-Box-qzhbmy-0);
+  margin-right: 5px;
+  padding: 0px 7px; }
+.css-Box-qzhbmy.oversize { padding-right: 30px; background-image: url('../../assets/images/alert.svg'); background-repeat: no-repeat; background-size: 16px; background-position: right 7px center; }
+.css-Count-hysbeb { font-weight: 800;
   font-size: 40px;
   line-height: 30px;
   color: #FFF;
-  opacity: 0.2;
+  opacity: 0.15;
   position: absolute;
   left: -4px;
   bottom: -2px; }
+.css-leftPanel-au9cab { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -webkit-box-lines: multiple;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  color: #FFF; }
+.css-rightPanel-8ai5a0 { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  -webkit-box-lines: multiple;
+  flex-wrap: wrap;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  -webkit-box-align: center;
+  align-items: center;
+  color: #FFF;
+  margin-left: auto; }
