@@ -71,7 +71,7 @@ const Count = styled('h2')`
   font-size: 40px;
   line-height: 30px;
   color: #FFF;
-  opacity: 0.15;
+  opacity: 0.25;
   position: absolute;
   left: -4px;
   bottom: -2px;
@@ -93,22 +93,13 @@ const rightPanel = css`
   margin-left: auto;
 `;
 
-const Block = ({color = 'green', title='', assets = [], assetsSize = null}) => {
+const Block = ({color = 'green', title='', assets = [], assetsSize = null, children}) => {
   return (
     <div className={`${panel} ${color}`}>
       <div className={`${panelHeading} ${color}`}>
-        <div className={leftPanel}>
-          <Box>3</Box>
-          Total Assets
-        </div>
-        <div className={rightPanel}>
-          <Box className={'oversize'}>{readableBytes(assetsSize)}</Box>
-        </div>
         <Count>{title}</Count>
       </div>
-      {
-        assets.length > 0 ? <AssetsList assets={assets} /> : <List />
-      }
+      {children}
     </div>
   )  
   

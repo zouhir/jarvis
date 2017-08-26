@@ -20,10 +20,13 @@ const emitter = require("./emitter");
 // TODO: ask compiler to run
 // TODO: compiler.watch('dev')
 
+app.use(express.static(path.join(__dirname, "../../client/")));
+
+
 // servers the Preact dashboard main page
 app.get("/", function(req, res) {
   // TODO: improve this
-  res.sendFile(path.join(__dirname, "../client/index.html"));
+  res.sendFile(path.join(__dirname, "../../client/index.html"));
 });
 
 /**
@@ -50,7 +53,7 @@ const devServer = new WebpackDevServer(compiler, {
  * do you see that compiler.compiler?????? I should be arrested for that
  */
 
-devServer.listen(8080, function() {
+devServer.listen(8181, function() {
   console.log("Starting Users app on: http://localhost:8080")
 });
 

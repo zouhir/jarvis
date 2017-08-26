@@ -113,6 +113,9 @@ module.exports = env => {
       ] : []
     )),
 
-    devtool: env === 'production' ? 'source-map' : 'eval'
+    devtool: env === 'production' ? 'source-map' : 'eval',
+    performance: {
+      hints: "error"
+    }
   }
 };

@@ -10,13 +10,7 @@
 .css-cell-1t6ajpw { -webkit-flex: 1; -ms-flex: 1; flex: 1;
   position: relative;
   padding: 25px 0 0 25px; }
-.css-top-q3iv6g { -webkit-align-items: flex-start; -ms-flex-align: start; -webkit-box-align: start; align-items: flex-start; }
-.css-bottom-tc8xjg { -webkit-align-items: flex-end; -ms-flex-align: end; -webkit-box-align: end; align-items: flex-end; }
 .css-center-6irssd { -webkit-align-items: center; -ms-flex-align: center; -webkit-box-align: center; align-items: center; }
-.css-cellTop-ivzofe { -webkit-align-self: flex-start; -ms-flex-item-align: start; align-self: flex-start; }
-.css-cellBottom-6hamuj { -webkit-align-self: flex-end; -ms-flex-item-align: end; align-self: flex-end; }
-.css-cellCenter-uci2a3 { -webkit-align-self: center; -ms-flex-item-align: center; align-self: center; }
-.css-cellAuto-1ck1lmn { -webkit-flex: none; -ms-flex: none; flex: none; }
 .css-third-1qig6br { -webkit-flex: 0 0 33.3333%; -ms-flex: 0 0 33.3333%; flex: 0 0 33.3333%;
 display: -webkit-box;
 display: -moz-box;

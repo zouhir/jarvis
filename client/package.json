@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress",
+    "dev": "cross-env NODE_ENV=development webpack --watch",
     "test": "jest"
   },
   "author": "",

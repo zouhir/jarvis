@@ -6,6 +6,11 @@ import Block from '../block';
 
 import mockdata from '../../mockdata.json';
 
+import AssetsList from '../assets-list';
+import ModulesList from '../modules-list';
+import SorryForThePoop from '../sorry-for-the-poop';
+import MainBlock from '../main-block';
+
 const grid = css`
   display: flex;
   flex-wrap: wrap;
@@ -21,32 +26,8 @@ const cell = css`
   padding: 25px 0 0 25px;
 `;
 
-const top = css`
-align-items: flex-start;
-`;
-
-const bottom = css`
-align-items: flex-end;
-`;
-
 const center = css`
   align-items: center;
-`;
-
-const cellTop = css`
-align-self: flex-start;
-`;
-
-const cellBottom = css`
-align-self: flex-end;
-`;
-
-const cellCenter = css`
-align-self: center;
-`;
-
-const cellAuto = css`
-flex: none;
 `;
 
 const third = css`
@@ -77,7 +58,14 @@ const Board = styled('section')`
 
 class BoardComponent extends Component {
   state = {
-    assetsSize: 0
+    assetsSize: 0,
+    progress: {},
+    time: 0,
+    assets: [],
+    errors: [],
+    warnings: [],
+    modules: [],
+    performance: {}
   }
   componentDidMount() {
     if(mockdata.assets && mockdata.assets.length) {
@@ -88,28 +76,57 @@ class BoardComponent extends Component {
         assetsSize: totalAssetsSize
       })
     }
+    socket.on('compiler_watch', (response) => {
+      console.log(response);
+      let { data } = response
+      this.setState({
+        assets: data.assets || [],
+        errors: data.errors,
+        warnings: data.warnings,
+        time: data.time / 1e3,
+        modules: data.modules,
+        performance: data.performance || {}
+      })
+    });
+
+    socket.on('compiler_percentage', (data) => {
+      this.setState({
+        progress: data
+      })
+    });
   }
   render(props, state) {
+    console.log(state.performance);
     return (
       <Board>
         <div className={grid}>
           <div className={`${cell}`}>
-            <Block color='black' /> 
+            <Block color='black'>
+              
+            </Block>
           </div>
           <div className={`${cell} ${half} ${center}`}>
-            <Compiling />
+            <Compiling progress={state.progress} time={state.time} errors={state.errors.length} warnings={state.warnings.length} />
           </div>
         </div>
   
         <div className={grid}>
           <div className={`${cell} ${third} ${justifyCenter}`}>
-            <Block color='purple' title="Assets" assets={mockdata.assets || []} assetsSize={state.assetsSize}/>
+            <Block color='purple' title="Assets">
+              <AssetsList assets={mockdata.assets || []} assetsSize={state.assetsSize} />
+            </Block>
           </div>
           <div className={`${cell} ${third} ${justifyCenter}`}>
-            <Block color='orange' title="Modules" />
+            <Block color='orange' title="Modules">
+              <ModulesList modules={state.modules} />
+            </Block>
           </div>
           <div className={`${cell} ${third} ${justifyCenter}`}>
-            <Block color='green' title="Performance" />
+            <Block color='green' title="Performance">
+              {
+                state.performance ? <SorryForThePoop emoji='💩' message='no per budget set!' /> : null
+              }
+            </Block>
           </div>
         </div>
       </Board>

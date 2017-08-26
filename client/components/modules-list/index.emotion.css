@@ -1,0 +1,20 @@
+.css-UL-t7x3is { list-style: none;
+  width: 100%;
+  padding: 0px;
+  margin: 0;
+  overflow-y: scroll;
+  max-height: 256px; }
+.css-UL-t7x3is li { height: 40px; padding: 0px 10px; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-align-items: center; -ms-flex-align: center; -webkit-box-align: center; align-items: center; color: #FFF; font-size: 13px; }
+.css-UL-t7x3is li.subheader: { background: rgba(44, 44, 71, 0.3); }
+.css-UL-t7x3is li span { display: inline-block; width: 20%; text-align: center; }
+.css-UL-t7x3is li .name { width: 80%; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: inline-block; text-align: left; }
+.css-header-o1fs9f { background: rgb(69, 66, 112);
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.6; }
+.css-Brief-1yhvbvs { width: 100%;
+background: #000;
+padding: 12px 15px 8px 15px;
+background: rgba(69, 66, 112, 0.9); }
+.css-Brief-1yhvbvs div { font-size: 12px; font-weight: 600; text-transform: uppercase; opacity: 1; color: #FFF; height: 20px; width: 100%; display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
+.css-Brief-1yhvbvs div span:last-child { -webkit-flex: none; -ms-flex: none; flex: none; margin-left: auto; }

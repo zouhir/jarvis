@@ -5,8 +5,9 @@ const emitter = require("./emitter");
 const compiler = webpack(config("env"));
 const io = require("./index").io;
 
-const util = require('util');
+const MODTYPES = {'harmony import': 'esm', 'cjs require': 'cjs'}
 
+const performance = config("env").performance || {}
 
 let _stats = null;
 
@@ -17,37 +18,28 @@ compiler.apply(
 );
 
 compiler.plugin("done", stats => {
-  console.log(stats.compilation.modules[0]);
-  _stats = stats.toJson();
-  if (stats.hasErrors() || stats.hasWarnings()) {
-    return emitter.emitStats(
-      stats.hasError() ? "ERROR" : stats.hasWarning(),
-      _stats
-    );
-  }
+  jsonStats = stats.toJson();
+  _stats = {};
+  _stats.assets = jsonStats.assets || [];
+  _stats.errors = jsonStats.errors || [];
+  _stats.warnings = jsonStats.warnings || [];
+  _stats.time = jsonStats.time;
+  _stats.performance = performance
+  _stats.modules = jsonStats.modules.map(module => {
+    let name = module.name;
+    let size = module.size;
+    let required = module.reasons.map(re => {
+      return {
+        by: re.moduleName,
+        type: MODTYPES[re.type] ?  MODTYPES[re.type] : 'Other'
+      }
+    })
+    return {
+      name, size, required
+    }
+  })
   emitter.emitStats("SUCCESS", _stats);
 });
-
-// compiler.watch(
-//   {
-//     ignored: "/node_modules/"
-//   },
-//   (error, stats) => {
-//     if (error) {
-//       emitter.emitStats("ERROR", error);
-//       return;
-//     }
-//     _stats = stats.toJson();
-//     if (stats.hasErrors() || stats.hasWarnings()) {
-//       return emitter.emitStats(
-//         stats.hasError() ? "ERROR" : stats.hasWarning(),
-//         _stats
-//       );
-//     }
-//     emitter.emitStats("SUCCESS", _stats);
-//   }
-// );
-
 
 compiler.getStats = () => _stats;
 

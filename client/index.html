@@ -13,7 +13,11 @@
 
 <body>
   <div id="app"></div>
-  <script async src="bundle.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io();
+  </script>
+  <script src="/dist/bundle.js"></script>
 </body>
 
 </html>

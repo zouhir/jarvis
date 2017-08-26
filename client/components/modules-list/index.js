@@ -9,6 +9,8 @@ const UL = styled('ul')`
   width: 100%;
   padding: 0px;
   margin: 0;
+  overflow-y: scroll;
+  max-height: 256px;
   li {
     height: 40px;
     padding: 0px 10px;
@@ -23,7 +25,7 @@ const UL = styled('ul')`
       text-align: center;
     }
     .name {
-      width: 40%;
+      width: 80%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -62,44 +64,51 @@ div {
 `
 
 class AssetsList extends Component {
-  overLimitCount = (assets) => {
-    return assets.reduce((c, asset) => {
-      if(asset.isOverSizeLimit) {
-        return ++c;
-      }
-    }, 0)
+  countModules = (modules) => {
+    let count = {
+      esm: 0,
+      cjs: 0
+    }
+    modules.forEach((module) => {
+      module.required.forEach(requiree => {
+        if(requiree.type === 'esm') {
+          count.esm++
+        } else {
+          count.cjs++
+        }
+      })
+    })
+    return count;
   }
-  render({assets, assetsSize}){
+  render({modules}){
+    let count = this.countModules(modules);
     return (
       <div>
         <Brief>
           <div>
             <span>total assets: </span>
-            <span>{`${assets.length}`}</span>
+            <span>{modules.length}</span>
           </div>
           <div>
-            <span>Total Size:</span>
-            <span>{readableBytes(assetsSize)}</span>
+            <span>Total ES6 imports:</span>
+            <span>{count.esm}</span>
           </div>
           <div>
-            <span>Over size limit:</span>
-            <span>{this.overLimitCount(assets)}</span>
+            <span>Total CJS, AMD Required:</span>
+            <span>{count.cjs}</span>
           </div>
         </Brief>
         <UL>
           <li className={header}>
             <div className='name'>Name</div>
             <span>Size</span>
-            <span>Chunks</span>
-            <span></span>
           </li>
           {
-            assets.map(
-              asset => 
+            modules.map(
+              module => 
               <li>
-                <div className='name'>{asset.name}</div>
-                <span>{readableBytes(asset.size)}</span>
-                <span>{asset.chunks[0]}</span>
+                <div className='name'>{module.name}</div>
+                <span>{readableBytes(module.size)}</span>
               </li>
             )
           }
