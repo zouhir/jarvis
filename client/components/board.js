@@ -1,10 +1,12 @@
 import { h, Component } from 'preact';
 
 import MiniCard from './mini-card';
-import Chart from './size-chart';
 import Bundlelist from './bundles-list';
 import Terminal from './terminal';
+import Table from './table';
+
 import mockdata from '../mockdata.json';
+
 import { readableBytes } from '../helpers/utils';
 
 import Nav from './nav';
@@ -87,6 +89,11 @@ export default class Board extends Component {
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
             <Bundlelist />
+          </div>
+        </div>
+        <div className="row widgets">
+          <div className="col-xs-12 col-md-4 col-lg-6">
+            <Table />
           </div>
         </div>
       </div>

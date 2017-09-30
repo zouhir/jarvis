@@ -1,13 +1,6 @@
 @import '../../styles/variables';
 
 .bundle-list {
-  input {
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    background: transparent;
-    height: 28px;
-  }
   
   ul.chunklist {
     margin-left: -15px;
@@ -35,6 +28,7 @@
     span {
       margin-bottom: 10px;
       display: block;
+      font-size: 14px;
     }
     li.bundles {
       padding: 15px;

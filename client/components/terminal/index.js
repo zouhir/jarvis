@@ -6,7 +6,7 @@ export default class Chart extends Component {
   render() {
     return (
       <div className="terminal">
-        sad
+        
       </div>
     );
   }
