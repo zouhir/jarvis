@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+
+.bundle-list {
+  input {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    background: transparent;
+    height: 28px;
+  }
+  
+  ul.chunklist {
+    margin-left: -15px;
+    margin-right: -15px;
+    font-size: 13px;
+    font-weight: 300;
+    li.chunk {
+      border: none;
+      padding: 10px 15px;
+      &:nth-child(odd) {
+        background: $dark;
+      }
+      display: flex;
+      align-items: center;
+      span {
+        display: inline-block;
+        margin-bottom: 0px;
+        margin-left: auto;
+      }
+    }
+  }
+  
+  ul.card {
+    margin: 0px;
+    span {
+      margin-bottom: 10px;
+      display: block;
+    }
+    li.bundles {
+      padding: 15px;
+      padding-bottom: 0px;
+      background: $darker;
+      margin-bottom: 5px;
+      border: solid 1px $dark;
+      p {
+        width: 100%;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 14px;
+        &:last-child{
+          margin-bottom: 0px;
+        }
+      }
+      .details {
+        display: flex;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 300;
+        .size{
+          margin-left: auto;
+          &.big {
+            background: $red;
+            color: #FFF;
+            padding: 4px 15px;
+            border-radius: 2px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -2,10 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 const chalk = require('chalk')
 const WebpackMessages = require('webpack-messages');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
 
 const pkg = require('./package.json');
 const babelrc = require('./babel');
+
+const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = env => {
 	return {
@@ -42,8 +45,36 @@ module.exports = env => {
           }
         },
         {
-        test: /emotion\.css$/,
-        use: ['style-loader', { loader: 'css-loader' }]
+          test: /(\.css|\.scss)$/,
+          use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: [
+              {
+                loader: 'css-loader',
+                options: {
+                  sourceMap: true,
+                  modules: true,
+                  importLoaders: true,
+                  localIdentName: '[local]'
+                }
+              },
+              {
+                loader: 'postcss-loader',
+                options: {
+                  sourceMap: 'inline',
+                  plugins: function() {
+                    return [autoprefixer({ browsers: ['> 1%', 'IE >= 10'] })];
+                  }
+                }
+              },
+              {
+                loader: 'sass-loader',
+                options: {
+                  sourceMap: true
+                }
+              }
+            ]
+          })
         },
         {
           test: /\.json$/,
@@ -70,7 +101,11 @@ module.exports = env => {
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(env)
       }),
-      new ExtractTextPlugin('styles.css'),
+      new ExtractTextPlugin({
+        filename: 'style.css',
+        allChunks: false,
+        disable: ENV !== 'production'
+      }),
       new webpack.HotModuleReplacementPlugin()      
     ].concat(
       env === 'production' ? [
@@ -114,6 +149,22 @@ module.exports = env => {
       ] : []
     )),
 
-    devtool: env === 'production' ? 'source-map' : 'eval'
+    devtool: env === 'production' ? 'source-map' : 'eval',
+    devServer: {
+      port: process.env.PORT || 8080,
+      host: 'localhost',
+      publicPath: '/',
+      contentBase: './',
+      historyApiFallback: true,
+      open: true,
+      openPage: '',
+      proxy: {
+        // OPTIONAL: proxy configuration:
+        // '/optional-prefix/**': { // path pattern to rewrite
+        //   target: 'http://target-host.com',
+        //   pathRewrite: path => path.replace(/^\/[^\/]+\//, '')   // strip first path segment
+        // }
+      }
+    }
   }
 };

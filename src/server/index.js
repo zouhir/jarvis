@@ -14,6 +14,8 @@ exports.io = io;
 const compiler = require('./compiler');
 const emitter = require("./emitter");
 
+const solariFs = require('./fs')
+
 // ask compiler watch
 // compiler.progress();
 // compiler.watch();
@@ -42,19 +44,8 @@ io.on("connection", function(socket) {
   emitter.emitStats("SUCCESS", compiler.getStats());
 });
 
-/**
- * dev server for the users
- */
 
 const devServer = new WebpackDevServer(compiler, {
-});
-
-/**
- * do you see that compiler.compiler?????? I should be arrested for that
- */
-
-devServer.listen(8181, function() {
-  console.log("Starting Users app on: http://localhost:8080")
 });
 
 server.listen(3000, function() {

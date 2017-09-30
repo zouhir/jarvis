@@ -8,7 +8,7 @@ const babelrc = (env = null) => {
         {
           loose: true,
           uglify: true,
-          modules: false,
+          modules: false, 
           targets: {
             browsers: ['> 1%', 'last 2 versions', 'IE >= 9']
           },

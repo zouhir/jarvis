@@ -1,0 +1,11 @@
+@import '../../styles/variables';
+
+.terminal {
+  background: $dark;
+  height: 445px;
+  max-height: 445px;
+  width: 100%;
+  padding: 15px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}

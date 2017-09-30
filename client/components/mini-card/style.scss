@@ -1,0 +1,70 @@
+@import '../../styles/variables';
+
+
+h3 {
+  font-size: 27px;
+  font-weight: 300;
+  color: #FFF;
+  line-height: 35px;
+}
+p.note {
+  font-weight: 300;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.card-header {
+  padding: 20px 20px 7px 20px;
+  font-size: $tiny;
+  color: $text-dark;
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.7px;
+  line-height: 20px;
+}
+
+
+
+.mini {
+  height: 145px;
+  width: 100%;
+  margin-bottom: 5px;
+  h3 {
+    //    margin-bottom: 7px;
+  }
+  p, h3 {
+    padding-left: 20px;
+  }
+  .progress-bar {
+    margin-top: 20px;
+  }
+  &.fire {
+    background: linear-gradient(315deg, #FB906F 0%, #F16C9E 100%);
+  }
+  &.evening {
+    background: linear-gradient(315deg, #95A6FF 0%, #5E78FE 100%);
+  }
+  &.berry{
+    background: linear-gradient(315deg, #DF74F9 0%, #B72CF6 100%);
+  }
+}
+
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.1);
+  .progress {
+    background: #FFF;
+    height: 100%;
+  }
+}
+
+.bees {
+  p {
+    color: $text-dark;
+  }
+  .progress {
+    background: $text-dark;
+  }
+}

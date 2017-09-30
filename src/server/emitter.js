@@ -19,3 +19,17 @@ exports.emitStats = (status, data) => {
     data
   });
 }
+
+exports.emitGraphReport = (status, data) => {
+  io.emit("reporter_reporting", {
+    status,
+    data
+  });
+}
+
+exports.emitError = (status, data) => {
+  io.emit("reporter_error", {
+    status,
+    data
+  });
+}

@@ -1,10 +1,12 @@
 import { h, render } from "preact";
+import './styles/index.scss';
 
 import App from './components/app';
-let root = document.getElementById('app');
+
+let root = null;
 
 function init () {
-  let root = render(<App />, document.body, root);
+  render(<App />, document.getElementById('app'), root);
 }
 
 if(module.hot) {

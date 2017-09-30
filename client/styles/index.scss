@@ -1,0 +1,114 @@
+@import "variables";
+@import "grid";
+@import "backgrounds";
+
+html {
+  color: #6C6D74;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  background: $dark;
+  font-family: 'Montserrat', sans-serif;
+  color: #fff;
+}
+
+
+a {
+  -webkit-text-decoration-skip: objects;
+  text-decoration: none;
+}
+
+a:active,
+a:hover {
+  outline: 0
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ 
+nav {
+  width: 100%;
+  height: 60px;
+  background: $darker;
+  background: $dark;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  margin-bottom: 10px;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  padding: 0;
+  margin: 0;
+}
+
+.chart-base {
+  width: 100%;
+  overflow: hidden;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+
+#app {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding: 60px;
+  background-image: linear-gradient(180deg, #F476B7 0%, #8041EE 100%);
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.1;
+    z-index: 1;
+  }
+}
+
+
+$board-bg: #1D243E;
+.board {
+  background: $board-bg;
+  height: 80vh;
+  height: calc(100vh - 300px);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px 0 rgba(37,45,71,0.34);
+  color: #E1E1E5;
+  z-index: 99;
+  position: relative;
+  .widgets {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 5px solid transparent;
+  background-clip: padding-box;
+  padding: 2px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+  }
+}

@@ -5,6 +5,7 @@ let root = document.getElementById('app');
 
 function init () {
   let root = render(<App />, document.body, root);
+  
 }
 
 if(module.hot) {
