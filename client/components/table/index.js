@@ -1,9 +1,11 @@
 import { h , Component } from "preact";
 import './style.scss';
 
+import { readableBytes } from '../../helpers/utils'
 
 export default class Table extends Component {
-  render() {
+  render(props) {
+    console.log(props.data)
     return(
       <div className="table">
         <ul className="header">
@@ -24,10 +26,14 @@ export default class Table extends Component {
           </li>
         </ul>
         <ul class="table-body two-col">
-          <li>
-            <div className="col">asdkauhsdaksdaskd</div>
-            <div className="col">21</div>
-          </li>
+          {
+            props.data.map(module => (
+              <li>
+                <div className="col">{module.name}</div>
+                <div className="col">{readableBytes(module.size)}</div>
+              </li>
+            ))
+          }
         </ul>
       </div>
     )

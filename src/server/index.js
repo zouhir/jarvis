@@ -11,10 +11,8 @@ const server = http.Server(app);
 const io = socket(server);
 exports.io = io;
 
-const compiler = require('./compiler');
-const emitter = require("./emitter");
-
-const solariFs = require('./fs')
+const compiler = require('./webpack/compiler');
+const emitter = require("./io/emitter");
 
 // ask compiler watch
 // compiler.progress();

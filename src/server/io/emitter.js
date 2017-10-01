@@ -1,4 +1,4 @@
-const io = require('./index').io;
+const io = require('../index').io;
 
 /**
  * emits webpack progress percentage

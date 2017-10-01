@@ -1,11 +1,9 @@
 const webpack = require("webpack");
-const config = require("../../webpack.config");
+const config = require("../../../webpack.config");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
-const emitter = require("./emitter");
+const emitter = require("../io/emitter");
 const compiler = webpack(config("env"));
-const io = require("./index").io;
-
-const solariFs = require('./fs');
+const io = require("../index").io;
 
 const MODTYPES = {'harmony import': 'esm', 'cjs require': 'cjs'}
 
@@ -19,15 +17,6 @@ compiler.apply(
     emitter.emitPrecentage(percentage, message);
   })
 );
-
-
-solariFs.initReporter((err, data) => {
-  if(err) {
-    emitter.emitError('REPORT_ERROR', { errors: ['Error creating or reading solari-stats'] })
-    return
-  }
-  reporter = data
-})
 
 compiler.plugin("done", stats => {
   console.log('done fired');
@@ -56,17 +45,7 @@ compiler.plugin("done", stats => {
   _stats.assetsSize = _stats.assets.reduce((sum, asset) => {
     return sum = sum + asset.size
   }, 0)
-  reporter['development'].time.push(_stats.time)
-  reporter['development'].assetsSize.push(_stats.assetsSize)
-  solariFs.writeReport(JSON.stringify(reporter), (err, data) => {
-    if(err) {
-      console.log('error generating report')
-      return
-    }
-    emitter.emitGraphReport("SUCCESS", reporter)
-  })
   
-  console.log(_stats);
   emitter.emitStats("SUCCESS", _stats);
 });
 

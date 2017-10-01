@@ -81,9 +81,11 @@ ul {
 
 .board {
   background: $darker;
-  height: 80vh;
-  height: calc(100vh - 300px);
+  max-height: 80vh;
+  overflow-y: auto;
   border-radius: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   box-shadow: 0 6px 20px 0 rgba(37,45,71,0.34);
   color: #E1E1E5;
   z-index: 99;
@@ -91,12 +93,13 @@ ul {
   .widgets {
     padding-left: 5px;
     padding-right: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
 }
 
 ::-webkit-scrollbar {
   width: 16px;
+  background: $dark;
 }
 
 ::-webkit-scrollbar-thumb {

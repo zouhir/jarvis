@@ -23,16 +23,7 @@ export default class Board extends Component {
     performance: {}
   }
   componentDidMount() {
-    if(mockdata.assets && mockdata.assets.length) {
-      let totalAssetsSize = mockdata.assets.reduce((sum, asset) => {
-        return sum = sum + asset.size
-      }, 0)
-      this.setState({
-        assetsSize: totalAssetsSize
-      })
-    }
     socket.on('compiler_watch', (response) => {
-      console.log(response);
       let { data } = response
       this.setState({
         assets: data.assets || [],
@@ -40,7 +31,8 @@ export default class Board extends Component {
         warnings: data.warnings,
         time: data.time / 1e3,
         modules: data.modules,
-        performance: data.performance || {}
+        performance: data.performance || {},
+        assetsSize: data.assetsSize || 'NaN'
       })
     });
 
@@ -69,8 +61,8 @@ export default class Board extends Component {
 
             <MiniCard
               title="Error"
-              status="0"
-              note="and no warnings"
+              status={state.errors.length}
+              note={state.warnings.length === 0 ? 'and no warnings' : `and ${state.warnings.length} warnings`}
               color="berry"
             />
             {
@@ -88,12 +80,12 @@ export default class Board extends Component {
             <Terminal />
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
-            <Bundlelist />
+            <Bundlelist assets={state.assets} />
           </div>
         </div>
         <div className="row widgets">
           <div className="col-xs-12 col-md-4 col-lg-6">
-            <Table />
+            <Table data={state.modules} />
           </div>
         </div>
       </div>
