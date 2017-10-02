@@ -3,6 +3,8 @@ const ProgressPlugin = require("webpack/lib/ProgressPlugin");
 const WebpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
 
+const analyser = require('./analyser');
+
 const compiler = ({ config, env, port }) => {
   /**
    * @idea: convert object to array and keep history
@@ -29,7 +31,7 @@ const compiler = ({ config, env, port }) => {
   compilerInstance.plugin("done", stats => {
     console.log("done fired");
     jsonStats = stats.toJson();
-    console.log(jsonStats);
+    console.log(analyser.statsReporter(jsonStats));
     /**
      * emit those 2
      */

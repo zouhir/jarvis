@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ansi-to-html": "^0.6.3",
     "cwd": "^0.10.0",
     "emotion": "^6.0.3",
     "express": "^4.15.4",

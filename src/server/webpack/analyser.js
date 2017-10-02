@@ -1,6 +1,6 @@
-let exports = {};
+const Formatter = require("ansi-to-html");
 
-const configAnalyser = (exports.configAnalyser = configs => {
+function configAnalyser(configs) {
   let report = {};
 
   /**
@@ -15,14 +15,24 @@ const configAnalyser = (exports.configAnalyser = configs => {
    */
 
   return report;
-});
+}
 
-const statsReporter = (exports.statsReporter = statsJson => {
+function _formattedError(errors) {
+  if(!error || !error.length ) {
+    return []
+  }
+  let formatter = new Formatter();
+  return errors.map(error => {
+    return formatter.toHtml(error);
+  })
+}
+
+function statsReporter(statsJson) {
   let report = {};
   const MODULE_TYPES = { "harmony import": "esm", "cjs require": "cjs" };
   report.assets = statsJson.assets || [];
-  report.errors = statsJson.errors || [];
-  report.warnings = statsJson.warnings || [];
+  report.errors = _formattedError(statsJson.errors);
+  report.warnings = _formattedError(statsJson.warnings);
   report.time = statsJson.time || 0;
   report.modules = {};
   report.modules.esmCount = 0;
@@ -55,8 +65,11 @@ const statsReporter = (exports.statsReporter = statsJson => {
   report.assetsSize = statsJson.assets.reduce((sum, asset) => {
     return (sum = sum + asset.size);
   }, 0);
-
+  
   return report;
-});
+}
 
-module.exports = exports;
+module.exports = {
+  configAnalyser,
+  statsReporter
+};
