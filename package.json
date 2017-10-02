@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "node ./src/server --production",
-    "dev": "node ./src/server",
+    "dev": "node ./src/server --dev",
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "cwd": "^0.10.0",
     "emotion": "^6.0.3",
     "express": "^4.15.4",
     "preact": "^8.2.1",
@@ -46,6 +47,7 @@
     "jest": "^20.0.4",
     "jest-serializer-html-string": "^1.0.1",
     "mri": "^1.1.0",
+    "nodemon": "^1.12.1",
     "raw-loader": "^0.5.1",
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",

@@ -1,54 +1,55 @@
-const webpack = require("webpack");
-const config = require("../../../webpack.config");
 const ProgressPlugin = require("webpack/lib/ProgressPlugin");
-const emitter = require("../io/emitter");
-const compiler = webpack(config("env"));
-const io = require("../index").io;
 
-const MODTYPES = {'harmony import': 'esm', 'cjs require': 'cjs'}
+const WebpackDevServer = require("webpack-dev-server");
+const webpack = require("webpack");
 
-const performance = config("env").performance || {}
+const compiler = ({ config, env, port }) => {
+  /**
+   * @idea: convert object to array and keep history
+   */
+  let devServerStats = {};
+  let prodBundleStats = {};
+  let progressStats = {};
 
-let _stats = null;
-let reporter = null
+  const compilerInstance = webpack(config);
 
-compiler.apply(
-  new ProgressPlugin((percentage, message) => {
-    emitter.emitPrecentage(percentage, message);
-  })
-);
-
-compiler.plugin("done", stats => {
-  console.log('done fired');
-  jsonStats = stats.toJson();
-  _stats = {};
-  _stats.assets = jsonStats.assets || [];
-  _stats.errors = jsonStats.errors || [];
-  _stats.warnings = jsonStats.warnings || [];
-  _stats.time = jsonStats.time;
-  _stats.performance = performance;
-  _stats.assetsSize = 0;
-  _stats.modules = jsonStats.modules.map(module => {
-    let name = module.name;
-    let size = module.size;
-    let required = module.reasons.map(re => {
-      return {
-        by: re.moduleName,
-        type: MODTYPES[re.type] ?  MODTYPES[re.type] : 'Other'
-      }
+  /**
+   * progress reporter plugin
+   */
+  compilerInstance.apply(
+    new ProgressPlugin((percentage, message) => {
+      // emit those 2
     })
-    return {
-      name, size, required
+  );
+
+  /**
+   * @TODO: apply pretty message plugin if it does not exist
+   */
+
+  compilerInstance.plugin("done", stats => {
+    console.log("done fired");
+    jsonStats = stats.toJson();
+    console.log(jsonStats);
+    /**
+     * emit those 2
+     */
+  });
+
+  /**
+   * @TODO: emit this to the UI
+   */
+  const startDevServer = () => {
+    if (!compilerInstance) {
+      throw new Error("invalid compiler could be invalid configs");
     }
-  })
+    new WebpackDevServer(compilerInstance, {
+      /* ATM I don't need custom options here, let's see what happens later tho */
+    });
+  };
 
-  _stats.assetsSize = _stats.assets.reduce((sum, asset) => {
-    return sum = sum + asset.size
-  }, 0)
-  
-  emitter.emitStats("SUCCESS", _stats);
-});
-
-compiler.getStats = () => _stats;
+  return {
+    startDevServer
+  };
+};
 
 module.exports = compiler;

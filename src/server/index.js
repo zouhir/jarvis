@@ -1,51 +1,81 @@
-const express = require("express");
-const chalk = require("chalk");
-const http = require("http");
-const socket = require("socket.io");
-const path = require("path");
-const WebpackDevServer = require("webpack-dev-server");
-
-const app = express();
-
-const server = http.Server(app);
-const io = socket(server);
-exports.io = io;
-
-const compiler = require('./webpack/compiler');
-const emitter = require("./io/emitter");
-
-// ask compiler watch
-// compiler.progress();
-// compiler.watch();
-// TODO: ask compiler to run
-// TODO: compiler.watch('dev')
-
-app.use(express.static(path.join(__dirname, "../../client/")));
-
-
-// servers the Preact dashboard main page
-app.get("/", function(req, res) {
-  // TODO: improve this
-  res.sendFile(path.join(__dirname, "../../client/index.html"));
-});
+/*!
+ * webpack-solari <https://github.com/zouhir/webpack-solari>
+ *
+ * Copyright (c) 2017, Zouhir C.
+ * Licensed under the MIT License.
+ */
 
 /**
- * Socket.io main connection
+ * External Dependencies
  */
-let MEM_LEAK_COUTER = 20;
-io.on("connection", function(socket) {
-  MEM_LEAK_COUTER--;
-  if (MEM_LEAK_COUTER < 1) {
-    console.log("memory leak, open a Github issue please");
-    process.exit(1);
-  }
-  emitter.emitStats("SUCCESS", compiler.getStats());
-});
+const cwd = require('cwd')
+const express = require("express");
+const http = require("http");
+const path = require("path");
+const socket = require("socket.io");
 
+/**
+ * Compiler Dependencies
+ */
+const compiler = require('./webpack/compiler');
 
-const devServer = new WebpackDevServer(compiler, {
-});
+/**
+ * Utility functions
+ */
+const { parser } = require("./lib/argv-parser");
 
-server.listen(3000, function() {
-  console.log("Starting Solari on: http://localhost:3000");
-});
+/**
+ * Setup express with live web sockets
+ * 
+ * socket.io docs: https://socket.io/docs/server-api/
+ */
+const app = express();
+const server = http.Server(app);
+const io = socket(server);
+
+/**
+ * Mandatory service variables
+ */
+let env, port, configFile, config;
+const DEFAULT_ENV = "development";
+const DEFAULT_PORT = 1337;
+const DEFAULT_WEBPACK_CONFIGS = "webpack.config"
+
+/**
+ * NPM script user arguments
+ * Required:
+ * @arg1: Environment 
+ *        usage: --prod for "production", --dev for development
+ * @arg2: Port
+ *        usage: --port=3000 
+ */
+const args = process.argv.slice(2);
+let parsed = parser(args);
+env = DEFAULT_ENV;
+if (parsed.production) {
+  env = "production";
+}
+port = DEFAULT_PORT;
+if(parsed.port) {
+  port = parsed.port
+}
+configFile = DEFAULT_WEBPACK_CONFIGS;
+if(parsed.config) {
+  configFile = parsed.config;
+}
+
+// Load the configs from the file
+config = require(path.join(cwd(), configFile))
+
+if(!config) {
+  throw new Error('Config file error');  
+}
+
+let c = compiler({ config: config("dev")});
+c.startDevServer()
+
+/**
+ * 
+ */
+
+return;
