@@ -25,6 +25,11 @@ const compiler = require('./webpack/compiler');
 const { parser } = require("./lib/argv-parser");
 
 /**
+ * System custom events
+ */
+const clientEvents = require('./events/client');
+
+/**
  * Setup express with live web sockets
  * 
  * socket.io docs: https://socket.io/docs/server-api/
@@ -32,7 +37,10 @@ const { parser } = require("./lib/argv-parser");
 const app = express();
 const server = http.Server(app);
 const io = socket(server);
-
+/**
+ * init client events
+ */
+clientEvents(io);
 /**
  * Mandatory service variables
  */
@@ -71,11 +79,20 @@ if(!config) {
   throw new Error('Config file error');  
 }
 
+
+
 let c = compiler({ config: config("dev")});
 c.startDevServer()
 
 /**
- * 
+ * Server Related Stuff
+ * - location for statics (Dashboard CSS & JS)
+ * - Sends homepage on GET
  */
-
-return;
+app.use(express.static(path.join(__dirname, "../../client/")));
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "../../client/index.html"));
+});
+server.listen(3000, function() {
+  console.log("Starting Solari on: http://localhost:3000");
+});

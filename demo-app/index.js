@@ -8,6 +8,9 @@ function init () {
 }
 
 
+
+
+
 if(module.hot) {
   require('preact/devtools');
   

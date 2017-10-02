@@ -23,20 +23,20 @@ export default class Board extends Component {
     performance: {}
   }
   componentDidMount() {
-    socket.on('compiler_watch', (response) => {
-      let { data } = response
+    socket.on('stats', (report) => {
       this.setState({
-        assets: data.assets || [],
-        errors: data.errors,
-        warnings: data.warnings,
-        time: data.time / 1e3,
-        modules: data.modules,
-        performance: data.performance || {},
-        assetsSize: data.assetsSize || 'NaN'
+        assets: report.assets || [],
+        errors: report.errors,
+        warnings: report.warnings,
+        time: report.time / 1e3,
+        modules: report.modules,
+        performance: report.performance || {},
+        assetsSize: report.assetsSize || 'NaN'
       })
     });
 
-    socket.on('compiler_percentage', (data) => {
+    socket.on('progress', (data) => {
+      console.log(data)
       this.setState({
         progress: data
       })

@@ -5,29 +5,29 @@ import { readableBytes } from '../../helpers/utils'
 
 export default class Table extends Component {
   render(props) {
-    console.log(props.data)
+    let modulesTable = props.data.table || [];
     return(
       <div className="table">
         <ul className="header">
           <li>
             <div className="type">All</div>
-            <div className="count">100</div>
+            <div className="count">{modulesTable.length}</div>
             <div className="percentage">100%</div>
           </li>
-          <li className="esm">
+          <li className="cjs">
             <div className="type">CJS</div>
-            <div className="count">90</div>
+            <div className="count">{props.data.cjsCount || 0}</div>
             <div className="percentage">90%</div>
           </li>
-          <li className="cjs">
+          <li className="esm">
             <div className="type">ESM</div>
-            <div className="count">10</div>
+            <div className="count">{props.data.esmCount || 0}</div>
             <div className="percentage">10%</div>
           </li>
         </ul>
         <ul class="table-body two-col">
           {
-            props.data.map(module => (
+            modulesTable.map(module => (
               <li>
                 <div className="col">{module.name}</div>
                 <div className="col">{readableBytes(module.size)}</div>

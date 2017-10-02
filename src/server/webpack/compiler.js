@@ -1,9 +1,14 @@
-const ProgressPlugin = require("webpack/lib/ProgressPlugin");
-
+/**
+ * Compiler stuff
+ */
 const WebpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
-
-const analyser = require('./analyser');
+const ProgressPlugin = require("webpack/lib/ProgressPlugin");
+/**
+ * Stats utility and other helpers
+ */
+const reporter = require("./reporter");
+const compilerEvents = require("../events/compiler");
 
 const compiler = ({ config, env, port }) => {
   /**
@@ -20,7 +25,7 @@ const compiler = ({ config, env, port }) => {
    */
   compilerInstance.apply(
     new ProgressPlugin((percentage, message) => {
-      // emit those 2
+      
     })
   );
 
@@ -29,9 +34,14 @@ const compiler = ({ config, env, port }) => {
    */
 
   compilerInstance.plugin("done", stats => {
-    console.log("done fired");
-    jsonStats = stats.toJson();
-    console.log(analyser.statsReporter(jsonStats));
+    let report = reporter.statsReporter(stats.toJson());
+    if (env === "development") {
+      devServerStats = report;
+      compilerEvents.emitStats(report)
+    } else {
+      prodBundleStats = report;
+      compilerEvents.emitStats(report)
+    }
     /**
      * emit those 2
      */
@@ -49,8 +59,18 @@ const compiler = ({ config, env, port }) => {
     });
   };
 
+  const getDevServerStats = () => {
+    return devServerStats;
+  };
+
+  const getProdBundleStats = () => {
+    return prodBundleStats;
+  };
+
   return {
-    startDevServer
+    startDevServer,
+    getDevServerStats,
+    getProdBundleStats
   };
 };
 
