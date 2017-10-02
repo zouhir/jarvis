@@ -28,11 +28,15 @@
         position: absolute;
         right: 0;
         color: #f55753;
+        top: 50%;
+        transform: translateY(-50%);
       }
       .esm{
         position: absolute;
         right: 0;
         color: #10cfbd;
+        top: 50%;
+        transform: translateY(-50%);
       }
       &:last-child {
         border-left: 1px dashed $dark;

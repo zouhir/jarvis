@@ -18,7 +18,9 @@ function configAnalyser(configs) {
 }
 
 function _formattedError(errors = []) {
-  let formatter = new Formatter();
+  let formatter = new Formatter({
+    newline: true
+  });
   return errors.map(error => {
     return formatter.toHtml(error);
   });
@@ -31,24 +33,35 @@ function _transformModules(modules = []) {
   let table = modules.map(module => {
     let name = module.name;
     let size = module.size;
-    let pureEsm = true;
+    let esmFound = true;
+    let cjsFound = false;
     let reasons = module.reasons.map(re => {
       if (MODULE_TYPES[re.type] === "esm") {
         esmCount++;
       } else if (MODULE_TYPES[re.type] === "cjs") {
-        pureEsm = false;
-        cjsCount++;
+        esmFound = false;
+        cjsFound = true;
+      } else {
+        esmFound = false;
       }
       return {
         by: re.moduleName,
         type: MODULE_TYPES[re.type] ? MODULE_TYPES[re.type] : "Other"
       };
     });
+    let type = 'other';
+    if(esmFound) {
+      type = 'esm';
+      esmCount++
+    } else if(cjsFound) {
+      type = 'cjs';
+      cjsCount++
+    }
     return {
       name,
       size,
       reasons,
-      pureEsm
+      type
     };
   });
   return {

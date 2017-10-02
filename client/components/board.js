@@ -77,7 +77,7 @@ export default class Board extends Component {
             }
           </div>
           <div className="col-xs-12 col-md-4 col-lg-6">
-            <Terminal />
+            <Terminal printout={state.errors}/>
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
             <Bundlelist assets={state.assets} />
