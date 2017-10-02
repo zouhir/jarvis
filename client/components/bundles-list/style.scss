@@ -1,14 +1,10 @@
 @import '../../styles/variables';
 
 .bundle-list {
-  input {
-    width: 100%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: rgba(255, 255, 255, 0.7);
-    background: transparent;
-    height: 28px;
-  }
-  
+  height: 445px;
+  background: $dark;
+  overflow-x: hidden;
+  overflow-y: auto;
   ul.chunklist {
     margin-left: -15px;
     margin-right: -15px;
@@ -18,7 +14,10 @@
       border: none;
       padding: 10px 15px;
       &:nth-child(odd) {
-        background: $dark;
+        background: #202740;
+      }
+      &:nth-child(even) {
+        background: #212A43;
       }
       display: flex;
       align-items: center;
@@ -35,11 +34,12 @@
     span {
       margin-bottom: 10px;
       display: block;
+      font-size: 14px;
     }
     li.bundles {
       padding: 15px;
       padding-bottom: 0px;
-      background: $darker;
+      background: $dark;
       margin-bottom: 5px;
       border: solid 1px $dark;
       p {
@@ -57,11 +57,14 @@
         font-weight: 300;
         .size{
           margin-left: auto;
+          color: #FFF;
+          padding: 4px 15px;
+          border-radius: 2px;
           &.big {
             background: $red;
-            color: #FFF;
-            padding: 4px 15px;
-            border-radius: 2px;
+          }
+          &.ok {
+            background: #10cfbd;
           }
         }
       }

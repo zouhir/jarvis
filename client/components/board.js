@@ -1,10 +1,12 @@
 import { h, Component } from 'preact';
 
 import MiniCard from './mini-card';
-import Chart from './size-chart';
 import Bundlelist from './bundles-list';
 import Terminal from './terminal';
+import Table from './table';
+
 import mockdata from '../mockdata.json';
+
 import { readableBytes } from '../helpers/utils';
 
 import Nav from './nav';
@@ -21,28 +23,20 @@ export default class Board extends Component {
     performance: {}
   }
   componentDidMount() {
-    if(mockdata.assets && mockdata.assets.length) {
-      let totalAssetsSize = mockdata.assets.reduce((sum, asset) => {
-        return sum = sum + asset.size
-      }, 0)
+    socket.on('stats', (report) => {
       this.setState({
-        assetsSize: totalAssetsSize
-      })
-    }
-    socket.on('compiler_watch', (response) => {
-      console.log(response);
-      let { data } = response
-      this.setState({
-        assets: data.assets || [],
-        errors: data.errors,
-        warnings: data.warnings,
-        time: data.time / 1e3,
-        modules: data.modules,
-        performance: data.performance || {}
+        assets: report.assets || [],
+        errors: report.errors,
+        warnings: report.warnings,
+        time: report.time / 1e3,
+        modules: report.modules,
+        performance: report.performance || {},
+        assetsSize: report.assetsSize || 'NaN'
       })
     });
 
-    socket.on('compiler_percentage', (data) => {
+    socket.on('progress', (data) => {
+      console.log(data)
       this.setState({
         progress: data
       })
@@ -67,8 +61,8 @@ export default class Board extends Component {
 
             <MiniCard
               title="Error"
-              status="0"
-              note="and no warnings"
+              status={state.errors.length}
+              note={state.warnings.length === 0 ? 'and no warnings' : `and ${state.warnings.length} warnings`}
               color="berry"
             />
             {
@@ -83,10 +77,15 @@ export default class Board extends Component {
             }
           </div>
           <div className="col-xs-12 col-md-4 col-lg-6">
-            <Terminal />
+            <Terminal printout={state.errors}/>
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
-            <Bundlelist />
+            <Bundlelist assets={state.assets} />
+          </div>
+        </div>
+        <div className="row widgets">
+          <div className="col-xs-12 col-md-4 col-lg-6">
+            <Table data={state.modules} />
           </div>
         </div>
       </div>

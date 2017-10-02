@@ -1,18 +1,18 @@
 import { h, Component } from 'preact';
+import { readableBytes } from '../../helpers/utils';
 
 import './style.scss';
 
 
-const ChunkList = (list) => {
-  list = [{name: 'hi', size: '112'}, {name: 'hi', size: '112'}]
+const ChunkList = (props) => {
     return (
       <ul className="chunklist">
         {
-          list.map(l => (
+          props.chunkNames.map((chunk, idx) => (
             <li className="chunk">
-              {l.name}
+              {chunk}
               <span>
-                {l.size}
+                -
               </span>
             </li>
           ))
@@ -21,25 +21,37 @@ const ChunkList = (list) => {
     )
 }
 
+const Asset = (props) => {
+  let bundle = props.bundle;
+  return (
+    <li className="bundles">
+      <span>{bundle.name}</span>
+      <p className="details">
+        <span>{bundle.chunks.length} chunks, {readableBytes(bundle.size)}</span>
+        {
+          bundle.isOverSizeLimit ? (
+            <span className="size big">big</span>    
+          ) : (
+            <span className="size ok">ok</span>
+          )
+        }
+        
+      </p>
+      <ChunkList chunks={bundle.chunks} chunkNames={bundle.chunkNames}/>
+    </li>
+  )
+}
+
 export default class MiniCard extends Component {
   render(props) {
     return (
       <div className="bundle-list">
         <ul className="card">
-          <li className="bundles">
-            <span>bundle.js</span>
-            <p className="details">
-              <span>5 chunks</span>
-              <span className="size big">big</span>
-            </p>
-            <ChunkList />
-          </li>
-          <li>
-            hello
-          </li>
-          <li>
-            hello
-          </li>
+          {
+            props.assets.map(bundle => (
+              <Asset bundle={bundle} />
+            ))
+          }
         </ul>
       </div>
     )

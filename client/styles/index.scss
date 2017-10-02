@@ -39,7 +39,6 @@ nav {
   width: 100%;
   height: 60px;
   background: $darker;
-  background: $dark;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   margin-bottom: 10px;
@@ -80,13 +79,13 @@ ul {
   }
 }
 
-
-$board-bg: #1D243E;
 .board {
-  background: $board-bg;
-  height: 80vh;
-  height: calc(100vh - 300px);
-  border-radius: 16px;
+  background: $darker;
+  max-height: 80vh;
+  overflow-y: auto;
+  border-radius: 4px;
+  padding-top: 5px;
+  padding-bottom: 5px;
   box-shadow: 0 6px 20px 0 rgba(37,45,71,0.34);
   color: #E1E1E5;
   z-index: 99;
@@ -94,11 +93,13 @@ $board-bg: #1D243E;
   .widgets {
     padding-left: 5px;
     padding-right: 5px;
+    margin-bottom: 10px;
   }
 }
 
 ::-webkit-scrollbar {
   width: 16px;
+  background: $dark;
 }
 
 ::-webkit-scrollbar-thumb {
