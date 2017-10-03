@@ -4,6 +4,7 @@ import MiniCard from './mini-card';
 import Bundlelist from './bundles-list';
 import Terminal from './terminal';
 import Table from './table';
+import PerfBudget from './perf-budget';
 
 import mockdata from '../mockdata.json';
 
@@ -70,7 +71,7 @@ export default class Board extends Component {
                 <MiniCard
                   title="Total Bundles Size"
                   status={readableBytes(state.assetsSize)}
-                  note="too big"
+                  note=""
                   color="evening"
                 />
                 : null
@@ -86,6 +87,9 @@ export default class Board extends Component {
         <div className="row widgets">
           <div className="col-xs-12 col-md-4 col-lg-6">
             <Table data={state.modules} />
+          </div>
+          <div className="col-xs-12 col-md-4 col-lg-3">
+            <PerfBudget />
           </div>
         </div>
       </div>

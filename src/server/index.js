@@ -1,5 +1,5 @@
 /*!
- * webpack-solari <https://github.com/zouhir/webpack-solari>
+ * webpack-jarvis <https://github.com/zouhir/webpack-jarvis>
  *
  * Copyright (c) 2017, Zouhir C.
  * Licensed under the MIT License.

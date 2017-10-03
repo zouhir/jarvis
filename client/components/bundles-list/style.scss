@@ -2,7 +2,6 @@
 
 .bundle-list {
   height: 445px;
-  background: $dark;
   overflow-x: hidden;
   overflow-y: auto;
   ul.chunklist {
@@ -40,8 +39,9 @@
       padding: 15px;
       padding-bottom: 0px;
       background: $dark;
-      margin-bottom: 5px;
       border: solid 1px $dark;
+      background: $dark;
+      margin-bottom: 10px;
       p {
         width: 100%;
         color: rgba(255, 255, 255, 0.7);
