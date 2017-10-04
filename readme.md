@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="" width="200">
+  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/logo.svg?token=AE0XnORHjutT4RU0c5EjHhyoPL-VJ1yAks5Z3fCvwA%3D%3D" width="200">
     <br />
     JARVIS
     <br />
@@ -8,24 +8,21 @@
 
 <h4 align="center">Just A Rather Very Intelligent System and Dashboard for Webpack</h4>
 
-#### Under Development 🚨:
-
-The structure is still a mess as it was partially an idea I had when I was developing another project 
-and better DX is a must so contributors feel welcomed.
 
 #### Setting up the project
 
 `$ git clone https://github.com/zouhir/jarvis.git`
 
-Install core Nodejs modules required to run the webpack Node compiler.
-
 `$ npm i`
 
-Navigate to `client/` directory and install UI libraries. I don't know why I hacked the UI in a separate folder :/
+`$ npm run dev`
 
-`$ cd client `
-`$npm i`
+or
 
-#### Developing UI component alone:
+`$ npm run client`
 
-If you wish to develop UI components for the dashboard alone, no need to run the server, you probaby 
+`$ npm run server`
+
+Run the client
+
+`http://localhost:3000`

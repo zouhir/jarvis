@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run dev:server & npm run dev:client",
-    "dev:server": "cross-env nodemon ./src/server --dev",
-    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
+    "server": "cross-env nodemon ./src/server --dev",
+    "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest"
   },
   "author": "",
