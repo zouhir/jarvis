@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/logo.svg?token=AE0XnORHjutT4RU0c5EjHhyoPL-VJ1yAks5Z3fCvwA%3D%3D" width="200">
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/logo.png?raw=true" width="200">
     <br />
     JARVIS
     <br />
