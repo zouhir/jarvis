@@ -1,14 +1,16 @@
 import { h, render } from "preact";
 
 import App from './components/app';
+import App2 from './components/app2';
+
 let root = document.getElementById('app');
 
 function init () {
-  let root = render(<App >, document.body, root)
+  let root = render(<div>
+    <App />
+    <App2 />
+  </div>div>, document.body, root)
 }
-
-
-
 
 
 if(module.hot) {

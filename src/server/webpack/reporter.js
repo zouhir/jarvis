@@ -19,7 +19,8 @@ function configAnalyser(configs) {
 
 function _formattedError(errors = []) {
   let formatter = new Formatter({
-    newline: true
+    newline: true,
+    escapeXML: true
   });
   return errors.map(error => {
     return formatter.toHtml(error);
@@ -49,13 +50,13 @@ function _transformModules(modules = []) {
         type: MODULE_TYPES[re.type] ? MODULE_TYPES[re.type] : "Other"
       };
     });
-    let type = 'other';
-    if(esmFound) {
-      type = 'esm';
-      esmCount++
-    } else if(cjsFound) {
-      type = 'cjs';
-      cjsCount++
+    let type = "Other";
+    if (esmFound) {
+      type = "esm";
+      esmCount++;
+    } else if (cjsFound) {
+      type = "cjs";
+      cjsCount++;
     }
     return {
       name,
@@ -77,7 +78,7 @@ function statsReporter(statsJson) {
   report.errors = _formattedError(statsJson.errors);
   report.warnings = _formattedError(statsJson.warnings);
   report.time = statsJson.time || 0;
-  report.modules = _transformModules(statsJson.modules)
+  report.modules = _transformModules(statsJson.modules);
   report.assetsSize = statsJson.assets.reduce((sum, asset) => {
     return (sum = sum + asset.size);
   }, 0);
