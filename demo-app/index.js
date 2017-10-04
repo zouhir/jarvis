@@ -7,9 +7,9 @@ let root = document.getElementById('app');
 
 function init () {
   let root = render(<div>
-    <App />
-    <App2 />
-  </div>div>, document.body, root)
+      <App />
+      <App2 />
+    </div>, document.body, root)
 }
 
 

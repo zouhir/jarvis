@@ -6,11 +6,11 @@ import Terminal from './terminal';
 import Table from './table';
 import PerfBudget from './perf-budget';
 
-import mockdata from '../mockdata.json';
-
 import { readableBytes } from '../helpers/utils';
-
 import Nav from './nav';
+
+import io from 'socket.io-client';
+const socket = io('localhost:3001')
 
 export default class Board extends Component {
   state = {
@@ -37,7 +37,6 @@ export default class Board extends Component {
     });
 
     socket.on('progress', (data) => {
-      console.log(data)
       this.setState({
         progress: data
       })

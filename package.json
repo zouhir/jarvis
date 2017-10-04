@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node ./src/server --production",
-    "dev": "node ./src/server --dev",
+    "dev": "npm run dev:server & npm run dev:client",
+    "dev:server": "cross-env nodemon ./src/server --dev",
+    "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ansi-html": "0.0.7",
     "ansi-to-html": "^0.6.3",
     "cwd": "^0.10.0",
     "emotion": "^6.0.3",
@@ -19,7 +19,8 @@
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
-    "socket.io": "^2.0.3"
+    "socket.io": "^2.0.3",
+    "preact-markup": "^1.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -54,7 +55,11 @@
     "style-loader": "^0.18.2",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
-    "webpack-messages": "^1.0.0"
+    "webpack-messages": "^1.0.0",
+    "postcss-loader": "^2.0.6",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "svg-url-loader": "^2.1.1"
   },
   "jest": {
     "verbose": true,

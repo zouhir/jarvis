@@ -12,7 +12,7 @@ const ENV = process.env.NODE_ENV || 'development';
 
 module.exports = env => {
 	return {
-    context: path.resolve("./"),
+    context: path.resolve("./src/client"),
     entry: ['./index.js'],
     output: {
       path: path.resolve("dist"),
@@ -148,13 +148,12 @@ module.exports = env => {
         }),
       ] : []
     )),
-
     devtool: env === 'production' ? 'source-map' : 'eval',
     devServer: {
-      port: process.env.PORT || 8080,
+      port: 3000,
       host: 'localhost',
       publicPath: '/',
-      contentBase: './',
+      contentBase: './src/client',
       historyApiFallback: true,
       open: true,
       openPage: '',

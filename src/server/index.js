@@ -84,15 +84,9 @@ if(!config) {
 let c = compiler({ config: config("dev")});
 c.startDevServer()
 
-/**
- * Server Related Stuff
- * - location for statics (Dashboard CSS & JS)
- * - Sends homepage on GET
- */
-app.use(express.static(path.join(__dirname, "../../client/")));
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "../../client/index.html"));
+  res.send('Client is running on port: 3000');
 });
-server.listen(3000, function() {
-  console.log("Starting Solari on: http://localhost:3000");
+server.listen(3001, function() {
+  console.log("Starting JARVIS on: http://localhost:3001");
 });
