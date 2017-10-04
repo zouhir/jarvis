@@ -26,3 +26,8 @@ or
 Run the client
 
 `http://localhost:3000`
+
+#### What's Next?
+
+The modules are hooked to run on `demo-app` change anything there eg. cause an error and you should 
+see that getting compiled in Node.js and visualized eventually in the browser.
