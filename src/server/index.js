@@ -22,7 +22,7 @@ const compiler = require('./webpack/compiler');
 /**
  * Utility functions
  */
-const { parser } = require("./lib/argv-parser");
+const parser = require("./lib/argv-parser");
 
 /**
  * System custom events
@@ -60,6 +60,7 @@ const DEFAULT_WEBPACK_CONFIGS = "webpack.config"
 const args = process.argv.slice(2);
 let parsed = parser(args);
 env = DEFAULT_ENV;
+console.log('parsed', parsed);
 if (parsed.production) {
   env = "production";
 }

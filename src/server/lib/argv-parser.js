@@ -1,14 +1,10 @@
 const mri = require("mri");
 
-const parser = args => {
+module.exports = args => {
   return mri(args, {
     alias: {
-      production: ["prod"],
-      development: ["dev"],
-      port: ["port"],
-      config: ["config"]
+      production: "prod",
+      development: "dev"
     }
   });
 };
-
-exports.parser = parser;
