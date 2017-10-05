@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev:server & npm run dev:client",
+    "dev": "npm run server & npm run client",
     "server": "cross-env nodemon ./src/server --dev",
     "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest"
