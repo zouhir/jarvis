@@ -5,11 +5,17 @@ import './style.scss'
 
 export default class Chart extends Component {
   render(props) {
-    console.log(props.printout[0])
+    let printOut;
+    if (props.errors.length > 0) {
+      printOut = props.errors;
+    } else {
+      printOut = props.warnings.concat(props.success);  
+    }
+    
     return (
       <div className="terminal">
         {
-          props.printout.map(err => (
+          printOut.map(err => (
             <Markup trim={false} markup={`<div>${err}</div>`} />
           ))
         }

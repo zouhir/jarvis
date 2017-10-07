@@ -81,7 +81,7 @@ if(!config) {
 
 
 
-let c = compiler({ config: config("dev")});
+let c = compiler({ config: config("dev"), env: env});
 c.startDevServer()
 
 app.get("/", function(req, res) {
