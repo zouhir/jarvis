@@ -3,7 +3,6 @@
  */
 const WebpackDevServer = require("webpack-dev-server");
 const webpack = require("webpack");
-const ProgressPlugin = require("webpack/lib/ProgressPlugin");
 /**
  * Stats utility and other helpers
  */
@@ -24,7 +23,7 @@ const compiler = ({ config, env, port }) => {
    * progress reporter plugin
    */
   compilerInstance.apply(
-    new ProgressPlugin((percentage, message) => {
+    new webpack.ProgressPlugin((percentage, message) => {
       
     })
   );
