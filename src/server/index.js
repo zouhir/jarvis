@@ -85,9 +85,5 @@ if(!config) {
 let c = compiler({ config: config("dev")});
 c.startDevServer()
 
-app.get("/", function(req, res) {
-  res.send('Client is running on port: 3000');
-});
-server.listen(3001, function() {
-  console.log("Starting JARVIS on: http://localhost:3001");
-});
+app.get("/", (_, res) => res.send('Client is running on port: 3000'));
+server.listen(3001, () => console.log("Starting JARVIS on: http://localhost:3001"));

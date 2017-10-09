@@ -58,13 +58,8 @@ const compiler = ({ config, env, port }) => {
     });
   };
 
-  const getDevServerStats = () => {
-    return devServerStats;
-  };
-
-  const getProdBundleStats = () => {
-    return prodBundleStats;
-  };
+  const getDevServerStats = () => devServerStats;
+  const getProdBundleStats = () => prodBundleStats;
 
   return {
     startDevServer,
