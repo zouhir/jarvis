@@ -22,7 +22,7 @@ const compiler = require('./webpack/compiler');
 /**
  * Utility functions
  */
-const { parser } = require("./lib/argv-parser");
+const parser = require("./lib/argv-parser");
 
 /**
  * System custom events
@@ -60,6 +60,7 @@ const DEFAULT_WEBPACK_CONFIGS = "webpack.config"
 const args = process.argv.slice(2);
 let parsed = parser(args);
 env = DEFAULT_ENV;
+console.log('parsed', parsed);
 if (parsed.production) {
   env = "production";
 }
@@ -84,9 +85,5 @@ if(!config) {
 let c = compiler({ config: config("dev")});
 c.startDevServer()
 
-app.get("/", function(req, res) {
-  res.send('Client is running on port: 3000');
-});
-server.listen(3001, function() {
-  console.log("Starting JARVIS on: http://localhost:3001");
-});
+app.get("/", (_, res) => res.send('Client is running on port: 3000'));
+server.listen(3001, () => console.log("Starting JARVIS on: http://localhost:3001"));
