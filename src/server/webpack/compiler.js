@@ -24,7 +24,7 @@ const compiler = ({ config, env, port }) => {
    */
   compilerInstance.apply(
     new webpack.ProgressPlugin((percentage, message) => {
-      
+      compilerEvents.emitProgress(percentage, message);
     })
   );
 

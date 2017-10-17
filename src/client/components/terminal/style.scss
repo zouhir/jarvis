@@ -1,6 +1,13 @@
 @import '../../styles/variables';
 
 .terminal {
+  header {
+    width: 100%;
+    background: $darkest;
+    width: 100%;
+    border-bottom: 1px solid $dark;
+    height: 60px;
+  }
   background: $dark;
   height: 445px;
   max-height: 445px;
