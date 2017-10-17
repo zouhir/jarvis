@@ -28,7 +28,7 @@ function _formattedError(errors = []) {
 }
 
 function _formattedSuccessfulRun(stats) {
-  if( stats.errors.length > 0 || stats.warnings.length > 9) {
+  if( stats.errors.length > 0 || stats.warnings.length > 0) {
     return null
   } 
   let html = [`
