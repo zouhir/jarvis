@@ -33,7 +33,9 @@ const compiler = ({ config, env, port }) => {
    */
 
   compilerInstance.plugin("done", stats => {
-    let report = reporter.statsReporter(stats.toJson());
+    let jsonStats = stats.toJson();
+    jsonStats.isDev = (env === "development");
+    let report = reporter.statsReporter(jsonStats);
     if (env === "development") {
       devServerStats = report;
       compilerEvents.emitStats(report)

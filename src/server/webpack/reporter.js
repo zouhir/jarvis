@@ -27,6 +27,24 @@ function _formattedError(errors = []) {
   });
 }
 
+function _formattedSuccessfulRun(stats) {
+  if( stats.errors.length > 0 || stats.warnings.length > 0) {
+    return null
+  } 
+  let html = [`
+    <div style="color:#B0F68E">
+    Hash: ${stats.hash} <br />
+    Webpack version: ${stats.version} <br /><br />
+    </div>
+  `];
+  if(stats.isDev) {
+    html.push(`<div style="color: #F3F661">Note: Running dev-server does not necessarily 
+      represent accurate final assets size and performance metrics.<br /><br /></div>`);
+  }
+  html.push(`<div style="color:#B0F68E">Project has been successfully compiled <br /></div>`)
+  return html;
+}
+
 function _transformModules(modules = []) {
   const MODULE_TYPES = { "harmony import": "esm", "cjs require": "cjs" };
   let esmCount = 0;
@@ -77,6 +95,7 @@ function statsReporter(statsJson) {
   report.assets = statsJson.assets || [];
   report.errors = _formattedError(statsJson.errors);
   report.warnings = _formattedError(statsJson.warnings);
+  report.success = _formattedSuccessfulRun(statsJson)
   report.time = statsJson.time || 0;
   report.modules = _transformModules(statsJson.modules);
   report.assetsSize = statsJson.assets.reduce((sum, asset) => {
