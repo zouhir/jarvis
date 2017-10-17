@@ -29,6 +29,7 @@ export default class Board extends Component {
         assets: report.assets || [],
         errors: report.errors,
         warnings: report.warnings,
+        success: report.success,
         time: report.time / 1e3,
         modules: report.modules,
         performance: report.performance || {},
@@ -77,7 +78,7 @@ export default class Board extends Component {
             }
           </div>
           <div className="col-xs-12 col-md-4 col-lg-6">
-            <Terminal printout={state.errors}/>
+            <Terminal errors={state.errors} success={state.success} warnings={state.warnings} />
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
             <Bundlelist assets={state.assets} />

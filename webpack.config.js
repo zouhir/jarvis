@@ -114,6 +114,22 @@ module.exports = env => {
     )),
 
     devtool: env === 'production' ? 'source-map' : 'eval',
+    devServer: {
+      port: 8080,
+      host: 'localhost',
+      publicPath: '/',
+      contentBase: './src/client',
+      historyApiFallback: true,
+      open: true,
+      openPage: '',
+      proxy: {
+        // OPTIONAL: proxy configuration:
+        // '/optional-prefix/**': { // path pattern to rewrite
+        //   target: 'http://target-host.com',
+        //   pathRewrite: path => path.replace(/^\/[^\/]+\//, '')   // strip first path segment
+        // }
+      }
+    }
     
   }
 };
