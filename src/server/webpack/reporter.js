@@ -37,9 +37,8 @@ function _formattedSuccessfulRun(stats) {
     Webpack version: ${stats.version} <br /><br />
     </div>
   `];
-  console.log('\n\n' + stats.isDev + '\n\n');
   if(stats.isDev) {
-    html.push(`<div style="color: #F3F661">Note: Running dev-server doe not necessarily 
+    html.push(`<div style="color: #F3F661">Note: Running dev-server does not necessarily 
       represent accurate final assets size and performance metrics.<br /><br /></div>`);
   }
   html.push(`<div style="color:#B0F68E">Project has been successfully compiled <br /></div>`)
