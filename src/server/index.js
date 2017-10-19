@@ -8,7 +8,7 @@
 /**
  * External Dependencies
  */
-const cwd = require('cwd')
+const cwd = require("cwd");
 const express = require("express");
 const http = require("http");
 const path = require("path");
@@ -17,7 +17,7 @@ const socket = require("socket.io");
 /**
  * Compiler Dependencies
  */
-const compiler = require('./webpack/compiler');
+const compiler = require("./webpack/compiler");
 
 /**
  * Utility functions
@@ -27,7 +27,7 @@ const parser = require("./lib/argv-parser");
 /**
  * System custom events
  */
-const clientEvents = require('./events/client');
+const clientEvents = require("./events/client");
 
 /**
  * Setup express with live web sockets
@@ -47,7 +47,7 @@ clientEvents(io);
 let env, port, configFile, config;
 const DEFAULT_ENV = "development";
 const DEFAULT_PORT = 1337;
-const DEFAULT_WEBPACK_CONFIGS = "webpack.config"
+const DEFAULT_WEBPACK_CONFIGS = "webpack.config";
 
 /**
  * NPM script user arguments
@@ -60,30 +60,41 @@ const DEFAULT_WEBPACK_CONFIGS = "webpack.config"
 const args = process.argv.slice(2);
 let parsed = parser(args);
 env = DEFAULT_ENV;
-console.log('parsed', parsed);
 if (parsed.production) {
   env = "production";
 }
 port = DEFAULT_PORT;
-if(parsed.port) {
-  port = parsed.port
+if (parsed.port) {
+  port = parsed.port;
 }
-configFile = DEFAULT_WEBPACK_CONFIGS;
-if(parsed.config) {
-  configFile = parsed.config;
+configFilePath = DEFAULT_WEBPACK_CONFIGS;
+if (parsed.config) {
+  configFilePath = parsed.config;
 }
 
 // Load the configs from the file
-config = require(path.join(cwd(), configFile))
+config = require(path.join(cwd(), configFilePath));
+/**
+ * 
+ */
+config = config("dev");
 
-if(!config) {
-  throw new Error('Config file error');  
+config.performance = {
+  hints: "warning"
+};
+
+if (!config) {
+  throw new Error("Config file error");
 }
 
+let c = compiler({ config: config, env: env });
+c.startDevServer();
 
-
-let c = compiler({ config: config("dev"), env: env});
-c.startDevServer()
-
-app.get("/", (_, res) => res.send('Client is running on port: 3000'));
-server.listen(3001, () => console.log("Starting JARVIS on: http://localhost:3001"));
+app.get("/", (_, res) => res.send("Client is running on port: 3000"));
+app.post("/", (req, res) => {
+  console.log(req.body);
+  res.send("POST request to the homepage");
+});
+server.listen(3001, () =>
+  console.log("Starting JARVIS on: http://localhost:3001")
+);

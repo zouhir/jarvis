@@ -1,5 +1,4 @@
-@import '../../styles/variables';
-
+@import "../../styles/variables";
 
 .table {
   width: 100%;
@@ -24,24 +23,24 @@
       text-overflow: ellipsis;
       display: inline-block;
       position: relative;
-      .cjs {
+      .details {
         position: absolute;
         right: 0;
-        color: #f55753;
         top: 50%;
         transform: translateY(-50%);
-      }
-      .esm{
-        position: absolute;
-        right: 0;
-        color: #10cfbd;
-        top: 50%;
-        transform: translateY(-50%);
+        &.cjs {
+          color: #f55753;
+        }
+        &.esm {
+          color: #10cfbd;
+        }
+        &.mixed {
+          color: #fed23e;
+        }
       }
       &:last-child {
         border-left: 1px dashed $dark;
-
-      } 
+      }
     }
     &.two-col {
       .col {
@@ -68,13 +67,26 @@
     padding: 15px 20px;
     position: relative;
     height: 75px;
-    &:hover {
+    cursor: pointer;
+    &.selected {
       &:before {
-        content: '';
+        content: "";
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid #F78183;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+        display: block;
+        width: 100%;
+        height: 3px;
+      }
+    }
+    &:hover {
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        border-bottom: 3px solid rgba(255, 255, 255, 0.8);
         display: block;
         width: 100%;
         height: 3px;
@@ -85,16 +97,52 @@
     }
     .count {
       opacity: 0.8;
-    } 
+    }
   }
   li.cjs {
     .percentage {
-     color: #f55753; 
+      color: #f55753;
+    }
+    &.selected {
+      &:before {
+        border-bottom: 3px solid #f55753;
+      }
+    }
+    &:hover {
+      &:before {
+        border-bottom: 3px solid #f55753;
+      }
     }
   }
   li.esm {
     .percentage {
       color: #10cfbd;
+    }
+    &.selected {
+      &:before {
+        border-bottom: 3px solid #10cfbd;
+      }
+    }
+    &:hover {
+      &:before {
+        border-bottom: 3px solid #10cfbd;
+      }
+    }
+  }
+
+  li.mixed {
+    .percentage {
+      color: yellow;
+    }
+    &.selected {
+      &:before {
+        border-bottom: 3px solid #fed23e;
+      }
+    }
+    &:hover {
+      &:before {
+        border-bottom: 3px solid #fed23e;
+      }
     }
   }
 }

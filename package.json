@@ -5,22 +5,26 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run server & npm run client",
-    "server": "cross-env nodemon ./src/server --dev",
+    "server": "cross-env node ./src/server --dev",
     "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
-    "test": "jest"
+    "test": "jest",
+    "webpack-defaults": "webpack-defaults"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "ansi-to-html": "^0.6.3",
+    "bundle-buddy-webpack-plugin": "^0.3.0",
     "cwd": "^0.10.0",
     "emotion": "^6.0.3",
     "express": "^4.15.4",
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
+    "preact-markup": "^1.6.0",
     "socket.io": "^2.0.3",
-    "preact-markup": "^1.6.0"
+    "unfetch": "^3.0.0",
+    "webpack-bundle-analyzer": "^2.9.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

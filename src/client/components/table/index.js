@@ -1,47 +1,109 @@
-import { h , Component } from "preact";
-import './style.scss';
+import { h, Component } from "preact";
+import "./style.scss";
 
-import { readableBytes } from '../../helpers/utils'
+import { readableBytes } from "../../helpers/utils";
 
 export default class Table extends Component {
-  render(props) {
-    let modulesTable = props.data.table || [];
-    let modCount = modulesTable.length;
-    let cjsCount = props.data.cjsCount || 0;
-    let esmCount = props.data.esmCount || 0;
-    return(
+  state = {
+    selected: "all"
+  };
+  selectModuleType = type => {
+    this.setState({ selected: type });
+  };
+  render(props, state) {
+    let table = props.data || {};
+    let cjsCount = table.cjs.length || 0;
+    let esmCount = table.esm.length || 0;
+    let mixedCount = table.mixed.length || 0;
+    let totalCount = cjsCount + esmCount + mixedCount || 0;
+    let { selected } = state;
+    /**
+     * I am really really sorry for this mess.
+     */
+    return (
       <div className="table">
         <ul className="header">
-          <li>
-            <div className="type">All</div>
-            <div className="count">{modCount}</div>
+          <li
+            className={state.selected === "all" ? "selected" : ""}
+            name="all"
+            onClick={() => this.selectModuleType("all")}
+          >
+            <div className="type">All Modules</div>
+            <div className="count">{totalCount}</div>
             <div className="percentage">100%</div>
           </li>
-          <li className="cjs">
-            <div className="type">CJS</div>
-            <div className="count">{cjsCount}</div>
-            <div className="percentage">{ Math.round((cjsCount / modCount) * 100) + '%' }</div>
-          </li>
-          <li className="esm">
-            <div className="type">ESM</div>
+          <li
+            className={state.selected === "esm" ? "esm selected" : "esm"}
+            name="esm"
+            onClick={() => this.selectModuleType("esm")}
+          >
+            <div className="type">Treeshakable</div>
             <div className="count">{esmCount}</div>
-            <div className="percentage">{ Math.round((esmCount / modCount) * 100) + '%' } </div>
+            <div className="percentage">
+              {Math.round(esmCount / totalCount * 100) + "%"}{" "}
+            </div>
+          </li>
+          <li
+            className={state.selected === "cjs" ? "cjs selected" : "cjs"}
+            name="cjs"
+            onClick={() => this.selectModuleType("cjs")}
+          >
+            <div className="type">Non-Treeshakable</div>
+            <div className="count">{cjsCount}</div>
+            <div className="percentage">
+              {Math.round(cjsCount / totalCount * 100) + "%"}
+            </div>
+          </li>
+          <li
+            className={state.selected === "mixed" ? "mixed selected" : "mixed"}
+            name="mixed"
+            onClick={() => this.selectModuleType("mixed")}
+          >
+            <div className="type">Mixed Modules</div>
+            <div className="count">{mixedCount}</div>
+            <div className="percentage">
+              {Math.round(mixedCount / totalCount * 100) + "%"}
+            </div>
           </li>
         </ul>
         <ul class="table-body two-col">
-          {
-            modulesTable.map(module => (
-              <li>
-                <div className="col">
-                  {module.name}
-                  <div className={module.type === 'esm' ? 'esm' : 'cjs'}>{module.type}</div>
-                </div>
-                <div className="col">{readableBytes(module.size)}</div>
-              </li>
-            ))
-          }
+          {selected === "all" || selected === "esm"
+            ? table.esm.map(module => (
+                <li>
+                  <div className="col">
+                    {module.name}
+                    <div className="esm details">details</div>
+                  </div>
+                  <div className="col">{readableBytes(module.size)}</div>
+                </li>
+              ))
+            : null}
+
+          {selected === "all" || selected === "mixed"
+            ? table.mixed.map(module => (
+                <li>
+                  <div className="col">
+                    {module.name}
+                    <div className="mixed details">details</div>
+                  </div>
+                  <div className="col">{readableBytes(module.size)}</div>
+                </li>
+              ))
+            : null}
+
+          {selected === "all" || selected === "cjs"
+            ? table.cjs.map(module => (
+                <li>
+                  <div className="col">
+                    {module.name}
+                    <div className="cjs details">details</div>
+                  </div>
+                  <div className="col">{readableBytes(module.size)}</div>
+                </li>
+              ))
+            : null}
         </ul>
       </div>
-    )
+    );
   }
 }

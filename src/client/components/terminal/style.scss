@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .terminal {
   background: $dark;
@@ -8,6 +8,6 @@
   padding: 15px;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   font-size: 14px;
 }

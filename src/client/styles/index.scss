@@ -4,21 +4,20 @@
 @import "backgrounds";
 
 html {
-  color: #6C6D74;
+  color: #6c6d74;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 body {
   margin: 0;
   background: $dark;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
   color: #fff;
 }
-
 
 a {
   -webkit-text-decoration-skip: objects;
@@ -27,14 +26,13 @@ a {
 
 a:active,
 a:hover {
-  outline: 0
+  outline: 0;
 }
 
 * {
   box-sizing: border-box;
 }
 
- 
 nav {
   width: 100%;
   height: 60px;
@@ -44,7 +42,13 @@ nav {
   margin-bottom: 10px;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   padding: 0;
   margin: 0;
 }
@@ -59,18 +63,16 @@ ul {
   list-style-type: none;
 }
 
-
 #app {
   width: 100%;
   height: 100vh;
   position: relative;
-  padding: 60px;
-  background-image: linear-gradient(180deg, #F476B7 0%, #8041EE 100%);
+  background-image: linear-gradient(180deg, #f476b7 0%, #8041ee 100%);
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     width: 100%;
-    height:100%;
+    height: 100%;
     top: 0;
     left: 0;
     background: #000;
@@ -81,13 +83,13 @@ ul {
 
 .board {
   background: $darker;
-  max-height: 80vh;
+  // max-height: 80vh;
   overflow-y: auto;
   border-radius: 4px;
   padding-top: 5px;
   padding-bottom: 5px;
-  box-shadow: 0 6px 20px 0 rgba(37,45,71,0.34);
-  color: #E1E1E5;
+  box-shadow: 0 6px 20px 0 rgba(37, 45, 71, 0.34);
+  color: #e1e1e5;
   z-index: 99;
   position: relative;
   .widgets {
