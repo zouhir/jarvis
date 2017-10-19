@@ -33,15 +33,15 @@ const compiler = ({ config, env, port }) => {
    */
 
   compilerInstance.plugin("done", stats => {
-    let jsonStats = stats.toJson();
-    jsonStats.isDev = (env === "development");
+    let jsonStats = stats.toJson({ chunkModules: true });
+    jsonStats.isDev = env === "development";
     let report = reporter.statsReporter(jsonStats);
     if (env === "development") {
       devServerStats = report;
-      compilerEvents.emitStats(report)
+      compilerEvents.emitStats(report);
     } else {
       prodBundleStats = report;
-      compilerEvents.emitStats(report)
+      compilerEvents.emitStats(report);
     }
     /**
      * emit those 2

@@ -1,16 +1,16 @@
-import { h, Component } from 'preact';
+import { h, Component } from "preact";
 
-import MiniCard from './mini-card';
-import Bundlelist from './bundles-list';
-import Terminal from './terminal';
-import Table from './table';
-import PerfBudget from './perf-budget';
+import MiniCard from "./mini-card";
+import Bundlelist from "./bundles-list";
+import Terminal from "./terminal";
+import Table from "./table";
+import PerfBudget from "./perf-budget";
 
-import { readableBytes } from '../helpers/utils';
-import Nav from './nav';
+import { readableBytes } from "../helpers/utils";
+import Nav from "./nav";
 
-import io from 'socket.io-client';
-const socket = io('localhost:3001')
+import io from "socket.io-client";
+const socket = io("localhost:3001");
 
 export default class Board extends Component {
   state = {
@@ -20,11 +20,27 @@ export default class Board extends Component {
     assets: [],
     errors: [],
     warnings: [],
-    modules: [],
+    modules: {
+      cjs: [],
+      esm: [],
+      mixed: []
+    },
+    logs: [],
     performance: {}
-  }
+  };
   componentDidMount() {
-    socket.on('stats', (report) => {
+    socket.on("stats", report => {
+      let logs = [];
+      if (report.errors.length > 0) {
+        logs = report.errors;
+      }
+      if (report.warnings.length > 0) {
+        logs = report.warnings;
+      }
+      if (report.success.length > 0) {
+        logs = report.success;
+      }
+      console.log(report);
       this.setState({
         assets: report.assets || [],
         errors: report.errors,
@@ -33,14 +49,20 @@ export default class Board extends Component {
         time: report.time / 1e3,
         modules: report.modules,
         performance: report.performance || {},
-        assetsSize: report.assetsSize || 'NaN'
-      })
+        assetsSize: report.assetsSize || "NaN",
+        logs: logs
+      });
     });
-
-    socket.on('progress', (data) => {
+    socket.on("progress", data => {
       this.setState({
         progress: data
-      })
+      });
+      if (data.message.toLowerCase() !== "idle") {
+        this.setState({
+          progress: data,
+          logs: [`<p>${data.message}</p>`, `<p>${data.percentage * 100}%</p>`]
+        });
+      }
     });
   }
   render(props, state) {
@@ -49,36 +71,37 @@ export default class Board extends Component {
         <Nav />
         <div className="row widgets">
           <div className="col-xs-12 col-md-4 col-lg-3">
-            {
-              state.progress ?
-                <MiniCard
-                  title="Compiler Status"
-                  note={`done in ${state.time} sec`}
-                  progress={state.progress.percentage * 100}
-                  status={state.progress.message || 'Idle'}
-                  color="fire"
-                /> : null
-            }
+            {state.progress ? (
+              <MiniCard
+                title="Compiler Status"
+                note={`done in ${state.time} sec`}
+                progress={state.progress.percentage * 100}
+                status={state.progress.message || "Idle"}
+                color="fire"
+              />
+            ) : null}
 
             <MiniCard
               title="Error"
               status={state.errors.length}
-              note={state.warnings.length === 0 ? 'and no warnings' : `and ${state.warnings.length} warnings`}
+              note={
+                state.warnings.length === 0
+                  ? "and no warnings"
+                  : `and ${state.warnings.length} warnings`
+              }
               color="berry"
             />
-            {
-              state.assetsSize ?
-                <MiniCard
-                  title="Total Bundles Size"
-                  status={readableBytes(state.assetsSize)}
-                  note=""
-                  color="evening"
-                />
-                : null
-            }
+            {state.assetsSize ? (
+              <MiniCard
+                title="Total Bundles Size"
+                status={readableBytes(state.assetsSize)}
+                note=""
+                color="evening"
+              />
+            ) : null}
           </div>
           <div className="col-xs-12 col-md-4 col-lg-6">
-            <Terminal errors={state.errors} success={state.success} warnings={state.warnings} />
+            <Terminal logs={state.logs} />
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
             <Bundlelist assets={state.assets} />
@@ -93,6 +116,6 @@ export default class Board extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
 }

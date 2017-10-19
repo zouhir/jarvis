@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .budget {
   background: $dark;
@@ -12,7 +12,7 @@
     left: -2px;
     bottom: 40%;
     right: -2px;
-    background-image: linear-gradient(#B72CF6, transparent);
+    background-image: linear-gradient(#b72cf6, transparent);
     z-index: -2;
   }
   &:after {
@@ -27,10 +27,10 @@
   }
   &.unset {
     &:before {
-      animation-name: blink;
-      animation-timing-function: linear;
-      animation-duration: 0.3s;
-      animation-iteration-count: infinite;
+      // animation-name: blink;
+      // animation-timing-function: linear;
+      // animation-duration: 0.3s;
+      // animation-iteration-count: infinite;
     }
     display: flex;
     align-items: center;
@@ -46,8 +46,8 @@
     margin-bottom: 10px;
   }
   h5 {
-    font-weight: 300 ;
-    color: #B72CF6;
+    font-weight: 300;
+    color: #b72cf6;
     font-size: 14px;
     flex: 1;
   }
@@ -55,7 +55,7 @@
     width: 140px;
     padding: 10px 0px;
     text-align: center;
-    background: linear-gradient(315deg, #DF74F9 0%, #B72CF6 100%);
+    background: linear-gradient(315deg, #df74f9 0%, #b72cf6 100%);
     color: $darker;
     text-transform: uppercase;
     margin: 15px 0px;
@@ -64,8 +64,8 @@
   }
 }
 
-@keyframes blink {
-  50% {
-    opacity: 0;
-  }
-}
+// @keyframes blink {
+//   50% {
+//     opacity: 0;
+//   }
+// }

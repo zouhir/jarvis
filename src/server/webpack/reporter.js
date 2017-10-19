@@ -28,66 +28,74 @@ function _formattedError(errors = []) {
 }
 
 function _formattedSuccessfulRun(stats) {
-  if( stats.errors.length > 0 || stats.warnings.length > 0) {
-    return null
-  } 
-  let html = [`
+  if (stats.errors.length > 0 || stats.warnings.length > 0) {
+    return [];
+  }
+  let html = [
+    `
     <div style="color:#B0F68E">
     Hash: ${stats.hash} <br />
     Webpack version: ${stats.version} <br /><br />
     </div>
-  `];
-  if(stats.isDev) {
+  `
+  ];
+  if (stats.isDev) {
     html.push(`<div style="color: #F3F661">Note: Running dev-server does not necessarily 
       represent accurate final assets size and performance metrics.<br /><br /></div>`);
   }
-  html.push(`<div style="color:#B0F68E">Project has been successfully compiled <br /></div>`)
+  html.push(
+    `<div style="color:#B0F68E">Project has been successfully compiled <br /></div>`
+  );
   return html;
 }
 
 function _transformModules(modules = []) {
-  const MODULE_TYPES = { "harmony import": "esm", "cjs require": "cjs" };
+  const MODULE_TYPES = {
+    "harmony import": "esm",
+    "module.hot.accept": "esm",
+    "harmony accept": "esm",
+    "cjs require": "cjs"
+  };
   let esmCount = 0;
   let cjsCount = 0;
-  let table = modules.map(module => {
+  let table = {};
+  table.cjs = [];
+  table.esm = [];
+  table.mixed = [];
+  modules.forEach(module => {
     let name = module.name;
     let size = module.size;
-    let esmFound = true;
-    let cjsFound = false;
-    let reasons = module.reasons.map(re => {
+    let _esmFound = false;
+    let _cjsFound = false;
+    let reasons = [];
+    module.reasons.forEach(re => {
       if (MODULE_TYPES[re.type] === "esm") {
-        esmCount++;
+        _esmFound++;
       } else if (MODULE_TYPES[re.type] === "cjs") {
-        esmFound = false;
-        cjsFound = true;
-      } else {
-        esmFound = false;
+        _cjsFound = true;
       }
-      return {
+      reasons.push({
         by: re.moduleName,
-        type: MODULE_TYPES[re.type] ? MODULE_TYPES[re.type] : "Other"
-      };
+        type: re.type
+      });
     });
-    let type = "Other";
-    if (esmFound) {
+    if (_esmFound && !_cjsFound) {
       type = "esm";
-      esmCount++;
-    } else if (cjsFound) {
+    } else if (_esmFound && _cjsFound) {
+      type = "mixed";
+    } else if (!_esmFound && _cjsFound) {
       type = "cjs";
-      cjsCount++;
     }
-    return {
-      name,
-      size,
-      reasons,
-      type
-    };
+    if (table[type]) {
+      table[type].push({
+        name,
+        size,
+        reasons
+      });
+    }
   });
-  return {
-    esmCount,
-    cjsCount,
-    table
-  };
+
+  return table;
 }
 
 function statsReporter(statsJson) {
@@ -95,7 +103,7 @@ function statsReporter(statsJson) {
   report.assets = statsJson.assets || [];
   report.errors = _formattedError(statsJson.errors);
   report.warnings = _formattedError(statsJson.warnings);
-  report.success = _formattedSuccessfulRun(statsJson)
+  report.success = _formattedSuccessfulRun(statsJson);
   report.time = statsJson.time || 0;
   report.modules = _transformModules(statsJson.modules);
   report.assetsSize = statsJson.assets.reduce((sum, asset) => {

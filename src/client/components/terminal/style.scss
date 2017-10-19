@@ -1,13 +1,6 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .terminal {
-  header {
-    width: 100%;
-    background: $darkest;
-    width: 100%;
-    border-bottom: 1px solid $dark;
-    height: 60px;
-  }
   background: $dark;
   height: 445px;
   max-height: 445px;
@@ -15,6 +8,6 @@
   padding: 15px;
   overflow-x: hidden;
   overflow-y: scroll;
-  font-family: 'Source Code Pro', monospace;
+  font-family: "Source Code Pro", monospace;
   font-size: 14px;
 }
