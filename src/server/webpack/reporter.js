@@ -98,7 +98,7 @@ function _transformModules(modules = []) {
   return table;
 }
 
-function statsReporter(statsJson) {
+function statsReporter(statsJson, env) {
   let report = {};
   report.assets = statsJson.assets || [];
   report.errors = _formattedError(statsJson.errors);
@@ -107,7 +107,11 @@ function statsReporter(statsJson) {
   report.time = statsJson.time || 0;
   report.modules = _transformModules(statsJson.modules);
   report.assetsSize = statsJson.assets.reduce((sum, asset) => {
-    return (sum = sum + asset.size);
+    let size = 0;
+    if (asset.name && !asset.name.endsWith(".map")) {
+      size = asset.size;
+    }
+    return (sum = sum + size);
   }, 0);
 
   return report;

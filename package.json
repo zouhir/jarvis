@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run server & npm run client",
-    "server": "cross-env node ./src/server --dev",
+    "server": "NODE_ENV=production cross-env node ./src/server --prod",
     "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest",
     "webpack-defaults": "webpack-defaults"
@@ -50,20 +50,21 @@
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-preact": "^1.1.6",
     "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.29.0",
     "jest": "^20.0.4",
     "jest-serializer-html-string": "^1.0.1",
     "mri": "^1.1.0",
+    "node-sass": "^4.5.3",
     "nodemon": "^1.12.1",
+    "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
+    "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
+    "svg-url-loader": "^2.1.1",
     "webpack": "^3.4.1",
     "webpack-dev-server": "^2.6.1",
-    "webpack-messages": "^1.0.0",
-    "postcss-loader": "^2.0.6",
-    "node-sass": "^4.5.3",
-    "sass-loader": "^6.0.6",
-    "svg-url-loader": "^2.1.1"
+    "webpack-messages": "^1.0.0"
   },
   "jest": {
     "verbose": true,
