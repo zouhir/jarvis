@@ -31,23 +31,23 @@ export default class Board extends Component {
   componentDidMount() {
     socket.on("stats", report => {
       let logs = [];
-      if (report.errors.length > 0) {
+      if (report.errors && report.errors.length > 0) {
         logs = report.errors;
       }
-      if (report.warnings.length > 0) {
+      if (report.warnings && report.warnings.length > 0) {
         logs = report.warnings;
       }
-      if (report.success.length > 0) {
+      if (report.success && report.success.length > 0) {
         logs = report.success;
       }
       console.log(report);
       this.setState({
         assets: report.assets || [],
-        errors: report.errors,
-        warnings: report.warnings,
-        success: report.success,
-        time: report.time / 1e3,
-        modules: report.modules,
+        errors: report.errors || [],
+        warnings: report.warnings || [],
+        success: report.success || [],
+        time: report.time / 1e3 || 0,
+        modules: report.modules || [],
         performance: report.performance || {},
         assetsSize: report.assetsSize || "NaN",
         logs: logs

@@ -77,24 +77,21 @@ config = require(path.join(cwd(), configFilePath));
 /**
  * 
  */
-config = config("dev");
-
-config.performance = {
-  hints: "warning"
-};
+config = config("production");
 
 if (!config) {
   throw new Error("Config file error");
 }
 
 let c = compiler({ config: config, env: env });
-c.startDevServer();
+
+if (env === "production") {
+  c.makeProdBundle();
+} else {
+  c.startDevServer();
+}
 
 app.get("/", (_, res) => res.send("Client is running on port: 3000"));
-app.post("/", (req, res) => {
-  console.log(req.body);
-  res.send("POST request to the homepage");
-});
 server.listen(3001, () =>
   console.log("Starting JARVIS on: http://localhost:3001")
 );

@@ -38,10 +38,10 @@ const compiler = ({ config, env, port }) => {
     let report = reporter.statsReporter(jsonStats);
     if (env === "development") {
       devServerStats = report;
-      compilerEvents.emitStats(report);
+      compilerEvents.emitStats(report, env);
     } else {
       prodBundleStats = report;
-      compilerEvents.emitStats(report);
+      compilerEvents.emitStats(report, env);
     }
     /**
      * emit those 2
@@ -60,13 +60,21 @@ const compiler = ({ config, env, port }) => {
     });
   };
 
+  const makeProdBundle = () => {
+    if (!compilerInstance) {
+      throw new Error("invalid compiler could be invalid configs");
+    }
+    compilerInstance.run((err, stats) => {});
+  };
+
   const getDevServerStats = () => devServerStats;
   const getProdBundleStats = () => prodBundleStats;
 
   return {
     startDevServer,
     getDevServerStats,
-    getProdBundleStats
+    getProdBundleStats,
+    makeProdBundle
   };
 };
 

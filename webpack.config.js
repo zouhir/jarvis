@@ -51,6 +51,10 @@ module.exports = env => {
           use: "json-loader"
         },
         {
+          test: /\.jpg$/,
+          use: "file-loader"
+        },
+        {
           test: /\.(xml|html|txt|md)$/,
           use: "raw-loader"
         }

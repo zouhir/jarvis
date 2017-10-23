@@ -1,0 +1,758 @@
+[
+  {
+    "country": "Singapore",
+    "download_speed": 55.13
+  },
+  {
+    "country": "Sweden",
+    "download_speed": 40.16
+  },
+  {
+    "country": "Taiwan",
+    "download_speed": 34.4
+  },
+  {
+    "country": "Denmark",
+    "download_speed": 33.54
+  },
+  {
+    "country": "Netherlands",
+    "download_speed": 33.52
+  },
+  {
+    "country": "Latvia",
+    "download_speed": 30.36
+  },
+  {
+    "country": "Norway",
+    "download_speed": 29.13
+  },
+  {
+    "country": "Belgium",
+    "download_speed": 27.37
+  },
+  {
+    "country": "Hong Kong",
+    "download_speed": 27.16
+  },
+  {
+    "country": "Switzerland",
+    "download_speed": 26.93
+  },
+  {
+    "country": "Lithuania",
+    "download_speed": 25.12
+  },
+  {
+    "country": "Japan",
+    "download_speed": 24.47
+  },
+  {
+    "country": "Estonia",
+    "download_speed": 24.11
+  },
+  {
+    "country": "Jersey",
+    "download_speed": 23.3
+  },
+  {
+    "country": "Hungary",
+    "download_speed": 23.16
+  },
+  {
+    "country": "Korea, Republic of",
+    "download_speed": 22.9
+  },
+  {
+    "country": "Portugal",
+    "download_speed": 21.72
+  },
+  {
+    "country": "Romania",
+    "download_speed": 21.33
+  },
+  {
+    "country": "Finland",
+    "download_speed": 20.9
+  },
+  {
+    "country": "Macau",
+    "download_speed": 20.52
+  },
+  {
+    "country": "United States",
+    "download_speed": 20
+  },
+  {
+    "country": "Spain",
+    "download_speed": 19.6
+  },
+  {
+    "country": "Slovakia",
+    "download_speed": 18.85
+  },
+  {
+    "country": "Germany",
+    "download_speed": 18.8
+  },
+  {
+    "country": "Slovenia",
+    "download_speed": 18.37
+  },
+  {
+    "country": "Canada",
+    "download_speed": 18.03
+  },
+  {
+    "country": "Bulgaria",
+    "download_speed": 17.54
+  },
+  {
+    "country": "Czech Republic",
+    "download_speed": 17.31
+  },
+  {
+    "country": "Thailand",
+    "download_speed": 16.85
+  },
+  {
+    "country": "New Zealand",
+    "download_speed": 16.6
+  },
+  {
+    "country": "United Kingdom",
+    "download_speed": 16.51
+  },
+  {
+    "country": "Monaco",
+    "download_speed": 16.13
+  },
+  {
+    "country": "Luxembourg",
+    "download_speed": 15.52
+  },
+  {
+    "country": "Austria",
+    "download_speed": 15.26
+  },
+  {
+    "country": "Poland",
+    "download_speed": 14.88
+  },
+  {
+    "country": "Ireland",
+    "download_speed": 13.92
+  },
+  {
+    "country": "France",
+    "download_speed": 13.43
+  },
+  {
+    "country": "Gibraltar",
+    "download_speed": 13.18
+  },
+  {
+    "country": "Cayman Islands",
+    "download_speed": 13.15
+  },
+  {
+    "country": "Croatia",
+    "download_speed": 12.57
+  },
+  {
+    "country": "Serbia",
+    "download_speed": 12.25
+  },
+  {
+    "country": "Andorra",
+    "download_speed": 12.07
+  },
+  {
+    "country": "Russian Federation",
+    "download_speed": 11.59
+  },
+  {
+    "country": "Liechtenstein",
+    "download_speed": 11.4
+  },
+  {
+    "country": "Moldova, Republic of",
+    "download_speed": 10.75
+  },
+  {
+    "country": "Italy",
+    "download_speed": 10.71
+  },
+  {
+    "country": "Iceland",
+    "download_speed": 10.55
+  },
+  {
+    "country": "Malta",
+    "download_speed": 10.17
+  },
+  {
+    "country": "Bahamas",
+    "download_speed": 10.06
+  },
+  {
+    "country": "Isle of Man",
+    "download_speed": 9.01
+  },
+  {
+    "country": "Kenya",
+    "download_speed": 8.83
+  },
+  {
+    "country": "Guernsey",
+    "download_speed": 8.76
+  },
+  {
+    "country": "Cyprus",
+    "download_speed": 8.24
+  },
+  {
+    "country": "Ukraine",
+    "download_speed": 8.18
+  },
+  {
+    "country": "Australia",
+    "download_speed": 7.7
+  },
+  {
+    "country": "Mexico",
+    "download_speed": 7.59
+  },
+  {
+    "country": "Greece",
+    "download_speed": 7.56
+  },
+  {
+    "country": "Faroe Islands",
+    "download_speed": 7.48
+  },
+  {
+    "country": "Macedonia",
+    "download_speed": 7.34
+  },
+  {
+    "country": "Israel",
+    "download_speed": 7.2
+  },
+  {
+    "country": "Bosnia and Herzegovina",
+    "download_speed": 7
+  },
+  {
+    "country": "Turks and Caicos Islands",
+    "download_speed": 6.74
+  },
+  {
+    "country": "Malaysia",
+    "download_speed": 6.69
+  },
+  {
+    "country": "Belarus",
+    "download_speed": 6.68
+  },
+  {
+    "country": "Barbados",
+    "download_speed": 6.62
+  },
+  {
+    "country": "Jamaica",
+    "download_speed": 6.6
+  },
+  {
+    "country": "Puerto Rico",
+    "download_speed": 6.44
+  },
+  {
+    "country": "Dominican Republic",
+    "download_speed": 6.22
+  },
+  {
+    "country": "Bermuda",
+    "download_speed": 5.94
+  },
+  {
+    "country": "Georgia",
+    "download_speed": 5.86
+  },
+  {
+    "country": "Montenegro",
+    "download_speed": 5.85
+  },
+  {
+    "country": "Seychelles",
+    "download_speed": 5.84
+  },
+  {
+    "country": "Virgin Islands, British",
+    "download_speed": 5.49
+  },
+  {
+    "country": "Vietnam",
+    "download_speed": 5.46
+  },
+  {
+    "country": "Indonesia",
+    "download_speed": 5.19
+  },
+  {
+    "country": "Belize",
+    "download_speed": 5.14
+  },
+  {
+    "country": "Virgin Islands, U.S.",
+    "download_speed": 5.14
+  },
+  {
+    "country": "Albania",
+    "download_speed": 4.67
+  },
+  {
+    "country": "Morocco",
+    "download_speed": 4.38
+  },
+  {
+    "country": "South Africa",
+    "download_speed": 4.36
+  },
+  {
+    "country": "United Arab Emirates",
+    "download_speed": 4.17
+  },
+  {
+    "country": "Kazakhstan",
+    "download_speed": 4
+  },
+  {
+    "country": "Turkey",
+    "download_speed": 3.96
+  },
+  {
+    "country": "Qatar",
+    "download_speed": 3.89
+  },
+  {
+    "country": "Sri Lanka",
+    "download_speed": 3.83
+  },
+  {
+    "country": "Brunei Darussalam",
+    "download_speed": 3.83
+  },
+  {
+    "country": "Philippines",
+    "download_speed": 3.69
+  },
+  {
+    "country": "Tunisia",
+    "download_speed": 3.5
+  },
+  {
+    "country": "Madagascar",
+    "download_speed": 3.49
+  },
+  {
+    "country": "Honduras",
+    "download_speed": 3.47
+  },
+  {
+    "country": "Guatemala",
+    "download_speed": 3.31
+  },
+  {
+    "country": "Armenia",
+    "download_speed": 3.29
+  },
+  {
+    "country": "Trinidad and Tobago",
+    "download_speed": 3.28
+  },
+  {
+    "country": "Greenland",
+    "download_speed": 3.15
+  },
+  {
+    "country": "Nigeria",
+    "download_speed": 3.15
+  },
+  {
+    "country": "Bahrain",
+    "download_speed": 3.13
+  },
+  {
+    "country": "Aruba",
+    "download_speed": 3.12
+  },
+  {
+    "country": "Cambodia",
+    "download_speed": 3.1
+  },
+  {
+    "country": "Saudi Arabia",
+    "download_speed": 3.06
+  },
+  {
+    "country": "Jordan",
+    "download_speed": 2.98
+  },
+  {
+    "country": "Dominica",
+    "download_speed": 2.68
+  },
+  {
+    "country": "Azerbaijan",
+    "download_speed": 2.67
+  },
+  {
+    "country": "Haiti",
+    "download_speed": 2.62
+  },
+  {
+    "country": "Oman",
+    "download_speed": 2.61
+  },
+  {
+    "country": "Zimbabwe",
+    "download_speed": 2.49
+  },
+  {
+    "country": "Zambia",
+    "download_speed": 2.45
+  },
+  {
+    "country": "El Salvador",
+    "download_speed": 2.34
+  },
+  {
+    "country": "Panama",
+    "download_speed": 2.3
+  },
+  {
+    "country": "Martinique",
+    "download_speed": 2.3
+  },
+  {
+    "country": "Ghana",
+    "download_speed": 2.3
+  },
+  {
+    "country": "New Caledonia",
+    "download_speed": 2.23
+  },
+  {
+    "country": "Guam",
+    "download_speed": 2.22
+  },
+  {
+    "country": "Kuwait",
+    "download_speed": 2.21
+  },
+  {
+    "country": "Colombia",
+    "download_speed": 2.12
+  },
+  {
+    "country": "Liberia",
+    "download_speed": 2.12
+  },
+  {
+    "country": "Uganda",
+    "download_speed": 2.12
+  },
+  {
+    "country": "Rwanda",
+    "download_speed": 2.11
+  },
+  {
+    "country": "Myanmar",
+    "download_speed": 2.09
+  },
+  {
+    "country": "India",
+    "download_speed": 2.06
+  },
+  {
+    "country": "Cape Verde",
+    "download_speed": 2
+  },
+  {
+    "country": "Curaçao",
+    "download_speed": 1.99
+  },
+  {
+    "country": "Saint Lucia",
+    "download_speed": 1.98
+  },
+  {
+    "country": "Palestinian Territory",
+    "download_speed": 1.96
+  },
+  {
+    "country": "Laos",
+    "download_speed": 1.94
+  },
+  {
+    "country": "Antigua and Barbuda",
+    "download_speed": 1.86
+  },
+  {
+    "country": "Namibia",
+    "download_speed": 1.81
+  },
+  {
+    "country": "Saint Kitts and Nevis",
+    "download_speed": 1.72
+  },
+  {
+    "country": "Chile",
+    "download_speed": 1.67
+  },
+  {
+    "country": "Guadeloupe",
+    "download_speed": 1.63
+  },
+  {
+    "country": "Maldives",
+    "download_speed": 1.62
+  },
+  {
+    "country": "Iraq",
+    "download_speed": 1.6
+  },
+  {
+    "country": "Mongolia",
+    "download_speed": 1.6
+  },
+  {
+    "country": "Iran, Islamic Republic of",
+    "download_speed": 1.56
+  },
+  {
+    "country": "China",
+    "download_speed": 1.55
+  },
+  {
+    "country": "Mauritania",
+    "download_speed": 1.54
+  },
+  {
+    "country": "Costa Rica",
+    "download_speed": 1.53
+  },
+  {
+    "country": "Mauritius",
+    "download_speed": 1.53
+  },
+  {
+    "country": "Brazil",
+    "download_speed": 1.49
+  },
+  {
+    "country": "Tanzania, United Republic of",
+    "download_speed": 1.49
+  },
+  {
+    "country": "Mozambique",
+    "download_speed": 1.45
+  },
+  {
+    "country": "Peru",
+    "download_speed": 1.41
+  },
+  {
+    "country": "Turkmenistan",
+    "download_speed": 1.4
+  },
+  {
+    "country": "Sint Maarten (Dutch part)",
+    "download_speed": 1.39
+  },
+  {
+    "country": "Bangladesh",
+    "download_speed": 1.34
+  },
+  {
+    "country": "French Guiana",
+    "download_speed": 1.34
+  },
+  {
+    "country": "French Polynesia",
+    "download_speed": 1.34
+  },
+  {
+    "country": "Ethiopia",
+    "download_speed": 1.34
+  },
+  {
+    "country": "Uruguay",
+    "download_speed": 1.31
+  },
+  {
+    "country": "Ecuador",
+    "download_speed": 1.28
+  },
+  {
+    "country": "Afghanistan",
+    "download_speed": 1.27
+  },
+  {
+    "country": "Djibouti",
+    "download_speed": 1.25
+  },
+  {
+    "country": "Suriname",
+    "download_speed": 1.25
+  },
+  {
+    "country": "Togo",
+    "download_speed": 1.24
+  },
+  {
+    "country": "Fiji",
+    "download_speed": 1.24
+  },
+  {
+    "country": "Cote D'Ivoire",
+    "download_speed": 1.22
+  },
+  {
+    "country": "Egypt",
+    "download_speed": 1.22
+  },
+  {
+    "country": "Papua New Guinea",
+    "download_speed": 1.19
+  },
+  {
+    "country": "Senegal",
+    "download_speed": 1.17
+  },
+  {
+    "country": "Argentina",
+    "download_speed": 1.15
+  },
+  {
+    "country": "Nicaragua",
+    "download_speed": 1.14
+  },
+  {
+    "country": "Algeria",
+    "download_speed": 1.11
+  },
+  {
+    "country": "Sudan",
+    "download_speed": 1.1
+  },
+  {
+    "country": "Lebanon",
+    "download_speed": 1.07
+  },
+  {
+    "country": "Botswana",
+    "download_speed": 1.07
+  },
+  {
+    "country": "Angola",
+    "download_speed": 1.05
+  },
+  {
+    "country": "Kyrgyzstan",
+    "download_speed": 0.98
+  },
+  {
+    "country": "Cameroon",
+    "download_speed": 0.97
+  },
+  {
+    "country": "Reunion",
+    "download_speed": 0.97
+  },
+  {
+    "country": "Nepal",
+    "download_speed": 0.97
+  },
+  {
+    "country": "Malawi",
+    "download_speed": 0.92
+  },
+  {
+    "country": "Pakistan",
+    "download_speed": 0.91
+  },
+  {
+    "country": "Bolivia",
+    "download_speed": 0.91
+  },
+  {
+    "country": "Guyana",
+    "download_speed": 0.89
+  },
+  {
+    "country": "Libyan Arab Jamahiriya",
+    "download_speed": 0.89
+  },
+  {
+    "country": "Guinea",
+    "download_speed": 0.84
+  },
+  {
+    "country": "Mali",
+    "download_speed": 0.84
+  },
+  {
+    "country": "Tajikistan",
+    "download_speed": 0.83
+  },
+  {
+    "country": "Uzbekistan",
+    "download_speed": 0.76
+  },
+  {
+    "country": "Paraguay",
+    "download_speed": 0.75
+  },
+  {
+    "country": "Benin",
+    "download_speed": 0.73
+  },
+  {
+    "country": "Congo",
+    "download_speed": 0.72
+  },
+  {
+    "country": "Venezuela",
+    "download_speed": 0.7
+  },
+  {
+    "country": "Syrian Arab Republic",
+    "download_speed": 0.68
+  },
+  {
+    "country": "Vanuatu",
+    "download_speed": 0.63
+  },
+  {
+    "country": "Somalia",
+    "download_speed": 0.62
+  },
+  {
+    "country": "Congo, The Democratic Republic of the",
+    "download_speed": 0.55
+  },
+  {
+    "country": "Burkina Faso",
+    "download_speed": 0.49
+  },
+  {
+    "country": "Gabon",
+    "download_speed": 0.41
+  },
+  {
+    "country": "Yemen",
+    "download_speed": 0.34
+  }
+]

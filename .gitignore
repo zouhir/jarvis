@@ -60,3 +60,4 @@ typings/
 # mac shit
 .DS_*
 /.idea
+dist/
