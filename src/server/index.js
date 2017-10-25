@@ -77,7 +77,7 @@ config = require(path.join(cwd(), configFilePath));
 /**
  * 
  */
-config = config("production");
+config = config("development");
 
 if (!config) {
   throw new Error("Config file error");

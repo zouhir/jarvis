@@ -112,7 +112,7 @@ export default class Board extends Component {
             <Table data={state.modules} />
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
-            <PerfBudget />
+            <PerfBudget assetsSize={state.assetsSize} />
           </div>
         </div>
       </div>

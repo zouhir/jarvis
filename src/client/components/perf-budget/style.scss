@@ -5,67 +5,62 @@
   height: 445px;
   width: 100%;
   position: relative;
-  &:before {
-    content: "";
-    position: absolute;
-    top: -2px;
-    left: -2px;
-    bottom: 40%;
-    right: -2px;
-    background-image: linear-gradient(#b72cf6, transparent);
-    z-index: -2;
-  }
-  &:after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: $dark;
-  }
-  &.unset {
-    &:before {
-      // animation-name: blink;
-      // animation-timing-function: linear;
-      // animation-duration: 0.3s;
-      // animation-iteration-count: infinite;
+  font-size: 13px;
+  ul {
+    margin: 0;
+    li {
+      background: $dark;
+      display: flex;
+      height: 50px;
+      align-items: center;
+      padding: 0px 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      &.big {
+        color: #FF4A4F;
+      }
+      &.ok {
+        color: #0FCFBD;
+      }
+      span {
+        display: flex;
+        flex: 0 0 50%;
+        &:first-child {
+          text-transform: uppercase;
+        }
+        &:last-child {
+          font-weight: bold;
+          text-align: right;
+          justify-content: flex-end;
+        }
+      }
     }
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-  .warningWrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+
   .warning {
-    width: 50px;
-    margin-bottom: 10px;
-  }
-  h5 {
-    font-weight: 300;
-    color: #b72cf6;
-    font-size: 14px;
-    flex: 1;
-  }
-  a {
-    width: 140px;
-    padding: 10px 0px;
-    text-align: center;
-    background: linear-gradient(315deg, #df74f9 0%, #b72cf6 100%);
-    color: $darker;
-    text-transform: uppercase;
-    margin: 15px 0px;
+    margin: 15px;
+    background-color: #fbee7e;
+    background-image: linear-gradient(62deg, #fbee7e 0%, #ffd271 100%);
+    padding: 15px 10px;
+    color: #545053;
+    border-radius: 1px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
     border-radius: 2px;
     font-size: 13px;
+    &:before {
+      content: '';
+      top: 50%;
+      transform: translateY(-50%);
+      position: absolute;
+      background: url('../../assets/images/alert_blk.svg');
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      width: 30px;
+      height: 30px;
+      left: 10px;
+    }
   }
 }
-
-// @keyframes blink {
-//   50% {
-//     opacity: 0;
-//   }
-// }
