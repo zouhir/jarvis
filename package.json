@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm run server & npm run client",
-    "server": "NODE_ENV=production cross-env node ./src/server --prod",
+    "server": "NODE_ENV=production cross-env node ./src/server --dev",
     "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest",
     "webpack-defaults": "webpack-defaults"
@@ -22,6 +22,7 @@
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
     "preact-markup": "^1.6.0",
+    "react-select": "^1.0.0-rc.10",
     "socket.io": "^2.0.3",
     "unfetch": "^3.0.0",
     "webpack-bundle-analyzer": "^2.9.0"
