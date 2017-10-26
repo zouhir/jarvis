@@ -5,6 +5,7 @@ import Bundlelist from "./bundles-list";
 import Terminal from "./terminal";
 import Table from "./table";
 import PerfBudget from "./perf-budget";
+import ComingSoon from "./coming-soon";
 
 import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
@@ -113,6 +114,9 @@ export default class Board extends Component {
           </div>
           <div className="col-xs-12 col-md-4 col-lg-3">
             <PerfBudget assetsSize={state.assetsSize} />
+          </div>
+          <div className="col-xs-12 col-md-4 col-lg-3" style={{overflow: 'hidden'}}>
+            <ComingSoon />
           </div>
         </div>
       </div>
