@@ -28,14 +28,16 @@
         right: 0;
         top: 50%;
         transform: translateY(-50%);
-        &.cjs {
-          color: #f55753;
-        }
-        &.esm {
-          color: #10cfbd;
-        }
-        &.mixed {
-          color: #fed23e;
+        background: url('../../assets/images/more.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 30px;
+        width: 30px;
+        background-size: 18px;
+        cursor: pointer;
+        opacity: 0.6;
+        &:hover {
+          opacity: 1;
         }
       }
       &:last-child {
@@ -74,7 +76,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+        border-bottom: 3px solid #F7857D;
         display: block;
         width: 100%;
         height: 3px;
@@ -86,7 +88,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid rgba(255, 255, 255, 0.8);
+        border-bottom: 3px solid #F7857D;
         display: block;
         width: 100%;
         height: 3px;
@@ -103,46 +105,16 @@
     .percentage {
       color: #f55753;
     }
-    &.selected {
-      &:before {
-        border-bottom: 3px solid #f55753;
-      }
-    }
-    &:hover {
-      &:before {
-        border-bottom: 3px solid #f55753;
-      }
-    }
   }
   li.esm {
     .percentage {
       color: #10cfbd;
-    }
-    &.selected {
-      &:before {
-        border-bottom: 3px solid #10cfbd;
-      }
-    }
-    &:hover {
-      &:before {
-        border-bottom: 3px solid #10cfbd;
-      }
     }
   }
 
   li.mixed {
     .percentage {
       color: yellow;
-    }
-    &.selected {
-      &:before {
-        border-bottom: 3px solid #fed23e;
-      }
-    }
-    &:hover {
-      &:before {
-        border-bottom: 3px solid #fed23e;
-      }
     }
   }
 }

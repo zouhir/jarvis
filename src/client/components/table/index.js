@@ -72,7 +72,7 @@ export default class Table extends Component {
                 <li>
                   <div className="col">
                     {module.name}
-                    <div className="esm details">details</div>
+                    <div className="details" />
                   </div>
                   <div className="col">{readableBytes(module.size)}</div>
                 </li>
@@ -84,7 +84,7 @@ export default class Table extends Component {
                 <li>
                   <div className="col">
                     {module.name}
-                    <div className="mixed details">details</div>
+                    <div className="details" />
                   </div>
                   <div className="col">{readableBytes(module.size)}</div>
                 </li>
@@ -96,7 +96,7 @@ export default class Table extends Component {
                 <li>
                   <div className="col">
                     {module.name}
-                    <div className="cjs details">details</div>
+                    <div className="details" />
                   </div>
                   <div className="col">{readableBytes(module.size)}</div>
                 </li>
