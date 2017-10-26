@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*!
  * webpack-jarvis <https://github.com/zouhir/webpack-jarvis>
  *
