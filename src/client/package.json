@@ -6,14 +6,12 @@
   "scripts": {
     "dev:hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress",
     "dev": "cross-env NODE_ENV=development webpack --watch",
+    "build": "cross-env NODE_ENV=production webpack -p --progress",
     "test": "jest"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "c3": "^0.4.17",
-    "d3": "^3.5.17",
-    "emotion": "^6.0.3",
     "express": "^4.15.4",
     "preact": "^8.2.1",
     "preact-compat": "^3.17.0",
@@ -40,7 +38,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
-    "cross-env": "^5.0.1",
+    "cross-env": "^5.1.0",
     "css-loader": "^0.28.4",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-preact": "^1.1.6",

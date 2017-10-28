@@ -18,7 +18,6 @@ const babelrc = (env = null) => {
       'stage-0'
     ],
     plugins: [
-      'emotion/babel',
       'babel-plugin-transform-object-assign',
       'babel-plugin-transform-decorators-legacy',
       isProd

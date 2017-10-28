@@ -59,6 +59,7 @@ function _transformModules(modules = []) {
   let esmCount = 0;
   let cjsCount = 0;
   let table = {};
+  let type;
   table.cjs = [];
   table.esm = [];
   table.mixed = [];
@@ -70,7 +71,7 @@ function _transformModules(modules = []) {
     let reasons = [];
     module.reasons.forEach(re => {
       if (MODULE_TYPES[re.type] === "esm") {
-        _esmFound++;
+        _esmFound = true;
       } else if (MODULE_TYPES[re.type] === "cjs") {
         _cjsFound = true;
       }
@@ -83,7 +84,7 @@ function _transformModules(modules = []) {
       type = "esm";
     } else if (_esmFound && _cjsFound) {
       type = "mixed";
-    } else if (!_esmFound && _cjsFound) {
+    } else if (!_esmFound) {
       type = "cjs";
     }
     if (table[type]) {
