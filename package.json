@@ -1,6 +1,6 @@
 {
-  "name": "jarvis",
-  "version": "0.0.23",
+  "name": "webpack-jarvis",
+  "version": "0.0.24",
   "description": "",
   "main": "dist/server/index.js",
   "bin": {
