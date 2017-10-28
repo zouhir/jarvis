@@ -93,8 +93,8 @@ if(process.env.NODE_ENV !== 'jarvis_dev') {
   app.use('/', express.static(path.join(__dirname, '../../dist/client')));  
   app.get("/", (_, res) => res.sendFile(path.join(__dirname + '../../dist/client/index.html')));
 } else {
-  app.get("/", (_, res) => res.send("Client is running on port: 3000"));
+  app.get("/", (_, res) => res.send("Jarvis client is running on: 1337"));
 }
-server.listen(3001, () =>
-  console.log("Starting JARVIS on: http://localhost:3001")
+server.listen(1337, () =>
+  console.log("Starting JARVIS on: http://localhost:1337")
 );
