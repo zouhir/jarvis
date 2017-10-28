@@ -1,8 +1,11 @@
 /**
  * Compiler stuff
  */
-const WebpackDevServer = require("webpack-dev-server");
-const webpack = require("webpack");
+const path = require("path");
+const cwd = require("cwd");
+const importCwd = require('import-cwd');
+const WebpackDevServer = importCwd("webpack-dev-server");
+const webpack = importCwd("webpack");
 /**
  * Stats utility and other helpers
  */
@@ -56,8 +59,16 @@ const compiler = ({ config, env, port }) => {
       throw new Error("invalid compiler could be invalid configs");
     }
     new WebpackDevServer(compilerInstance, {
-      /* ATM I don't need custom options here, let's see what happens later tho */
-    });
+      port: config.devServer.port || '8080',
+      host: config.devServer.host || 'localhost',
+      publicPath: path.join(cwd(), config.devServer.publicPath || ''),
+      contentBase: path.join(cwd(), config.devServer.contentBase || ''),
+      historyApiFallback: config.devServer.historyApiFallback,
+      open: config.devServer.open || false,
+      openPage: config.devServer.openPage || '',
+      proxy: config.devServer.proxy || {},
+      inline: config.devServer.inline || false,
+    }).listen(config.devServer.port || 8080);
   };
 
   const makeProdBundle = () => {

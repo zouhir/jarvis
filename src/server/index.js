@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*!
  * webpack-jarvis <https://github.com/zouhir/webpack-jarvis>
  *
@@ -74,10 +76,6 @@ if (parsed.config) {
 
 // Load the configs from the file
 config = require(path.join(cwd(), configFilePath));
-/**
- * 
- */
-config = config("development");
 
 if (!config) {
   throw new Error("Config file error");
@@ -91,7 +89,12 @@ if (env === "production") {
   c.startDevServer();
 }
 
-app.get("/", (_, res) => res.send("Client is running on port: 3000"));
-server.listen(3001, () =>
-  console.log("Starting JARVIS on: http://localhost:3001")
+if(process.env.NODE_ENV !== 'jarvis_dev') {
+  app.use('/', express.static(path.join(__dirname, '../../dist/client')));  
+  app.get("/", (_, res) => res.sendFile(path.join(__dirname + '../../dist/client/index.html')));
+} else {
+  app.get("/", (_, res) => res.send("Jarvis client is running on: 1337"));
+}
+server.listen(1337, () =>
+  console.log("Starting JARVIS on: http://localhost:1337")
 );

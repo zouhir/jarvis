@@ -1,31 +1,42 @@
 {
   "name": "jarvis",
-  "version": "0.0.1",
+  "version": "0.0.23",
   "description": "",
-  "main": "index.js",
+  "main": "dist/server/index.js",
+  "bin": {
+    "jarvis": "./dist/server/index.js"
+  },
   "scripts": {
     "dev": "npm run server & npm run client",
-    "server": "NODE_ENV=production cross-env node ./src/server --dev",
+    "server": "NODE_ENV=jarvis_dev cross-env node ./src/server --dev",
     "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
+    "prebuild": "rimraf dist && mkdir dist",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
+    "build:server": "cross-env ncp src/server dist/server",
     "test": "jest",
     "webpack-defaults": "webpack-defaults"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Zouhir",
+  "license": "MIT",
+  "peerDependencies": {
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  },
   "dependencies": {
     "ansi-to-html": "^0.6.3",
-    "bundle-buddy-webpack-plugin": "^0.3.0",
+    "chalk": "^2.0.1",
     "cwd": "^0.10.0",
-    "emotion": "^6.0.3",
     "express": "^4.15.4",
+    "import-cwd": "^2.1.0",
+    "mri": "^1.1.0",
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
     "preact-markup": "^1.6.0",
     "react-select": "^1.0.0-rc.10",
     "socket.io": "^2.0.3",
-    "unfetch": "^3.0.0",
-    "webpack-bundle-analyzer": "^2.9.0"
+    "webpack-messages": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -44,8 +55,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",
-    "chalk": "^2.0.1",
-    "copy-webpack-plugin": "^4.0.1",
+    "copy-webpack-plugin": "^4.2.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
     "eslint-config-standard": "^10.2.1",
@@ -55,17 +65,16 @@
     "html-webpack-plugin": "^2.29.0",
     "jest": "^20.0.4",
     "jest-serializer-html-string": "^1.0.1",
-    "mri": "^1.1.0",
+    "ncp": "^2.0.0",
     "node-sass": "^4.5.3",
-    "nodemon": "^1.12.1",
     "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
+    "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "svg-url-loader": "^2.1.1",
-    "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1",
-    "webpack-messages": "^1.0.0"
+    "webpack": "^3.8.1",
+    "webpack-dev-server": "^2.9.3"
   },
   "jest": {
     "verbose": true,

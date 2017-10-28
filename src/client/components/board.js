@@ -11,7 +11,7 @@ import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
 
 import io from "socket.io-client";
-const socket = io("localhost:3001");
+const socket = io("localhost:1337");
 
 export default class Board extends Component {
   state = {
