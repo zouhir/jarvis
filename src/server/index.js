@@ -89,9 +89,11 @@ if (env === "production") {
   c.startDevServer();
 }
 
-if(process.env.NODE_ENV !== 'jarvis_dev') {
-  app.use('/', express.static(path.join(__dirname, '../../dist/client')));  
-  app.get("/", (_, res) => res.sendFile(path.join(__dirname + '../../dist/client/index.html')));
+if (process.env.NODE_ENV !== "jarvis_dev") {
+  app.use("/", express.static(path.join(__dirname, "../../dist/client")));
+  app.get("/", (_, res) =>
+    res.sendFile(path.join(__dirname + "../../dist/client/index.html"))
+  );
 } else {
   app.get("/", (_, res) => res.send("Jarvis client is running on: 1337"));
 }

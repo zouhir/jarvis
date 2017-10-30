@@ -8,11 +8,11 @@ const pkg = require("./package.json");
 const babelrc = require("./babel");
 const PrettyMessage = require("./src/pretty-message");
 
-let env = process.env.NODE_ENV || 'development';
+let env = process.env.NODE_ENV || "development";
 
 module.exports = {
   context: path.resolve("demo-app"),
-  entry: ["./index.js", "webpack-dev-server/client?http://localhost:8080"],
+  entry: { main: "./index.js" },
   output: {
     path: path.resolve("dist"),
     publicPath: "/",
@@ -124,8 +124,8 @@ module.exports = {
   devServer: {
     port: 8080,
     host: "localhost",
-    publicPath: "/",
-    contentBase: "./src/client",
+    publicPath: "/demo-app",
+    contentBase: "./demo-app",
     historyApiFallback: true,
     open: true,
     openPage: "",
