@@ -13,7 +13,7 @@ const emitter = io => {
       message
     });
   });
-  
+
   /**
    * emits webpack stats
    */

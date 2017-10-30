@@ -1,6 +1,6 @@
 {
   "name": "webpack-jarvis",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "description": "",
   "main": "dist/server/index.js",
   "bin": {
@@ -9,10 +9,12 @@
   "scripts": {
     "dev": "npm run server & npm run client",
     "server": "NODE_ENV=jarvis_dev cross-env node ./src/server --dev",
-    "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
+    "client":
+      "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "prebuild": "rimraf dist && mkdir dist",
     "build": "npm run build:client && npm run build:server",
-    "build:client": "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
+    "build:client":
+      "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
     "build:server": "cross-env ncp src/server dist/server",
     "test": "jest",
     "webpack-defaults": "webpack-defaults"
@@ -86,19 +88,14 @@
     "globals": {
       "NODE_ENV": "test"
     },
-    "moduleFileExtensions": [
-      "js",
-      "jsx"
-    ],
+    "moduleFileExtensions": ["js", "jsx"],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy",
       "^react$": "preact-compat",
       "^react-dom$": "preact-compat"
     },
-    "moduleDirectories": [
-      "node_modules",
-      "src"
-    ]
+    "moduleDirectories": ["node_modules", "src"]
   }
 }
