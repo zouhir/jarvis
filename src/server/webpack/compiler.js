@@ -3,7 +3,7 @@
  */
 const path = require("path");
 const cwd = require("cwd");
-const importCwd = require('import-cwd');
+const importCwd = require("import-cwd");
 const WebpackDevServer = importCwd("webpack-dev-server");
 const webpack = importCwd("webpack");
 /**
@@ -20,6 +20,50 @@ const compiler = ({ config, env, port }) => {
   let prodBundleStats = {};
   let progressStats = {};
 
+  let devServerConfigs = config.devServer || {};
+  /**
+   * hot module entry has to be added!
+   */
+  if (env === "development") {
+    if (config.entry.length) {
+      let hotFound = false;
+      config.entry.forEach(ent => {
+        console.log(ent.indexOf("webpack-dev-server/client"));
+        if (ent.indexOf("webpack-dev-server/client") > -1) {
+          hotFound = true;
+        }
+      });
+      if (!hotFound) {
+        config.entry.push(
+          `webpack-dev-server/client?http://localhost:${devServerConfigs.port ||
+            "8080"}`
+        );
+      }
+    } else {
+      let hmrUpdated = false;
+      Object.keys(config.entry).forEach(k => {
+        if (typeof config.entry[k] !== "string" && config.entry[k].length) {
+          hmrUpdated = true;
+          config.entry[k].push(
+            `webpack-dev-server/client?http://localhost:${devServerConfigs.port ||
+              "8080"}`
+          );
+        }
+      });
+      if (!hmrUpdated) {
+        config.entry[
+          "hmr"
+        ] = `webpack-dev-server/client?http://localhost:${devServerConfigs.port ||
+          "8080"}`;
+        console.log("We have encoutered an issue enabling HMR in your bundle");
+        console.log(
+          "Please add hmr bundle to your index file in order to enable HMR"
+        );
+        console.log("Alternatively, convery any of your entries to array");
+      }
+    }
+  }
+
   const compilerInstance = webpack(config);
 
   /**
@@ -30,6 +74,10 @@ const compiler = ({ config, env, port }) => {
       compilerEvents.emitProgress(percentage, message);
     })
   );
+
+  if (env === "development") {
+    compilerInstance.apply(new webpack.HotModuleReplacementPlugin());
+  }
 
   /**
    * @TODO: apply pretty message plugin if it does not exist
@@ -59,15 +107,15 @@ const compiler = ({ config, env, port }) => {
       throw new Error("invalid compiler could be invalid configs");
     }
     new WebpackDevServer(compilerInstance, {
-      port: config.devServer.port || '8080',
-      host: config.devServer.host || 'localhost',
-      publicPath: path.join(cwd(), config.devServer.publicPath || ''),
-      contentBase: path.join(cwd(), config.devServer.contentBase || ''),
+      port: devServerConfigs.port || "8080",
+      host: config.devServer.host || "localhost",
+      publicPath: config.devServer.publicPath || "",
+      contentBase: config.devServer.contentBase || "",
       historyApiFallback: config.devServer.historyApiFallback,
       open: config.devServer.open || false,
-      openPage: config.devServer.openPage || '',
+      openPage: config.devServer.openPage || "",
       proxy: config.devServer.proxy || {},
-      inline: config.devServer.inline || false,
+      inline: config.devServer.inline || false
     }).listen(config.devServer.port || 8080);
   };
 

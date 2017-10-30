@@ -36,6 +36,8 @@
     "preact-markup": "^1.6.0",
     "react-select": "^1.0.0-rc.10",
     "socket.io": "^2.0.3",
+    "webpack-dev-middleware": "^1.12.0",
+    "webpack-hot-middleware": "^2.20.0",
     "webpack-messages": "^1.0.0"
   },
   "devDependencies": {
