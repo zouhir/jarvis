@@ -81,6 +81,11 @@ if (!config) {
   throw new Error("Config file error");
 }
 
+// check if confngs are functional or an  object
+if (typeof config === "function") {
+  config = config();
+}
+
 let c = compiler({ config: config, env: env });
 
 if (env === "production") {
