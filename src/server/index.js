@@ -93,8 +93,7 @@ if (!config) {
 
 // check if confngs are functional or an  object
 if (typeof config === "function") {
-  console.log(parsed.env);
-  config = config({ ...parsed.env });
+  config = config(parsed.env);
 }
 
 let c = compiler({ config: config, env: env });
