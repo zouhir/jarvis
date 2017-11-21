@@ -1,10 +1,11 @@
-const mri = require("mri");
+var minimist = require("minimist");
 
 module.exports = args => {
-  return mri(args, {
+  return minimist(args, {
     alias: {
       production: "prod",
-      development: "dev"
+      development: "dev",
+      "--env": "env"
     }
   });
 };

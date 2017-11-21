@@ -49,31 +49,41 @@ clientEvents(io);
 let env, port, configFile, config;
 const DEFAULT_ENV = "development";
 const DEFAULT_PORT = 1337;
-const DEFAULT_WEBPACK_CONFIGS = "webpack.config";
+const DEFAULT_WEBPACK_CONFIGS_PATH = "webpack.config";
 
 /**
- * NPM script user arguments
+ * Default configs are the weakest configs
+ */
+env = DEFAULT_ENV;
+port = DEFAULT_PORT;
+configFilePath = DEFAULT_WEBPACK_CONFIGS_PATH;
+/**
+ * Read configs from user arguments
  * Required:
- * @arg1: Environment 
- *        usage: --prod for "production", --dev for development
+ * @arg1: NODE_ENV
+ *        usage: --env.NODE_ENV=production for "production"
  * @arg2: Port
- *        usage: --port=3000 
+ *        usage: --env.port=3000 
  */
 const args = process.argv.slice(2);
 let parsed = parser(args);
-env = DEFAULT_ENV;
-if (parsed.production) {
-  env = "production";
+if (typeof parsed.env === "undefined") parsed.env = {};
+
+if (!parsed.env.NODE_ENV) {
+  parsed.env.NODE_ENV = DEFAULT_ENV;
 }
-port = DEFAULT_PORT;
-if (parsed.port) {
-  port = parsed.port;
+
+if (!parsed.env.port) {
+  parsed.env.port = DEFAULT_PORT;
 }
-configFilePath = DEFAULT_WEBPACK_CONFIGS;
+
 if (parsed.config) {
   configFilePath = parsed.config;
 }
 
+if (parsed.production && parsed.production === true) {
+  env = "production";
+}
 // Load the configs from the file
 config = require(path.join(cwd(), configFilePath));
 
@@ -83,7 +93,8 @@ if (!config) {
 
 // check if confngs are functional or an  object
 if (typeof config === "function") {
-  config = config();
+  console.log(parsed.env);
+  config = config({ ...parsed.env });
 }
 
 let c = compiler({ config: config, env: env });
