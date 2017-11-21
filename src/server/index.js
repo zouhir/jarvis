@@ -81,9 +81,6 @@ if (parsed.config) {
   configFilePath = parsed.config;
 }
 
-if (parsed.production && parsed.production === true) {
-  env = "production";
-}
 // Load the configs from the file
 config = require(path.join(cwd(), configFilePath));
 
