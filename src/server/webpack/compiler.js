@@ -39,28 +39,6 @@ const compiler = ({ config, env, port }) => {
             "8080"}`
         );
       }
-    } else {
-      let hmrUpdated = false;
-      Object.keys(config.entry).forEach(k => {
-        if (typeof config.entry[k] !== "string" && config.entry[k].length) {
-          hmrUpdated = true;
-          config.entry[k].push(
-            `webpack-dev-server/client?http://localhost:${devServerConfigs.port ||
-              "8080"}`
-          );
-        }
-      });
-      if (!hmrUpdated) {
-        config.entry[
-          "hmr"
-        ] = `webpack-dev-server/client?http://localhost:${devServerConfigs.port ||
-          "8080"}`;
-        console.log("We have encoutered an issue enabling HMR in your bundle");
-        console.log(
-          "Please add hmr bundle to your index file in order to enable HMR"
-        );
-        console.log("Alternatively, convery any of your entries to array");
-      }
     }
   }
 
