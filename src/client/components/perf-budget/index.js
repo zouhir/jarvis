@@ -1,88 +1,59 @@
 import { h, Component } from "preact";
+import orderBy from "lodash/orderBy";
 
-import TypeAhead from "../typeahead";
-import Table from '../table';
-import countries from "../../DATA/global-speed.json";
+// import TypeAhead from "../typeahead";
+import Table from "../table";
+import data from "../../DATA/global-speed.json";
 
 import "./style.scss";
 
 export default class Chart extends Component {
   state = {
-    selected: countries[0],
-    target: 5, // 5s is the target to be done loading
-    latency: 1.6,
-    warnings: []
+    speeds: []
+  };
+  componentDidMount() {
+    this.setState({ speeds: this.calc(this.props.assetsSize) });
   }
-  onChange = (selected) => {
-    let warnings = [];
-    if(selected.internet_speed > 0.4) {
-      warnings.push(`The speed you are measuring by is about ${Math.round(selected.internet_speed / 0.4)} times faster than the global average and does only represent 25% of global internet users in perfect & stable internet conditions.`);
-    }
-    this.setState({ selected, warnings })
+  calc = assetsSize => {
+    let bars = data.map(i => {
+      let title = i.title;
+      let speed = i.internet_speed + "mbps";
+      let time = assetsSize / 1024 / (i.internet_speed * 1024 / 8) + i.rtt;
+      time = Math.round(time);
+      return {
+        title,
+        speed,
+        time: +time,
+        rtt: i.rtt
+      };
+    });
+    return bars;
+  };
+  componentWillReceiveProps(newProps) {
+    this.setState({ speeds: this.calc(newProps.assetsSize) });
   }
-  render(props, state) {
-    let assetsLoadingTime = (props.assetsSize / 1024) / ( (+state.selected.internet_speed * 1024) / 8 )
-    let total = assetsLoadingTime + 1.6;
+  render({ assetsSize }, { speeds }) {
+    console.log(assetsSize);
     return (
       <div className="budget unset">
-        <TypeAhead
-          items={countries}
-          value={state.selected}
-          onChange={this.onChange}
-        />
-        <ul>
-          <li>
-            <span>
-              Country \ Connection
-            </span>
-            <span>
-              { state.selected.country }
-            </span>
-          </li>
-
-          <li>
-            <span>
-              Internet Speed
-            </span>
-            <span>
-              { `${state.selected.internet_speed} mbps` }
-            </span>
-          </li>
-
-          <li>
-            <span className='small'>
-              DNS lookup & TLS handshake
-            </span>
-            <span>
-              { `${state.latency} seconds` }
-            </span>
-          </li>
-
-          <li>
-            <span>
-              Loading your assets
-            </span>
-            <span>
-              { `${assetsLoadingTime.toFixed(3)} seconds` }
-            </span>
-          </li>
-
-          <li className={ total > 5 ? 'big' : 'ok' }>
-            <span>
-              Total
-            </span>
-            <span>
-              { `${total.toFixed(3)} seconds` }
-            </span>
-          </li>
-        </ul>
-        {
-          state.warnings.map(warning => (
-            <div className="warning">
-              {warning}
+        {speeds.map(speed => (
+          <div className="item">
+            <div className="info">
+              <h5>
+                {speed.title} <span>{speed.rtt}ms RTT</span>
+              </h5>
+              <div className="values">
+                <label>{speed.speed}</label>
+                <div className="time">{speed.time}s</div>
+                {speed.time > 5 ? (
+                  <div className="high">+{speed.time - 5}s</div>
+                ) : (
+                  <div className="low">-{5 - speed.time}s</div>
+                )}
+              </div>
             </div>
-          ))
-        }
+          </div>
+        ))}
       </div>
     );
   }

@@ -5,7 +5,6 @@ import Bundlelist from "./bundles-list";
 import Terminal from "./terminal";
 import Table from "./table";
 import PerfBudget from "./perf-budget";
-import ComingSoon from "./coming-soon";
 
 import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
@@ -27,9 +26,13 @@ export default class Board extends Component {
       mixed: []
     },
     logs: [],
-    performance: {}
+    performance: {},
+    project: {}
   };
   componentDidMount() {
+    socket.on("project", report => {
+      this.setState({ project: report });
+    });
     socket.on("stats", report => {
       let logs = [];
       if (report.errors && report.errors.length > 0) {
@@ -69,55 +72,46 @@ export default class Board extends Component {
   render(props, state) {
     return (
       <div className="board">
-        <Nav />
-        <div className="row widgets">
-          <div className="col-xs-12 col-md-4 col-lg-3">
-            {state.progress ? (
-              <MiniCard
-                title="Compiler Status"
-                note={`done in ${state.time} sec`}
-                progress={state.progress.percentage * 100}
-                status={state.progress.message || "Idle"}
-                color="fire"
-              />
-            ) : null}
+        <Nav {...state.project} />
 
-            <MiniCard
-              title="Error"
-              status={state.errors.length}
-              note={
-                state.warnings.length === 0
-                  ? "and no warnings"
-                  : `and ${state.warnings.length} warnings`
-              }
-              color="berry"
-            />
-            {state.assetsSize ? (
-              <MiniCard
-                title="Total Bundles Size"
-                status={readableBytes(state.assetsSize)}
-                note=""
-                color="evening"
-              />
-            ) : null}
-          </div>
-          <div className="col-xs-12 col-md-4 col-lg-6">
-            <Terminal logs={state.logs} />
-          </div>
-          <div className="col-xs-12 col-md-4 col-lg-3">
-            <Bundlelist assets={state.assets} />
-          </div>
+        <div className="widget col-xs-12 col-md-4 col-lg-3">
+          <MiniCard
+            title="Compiler Status"
+            note={`done in ${state.time} sec`}
+            progress={state.progress.percentage * 100}
+            status={state.progress.message || "Idle"}
+            color="fire"
+          />
+
+          <MiniCard
+            title="Error"
+            status={state.errors.length}
+            note={
+              state.warnings.length === 0
+                ? "and no warnings"
+                : `and ${state.warnings.length} warnings`
+            }
+            color="berry"
+          />
+          <MiniCard
+            title="Total Bundles Size"
+            status={readableBytes(state.assetsSize)}
+            note=""
+            color="evening"
+          />
         </div>
-        <div className="row widgets">
-          <div className="col-xs-12 col-md-4 col-lg-6">
-            <Table data={state.modules} />
-          </div>
-          <div className="col-xs-12 col-md-4 col-lg-3">
-            <PerfBudget assetsSize={state.assetsSize} />
-          </div>
-          <div className="col-xs-12 col-md-4 col-lg-3" style={{overflow: 'hidden'}}>
-            <ComingSoon />
-          </div>
+        <div className="widget col-xs-12 col-md-4 col-lg-6">
+          <Terminal logs={state.logs} />
+        </div>
+        <div className="widget  col-xs-12 col-md-4 col-lg-3">
+          <Bundlelist assets={state.assets} />
+        </div>
+
+        <div className="widget col-xs-12 col-md-4 col-lg-6">
+          <Table data={state.modules} />
+        </div>
+        <div className="widget col-xs-12 col-md-8 col-lg-6">
+          <PerfBudget assetsSize={state.assetsSize} />
         </div>
       </div>
     );

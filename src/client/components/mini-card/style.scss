@@ -1,10 +1,9 @@
-@import '../../styles/variables';
-
+@import "../../styles/variables";
 
 h3 {
   font-size: 27px;
   font-weight: 300;
-  color: #FFF;
+  color: #fff;
   line-height: 35px;
 }
 p.note {
@@ -18,12 +17,10 @@ p.note {
   font-size: $tiny;
   color: $text-dark;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: bold;
   letter-spacing: 0.7px;
   line-height: 20px;
 }
-
-
 
 .mini {
   height: 145px;
@@ -32,20 +29,21 @@ p.note {
   h3 {
     //    margin-bottom: 7px;
   }
-  p, h3 {
+  p,
+  h3 {
     padding-left: 20px;
   }
   .progress-bar {
     margin-top: 20px;
   }
   &.fire {
-    background: linear-gradient(315deg, #FB906F 0%, #F16C9E 100%);
+    background: linear-gradient(315deg, #fb906f 0%, #f16c9e 100%);
   }
   &.evening {
-    background: linear-gradient(315deg, #95A6FF 0%, #5E78FE 100%);
+    background: linear-gradient(315deg, #95a6ff 0%, #5e78fe 100%);
   }
-  &.berry{
-    background: linear-gradient(315deg, #DF74F9 0%, #B72CF6 100%);
+  &.berry {
+    background: linear-gradient(315deg, #df74f9 0%, #b72cf6 100%);
   }
 }
 
@@ -55,7 +53,7 @@ p.note {
   position: relative;
   background: rgba(0, 0, 0, 0.1);
   .progress {
-    background: #FFF;
+    background: #fff;
     height: 100%;
   }
 }

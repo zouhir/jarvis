@@ -7,15 +7,12 @@
     "jarvis": "./dist/server/index.js"
   },
   "scripts": {
-    "dev": "npm run server & npm run client",
-    "server": "NODE_ENV=jarvis_dev cross-env node ./src/server --dev --env.production",
-    "client": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
-    "prebuild": "rimraf dist && mkdir dist",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
+    "prebuild": "rimraf bin && mkdir bin",
     "build": "npm run build:client && npm run build:server",
     "build:client": "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
-    "build:server": "cross-env ncp src/server dist/server",
-    "test": "jest",
-    "webpack-defaults": "webpack-defaults"
+    "build:server": "cross-env ncp src/plugin bin/plugin",
+    "test": "jest"
   },
   "author": "Zouhir",
   "license": "MIT",
@@ -29,12 +26,11 @@
     "cwd": "^0.10.0",
     "express": "^4.15.4",
     "import-cwd": "^2.1.0",
-    "minimist": "^1.2.0",
+    "lodash": "^4.17.4",
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
     "preact-markup": "^1.6.0",
-    "react-select": "^1.0.0-rc.10",
     "socket.io": "^2.0.3",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-hot-middleware": "^2.20.0",
