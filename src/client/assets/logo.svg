@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="90px" height="100px" viewBox="0 0 90 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="96.1824443%" x2="90.5678272%" y2="11.1000657%" id="linearGradient-1">
+            <stop stop-color="#06FFFF" offset="0%"></stop>
+            <stop stop-color="#0EF99D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="100%" x2="86.0589552%" y2="10.2981038%" id="linearGradient-2">
+            <stop stop-color="#06FFFF" offset="0%"></stop>
+            <stop stop-color="#0EF99D" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="1.50868941%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#06FFFF" offset="0%"></stop>
+            <stop stop-color="#0EF99D" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-4" cx="39.5" cy="34" r="3"></circle>
+        <circle id="path-5" cx="51" cy="52" r="3"></circle>
+        <circle id="path-6" cx="29" cy="52" r="3"></circle>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard">
+            <g id="Group" transform="translate(5.000000, 5.000000)">
+                <path d="M28.9429103,52.0179547 L0.5,68.5" id="Line-4-Copy-3" stroke="url(#linearGradient-1)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M78.6468747,22.9532989 L39.5529477,45.453736" id="Line-4" stroke="#06FFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M39.5441932,22.8883681 L0.22824652,45.6275389" id="Line-4-Copy" stroke="#06FFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(19.886220, 34.257953) scale(-1, 1) translate(-19.886220, -34.257953) "></path>
+                <path d="M78.0547477,51.8042546 L50.5344783,67.5" id="Line-4-Copy-2" stroke="url(#linearGradient-2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(64.517239, 59.804255) scale(-1, 1) translate(-64.517239, -59.804255) "></path>
+                <polygon id="Polygon" stroke="#06FFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="39.4041559 0 78.8083117 22.75 78.8083117 68.25 39.4041559 91 -8.8817842e-16 68.25 -2.66453526e-14 22.75"></polygon>
+                <path d="M39.5,45.9968764 L39.5,90.5" id="Line-5" stroke="#06FFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M39.5,0.402962655 L39.5,32.6555776" id="Line-5-Copy" stroke="url(#linearGradient-3)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+                <g id="Oval-Copy-511">
+                    <use fill="#039B6D" fill-rule="evenodd" xlink:href="#path-4"></use>
+                    <circle cx="39.5" cy="34" r="3"></circle>
+                    <use stroke="#0DF9A3" stroke-width="2" xlink:href="#path-4"></use>
+                </g>
+                <g id="Oval-Copy-515">
+                    <use fill="#039B6D" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    <circle cx="51" cy="52" r="3"></circle>
+                    <use stroke="#0DF9A3" stroke-width="2" xlink:href="#path-5"></use>
+                </g>
+                <g id="Oval-Copy-516">
+                    <use fill="#039B6D" fill-rule="evenodd" xlink:href="#path-6"></use>
+                    <circle cx="29" cy="52" r="3"></circle>
+                    <use stroke="#0DF9A3" stroke-width="2" xlink:href="#path-6"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

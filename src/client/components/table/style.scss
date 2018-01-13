@@ -2,7 +2,7 @@
 
 .table {
   width: 100%;
-  height: 445px;
+  height: 100%;
   display: block;
   background: $dark;
   overflow: hidden;
@@ -28,7 +28,7 @@
         right: 0;
         top: 50%;
         transform: translateY(-50%);
-        background: url('../../assets/images/more.svg');
+        background: url("../../assets/images/more.svg");
         background-position: center;
         background-repeat: no-repeat;
         height: 30px;
@@ -59,13 +59,13 @@
   background: $darkest;
   width: 100%;
   border-bottom: 1px solid $dark;
-  height: 75px;
+  min-height: 75px;
   li {
     display: inline-block;
     font-size: 11px;
     color: #ffffff;
     letter-spacing: 0.7px;
-    font-weight: 500;
+    font-weight: bold;
     padding: 15px 20px;
     position: relative;
     height: 75px;
@@ -76,7 +76,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid #F7857D;
+        border-bottom: 3px solid #f7857d;
         display: block;
         width: 100%;
         height: 3px;
@@ -88,7 +88,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid #F7857D;
+        border-bottom: 3px solid #f7857d;
         display: block;
         width: 100%;
         height: 3px;
@@ -108,13 +108,13 @@
   }
   li.esm {
     .percentage {
-      color: #10cfbd;
+      color: $blue;
     }
   }
 
   li.mixed {
     .percentage {
-      color: yellow;
+      color: #dd71f9;
     }
   }
 }

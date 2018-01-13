@@ -1,10 +1,7 @@
 import { h } from "preact";
 
-import Board from './board';
+import Board from "./board";
 
-let Main = () =>
-  <div>
-    <Board />
-  </div>;
+let Main = () => <Board />;
 
 export default Main;

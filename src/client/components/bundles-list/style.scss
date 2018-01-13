@@ -1,7 +1,7 @@
-@import '../../styles/variables';
+@import "../../styles/variables";
 
 .bundle-list {
-  height: 445px;
+  height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
   ul.chunklist {
@@ -16,7 +16,7 @@
         background: #202740;
       }
       &:nth-child(even) {
-        background: #212A43;
+        background: #212a43;
       }
       display: flex;
       align-items: center;
@@ -27,7 +27,7 @@
       }
     }
   }
-  
+
   ul.card {
     margin: 0px;
     span {
@@ -46,25 +46,27 @@
         width: 100%;
         color: rgba(255, 255, 255, 0.7);
         font-size: 14px;
-        &:last-child{
+        &:last-child {
           margin-bottom: 0px;
         }
       }
       .details {
         display: flex;
         align-items: center;
-        font-size: 12px;
-        font-weight: 300;
-        .size{
+        font-weight: bold;
+        text-transform: uppercase;
+        .size {
+          font-size: 11px;
           margin-left: auto;
-          color: #FFF;
-          padding: 4px 15px;
+          color: #fff;
+          padding: 7px 15px;
           border-radius: 2px;
           &.big {
             background: $red;
           }
           &.ok {
-            background: #10cfbd;
+            color: $dark;
+            background: $blue;
           }
         }
       }

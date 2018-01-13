@@ -18,7 +18,7 @@ export default class Table extends Component {
     let totalCount = cjsCount + esmCount + mixedCount || 0;
     let { selected } = state;
     /**
-     * I am really really sorry for this mess.
+     * I am really really really sorry for this mess.
      */
     return (
       <div className="table">

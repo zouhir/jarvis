@@ -33,7 +33,7 @@ function _formattedSuccessfulRun(stats) {
   }
   let html = [
     `
-    <div style="color:#B0F68E">
+    <div style="color:#06FFFF">
     Hash: ${stats.hash} <br />
     Webpack version: ${stats.version} <br /><br />
     </div>
@@ -44,7 +44,7 @@ function _formattedSuccessfulRun(stats) {
       represent accurate final assets size and performance metrics.<br /><br /></div>`);
   }
   html.push(
-    `<div style="color:#B0F68E">Project has been successfully compiled <br /></div>`
+    `<div style="color:#0DF9A3">Project has been successfully compiled <br /></div>`
   );
   return html;
 }
