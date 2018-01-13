@@ -17,7 +17,7 @@ module.exports = {
   context: path.resolve("./src/client"),
   entry: ["./index.js"],
   output: {
-    path: path.resolve("dist/client/"),
+    path: path.resolve("bin/client/"),
     publicPath: "/",
     filename: "bundle.js"
   },

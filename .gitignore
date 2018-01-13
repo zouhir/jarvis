@@ -61,3 +61,4 @@ typings/
 .DS_*
 /.idea
 dist/
+bin

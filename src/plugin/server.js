@@ -26,9 +26,9 @@ const io = socket(server);
 exports.io = io;
 
 if (process.env.NODE_ENV !== "jarvis_dev") {
-  app.use("/", express.static(path.join(__dirname, "../../dist/client")));
+  app.use("/", express.static(path.join(__dirname, "../../bin/client")));
   app.get("/", (_, res) =>
-    res.sendFile(path.join(__dirname + "../../dist/client/index.html"))
+    res.sendFile(path.join(__dirname + "../../dist/bin/index.html"))
   );
 } else {
   app.get("/", (_, res) => res.send("Jarvis client is running on: 1337"));
@@ -41,4 +41,9 @@ const start = next => {
   });
 };
 
+const close = () => {
+  server.close();
+  io.close();
+};
 exports.start = start;
+exports.close = close;

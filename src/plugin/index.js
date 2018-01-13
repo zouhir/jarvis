@@ -9,7 +9,8 @@ function Jarvis(options) {
   // TOOD: add options for port, etc..
   this.env = {
     production: false,
-    running: false // indicator if our express server + sockets are running
+    running: false, // indicator if our express server + sockets are running
+    watching: false
   };
   this.reports = {
     stats: {},
@@ -38,6 +39,16 @@ Jarvis.prototype.apply = function(compiler) {
       });
     });
   }
+
+  compiler.plugin("watch-run", (c, done) => {
+    this.env.watching = true;
+    done();
+  });
+
+  compiler.plugin("run", (c, done) => {
+    this.env.watching = false;
+    done();
+  });
 
   // check if the current build is production, via defined plugin
   const definePlugin = compiler.options.plugins.filter(
@@ -70,6 +81,9 @@ Jarvis.prototype.apply = function(compiler) {
     let statsReport = reporter.statsReporter(jsonStats);
     this.reports.stats = statsReport;
     server.io.emit("stats", statsReport);
+    if (!this.env.watching) {
+      server.close();
+    }
   });
 
   // that's it!
