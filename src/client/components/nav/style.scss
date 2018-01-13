@@ -1,22 +1,40 @@
 @import "../../styles/variables";
 
 .nav {
-  h5 {
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-    color: #de6ba8;
-    background-color: #de6ba8;
-    background-image: linear-gradient(
-      -90deg,
-      #e6e6e4 3%,
-      #b1b1b1 45%,
-      #d2d2d2 73%,
-      #cac9c9 96%
-    );
-    text-transform: uppercase;
-    span {
-      margin: 0 10px;
+  display: flex;
+  align-items: center;
+  ul {
+    display: flex;
+    width: 100%;
+    padding-left: 5px;
+    li {
+      padding-left: 24px;
+      margin-right: 20px;
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: 16px;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: bold;
+      font-size: 12px;
+      text-transform: uppercase;
+      &.project {
+        background-image: url("../../assets/project.svg");
+      }
+      &.version {
+        background-image: url("../../assets/version.svg");
+      }
+      &.makers {
+        background-image: url("../../assets/team.svg");
+      }
+      &.repo {
+        background-image: url("../../assets/repo.svg");
+      }
+      &.snippets {
+        background-image: url("../../assets/snippets.svg");
+      }
+      &.chuckright {
+        margin-left: auto;
+      }
     }
   }
 }

@@ -84,7 +84,7 @@ export default class Board extends Component {
           />
 
           <MiniCard
-            title="Error"
+            title="Errors and Warnings"
             status={state.errors.length}
             note={
               state.warnings.length === 0
@@ -94,7 +94,7 @@ export default class Board extends Component {
             color="berry"
           />
           <MiniCard
-            title="Total Bundles Size"
+            title="Total Assets Size"
             status={readableBytes(state.assetsSize)}
             note=""
             color="evening"
