@@ -1,5 +1,4 @@
 import { h, Component } from "preact";
-import orderBy from "lodash/orderBy";
 
 // import TypeAhead from "../typeahead";
 import Table from "../table";

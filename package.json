@@ -23,7 +23,6 @@
     "cwd": "^0.10.0",
     "express": "^4.15.4",
     "import-cwd": "^2.1.0",
-    "lodash": "^4.17.4",
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
