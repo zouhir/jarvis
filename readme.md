@@ -5,7 +5,7 @@
 <br />
 <br />
 <p>
-  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/readme-about.png" width="100%">
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-about.png?raw=true" width="100%">
 </p>
 
 J.A.R.V.I.S. (Just A Rather Very Intelligent System) will put in your browser all the relevant information you need from your webpack build whether in dev or in prod.
@@ -33,7 +33,7 @@ Credits:
 <br />
 <br />
 <p>
-  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/readme-installation.png" width="100%">
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-installation.png?raw=true" width="100%">
 </p>
 
 ```
@@ -61,7 +61,7 @@ localhost:1337
 <br />
 <br />
 <p>
-  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/readme-help.png" width="100%">
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-help.png?raw=true" width="100%">
 </p>
 
 I am not entirely sure how many bugs you will catch, but what I know for sure the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
@@ -71,7 +71,7 @@ Any contribution can make a difference, even filing an issue, however if you are
 <br />
 <br />
 <p>
-  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/readme-roadmap.png" width="100%">
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-roadmap.png?raw=true" width="100%">
 </p>
 
 On the roadmap:
@@ -83,7 +83,7 @@ On the roadmap:
 <br />
 <br />
 <p>
-  <img src="https://raw.githubusercontent.com/zouhir/jarvis/master/.github/readme-contributors.png" width="100%">
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-contributors.png?raw=true" width="100%">
 </p>
 
 _a super cool design will go here listing all contributors names + GitHub avatar_
