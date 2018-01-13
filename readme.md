@@ -19,12 +19,18 @@ It is of course hugely inspired by other webpack-dashboard and the core idea is 
 * Shows you the count of ES Harmony module imports which can be treeshakable.
 * shows you how well your assets perform in 12 different connection types.
 
-** Tech Stack: **
+**Tech Stack:**
 
 * Preact
 * Sass
 * Socket IO
 * Express
+
+**Screenshot:**
+
+<p>
+  <img src="https://github.com/zouhir/jarvis/blob/master/.github/screenshot.png?raw=true" width="100%">
+</p>
 
 <br />
 <br />
