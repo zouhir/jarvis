@@ -18,6 +18,9 @@
     margin: 0 15px 15px 0px;
     height: 90px;
     padding: 20px;
+    &:nth-child(3n + 3) {
+      margin-right: 0px;
+    }
     h5 {
       font-size: $tiny;
       letter-spacing: 1.2;
