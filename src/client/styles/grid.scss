@@ -19,14 +19,14 @@
 
       .col-#{$size}-offset-#{$i} { margin-left: 0; }
     } @else {
-      $width: 8.33333333%;
+      $width: 8.33333333% * $i;
 
       .col-#{$size}-#{$i},
       .col-#{$size}-offset-#{$i} { @include base-col; }
 
       .col-#{$size}-#{$i} {
-        flex-basis: $width * $i;
-        max-width: $width * $i;
+        flex-basis: $width;
+        max-width: $width;
       }
 
       .col-#{$size}-offset-#{$i} { margin-left: $width; }
