@@ -9,7 +9,7 @@ function Jarvis(options = {}) {
   
   // check if port is valid
   let portIsValid = true;
-  if (options.port && isNaN(parseInt(options.port))) {
+  if (isNaN(parseInt(options.port))) {
     portIsValid = false;
     console.error(`[JARVIS] your specified port ("${options.port}") is invalid, falling back to 1337, please check it again :)`);
   };
