@@ -55,7 +55,9 @@ const Jarvis = require('webpack-jarvis');
 // the rest of your webpack configs
 
 plugins: [
-    new Jarvis() // that's all you need!
+    new Jarvis({
+      port: 1337 // optional: set a port
+    })
 ]
 ```
 

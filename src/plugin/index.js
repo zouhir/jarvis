@@ -6,7 +6,9 @@ const importCwd = require("import-cwd"); // used to get the users project detail
 const pkg = importCwd("./package.json");
 
 function Jarvis(options) {
-  // TOOD: add options for port, etc..
+  this.options = {
+    port: options && options.port || 1337 // if no port specified fall back to 1337
+  }
   this.env = {
     production: false,
     running: false, // indicator if our express server + sockets are running
@@ -19,7 +21,7 @@ function Jarvis(options) {
   };
 }
 
-Jarvis.prototype.apply = function(compiler) {
+Jarvis.prototype.apply = function (compiler) {
   let projectInfo = {
     name: pkg.name,
     version: pkg.version,
@@ -29,7 +31,7 @@ Jarvis.prototype.apply = function(compiler) {
   this.reports.projcect = projectInfo;
 
   if (!this.env.running) {
-    server.start(() => {
+    server.start(this.options, () => {
       this.env.running = true;
       // if a new client is connected push current bundle info
       server.io.on("connection", socket => {

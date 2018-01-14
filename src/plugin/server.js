@@ -23,6 +23,8 @@ const app = express();
 const server = http.Server(app);
 const io = socket(server);
 
+let PORT = undefined;
+
 exports.io = io;
 
 if (process.env.NODE_ENV !== "jarvis_dev") {
@@ -31,12 +33,15 @@ if (process.env.NODE_ENV !== "jarvis_dev") {
     res.sendFile(path.join(__dirname + "../../dist/bin/index.html"))
   );
 } else {
-  app.get("/", (_, res) => res.send("Jarvis client is running on: 1337"));
+  app.get("/", (_, res) => res.send(`Jarvis client is running on: ${PORT}`));
 }
 
-const start = next => {
-  return server.listen(1337, () => {
-    console.log("Starting JARVIS on: http://localhost:1337");
+const start = (options, next) => {
+
+  PORT = options.port;
+
+  return server.listen(PORT, () => {
+    console.log(`[JARVIS] Starting dashboard on: http://localhost:${PORT}`);
     next();
   });
 };
