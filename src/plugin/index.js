@@ -6,9 +6,19 @@ const importCwd = require("import-cwd"); // used to get the users project detail
 const pkg = importCwd("./package.json");
 
 function Jarvis(options) {
+
+  // check if port is valid
+  let portIsValid = true;
+  if (options && options.port && isNaN(parseInt(options.port))) {
+    portIsValid = false;
+    console.error(`[JARVIS] your specified port ("${options.port}") is invalid, falling back to 1337, please check it again :)`);
+  };
+
   this.options = {
-    port: options && options.port || 1337 // if no port specified fall back to 1337
-  }
+    port: (options && portIsValid)
+      ? parseInt(options.port)
+      : 1337 // fall back to 1337 if port is not a number
+  };
   this.env = {
     production: false,
     running: false, // indicator if our express server + sockets are running
@@ -21,7 +31,7 @@ function Jarvis(options) {
   };
 }
 
-Jarvis.prototype.apply = function (compiler) {
+Jarvis.prototype.apply = function(compiler) {
   let projectInfo = {
     name: pkg.name,
     version: pkg.version,
