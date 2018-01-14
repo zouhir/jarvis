@@ -5,9 +5,7 @@ const importCwd = require("import-cwd"); // used to get the users project detail
 
 const pkg = importCwd("./package.json");
 
-function Jarvis(opts) {
-  
-  const options = opts || {};
+function Jarvis(options = {}) {
   
   // check if port is valid
   let portIsValid = true;
