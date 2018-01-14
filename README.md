@@ -2,13 +2,22 @@
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-logo.png?raw=true">
 </h1>
 
-</br>
+<br />
 
-[![npm package](https://img.shields.io/npm/v/webpack-jarvis.svg)](https://www.npmjs.com/package/webpack-jarvis)
-[![npm package](https://img.shields.io/npm/dm/webpack-jarvis.svg)](https://www.npmjs.com/package/webpack-jarvis)
+<div align="center">
+  <a href="https://www.npmjs.com/package/webpack-jarvis">
+    <img src="https://img.shields.io/npm/v/webpack-jarvis.svg" alt="version" />
+  </a>
+  <a href="https://www.npmjs.com/package/webpack-jarvis">
+    <img src="https://img.shields.io/npm/dm/webpack-jarvis.svg" alt="version" />
+  </a>
+  <a href="https://oss.ninja/mit/zouhir">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
+  </a>
+</div>
 
-</br>
-</br>
+<br />
+<br />
 
 <p>
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-about.png?raw=true" width="100%">
@@ -55,7 +64,7 @@ $ npm i -D webpack-jarvis
 
 In your webpack config file:
 
-```javascript
+```js
 const Jarvis = require('webpack-jarvis');
 
 /* the rest of your webpack configs */
@@ -93,7 +102,6 @@ and you are all set!
 <p>
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-contrib.png?raw=true" width="100%">
 </p>
-
 _a super cool design will go here listing all contributors names + GitHub avatar_
 
 <br />
@@ -108,4 +116,4 @@ _a super cool design will go here listing all contributors names + GitHub avatar
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-license.png?raw=true" width="100%">
 </p>
 
-MIT © [Zouhir](https://zouhir.org)
+[MIT © Zouhir](https://oss.ninja/mit/zouhir)
