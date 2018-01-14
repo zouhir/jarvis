@@ -2,8 +2,14 @@
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-logo.png?raw=true">
 </h1>
 
-<br />
-<br />
+</br>
+
+[![npm package](https://img.shields.io/npm/v/webpack-jarvis.svg)](https://www.npmjs.com/package/webpack-jarvis)
+[![npm package](https://img.shields.io/npm/dm/webpack-jarvis.svg)](https://www.npmjs.com/package/webpack-jarvis)
+
+</br>
+</br>
+
 <p>
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-about.png?raw=true" width="100%">
 </p>
@@ -49,10 +55,10 @@ $ npm i -D webpack-jarvis
 
 In your webpack config file:
 
-```
+```javascript
 const Jarvis = require('webpack-jarvis');
 
-// the rest of your webpack configs
+/* the rest of your webpack configs */
 
 plugins: [
     new Jarvis() // that's all you need!
@@ -72,8 +78,6 @@ and you are all set!
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-help.png?raw=true" width="100%">
 </p>
 
-I am not entirely sure how many bugs you will catch while it's in beta, but what I know for sure is the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
-
 **On the roadmap:**
 
 * Cleanup the hacky code in the client app, it's embarassing I am sorry!.
@@ -81,6 +85,9 @@ I am not entirely sure how many bugs you will catch while it's in beta, but what
 * Bundle size analyzer like feature in the table.
 * Build snippets page.
 * Build Oppurtunities Section to suggest loaders, plugins, etc. that can improve your build and bundle.
+
+**Note:**
+> I am not entirely sure how many bugs you will catch while it's in beta, but what I know for sure is the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
 
 <br />
 <p>
