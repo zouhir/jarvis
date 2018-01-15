@@ -4,6 +4,7 @@
   "description": "A very intelligent webpack dashboard",
   "main": "bin/plugin/index.js",
   "scripts": {
+    "precommit": "lint-staged",
     "dev":
       "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "prebuild": "rimraf bin && mkdir bin",
@@ -74,6 +75,9 @@
     "svg-url-loader": "^2.1.1",
     "webpack": "^3.8.1",
     "webpack-dev-server": "^2.9.3"
+  },
+  "lint-staged": {
+    "*.{js,json,scss}": ["prettier --write", "git add"]
   },
   "jest": {
     "verbose": true,
