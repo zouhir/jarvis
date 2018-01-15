@@ -25,10 +25,6 @@
     "ansi-to-html": "^0.6.3",
     "express": "^4.15.4",
     "import-from": "^2.1.0",
-    "preact": "^8.2.1",
-    "preact-compat": "^3.16.0",
-    "preact-habitat": "^2.2.3",
-    "preact-markup": "^1.6.0",
     "socket.io": "^2.0.3"
   },
   "devDependencies": {
@@ -60,6 +56,10 @@
     "ncp": "^2.0.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
+    "preact": "^8.2.1",
+    "preact-compat": "^3.16.0",
+    "preact-habitat": "^2.2.3",
+    "preact-markup": "^1.6.0",
     "prettier": "^1.10.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
