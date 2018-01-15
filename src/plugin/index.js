@@ -8,7 +8,9 @@ const pkg = importCwd("./package.json");
 function Jarvis(options = {}) {
 
   this.options = {
-    port: options.port || 1337 // fall back to 1337 if port is not a number
+    port: (isNaN(parseInt(options.port))) // if port is not a number console.error if port is port given in config and fall back to 1337
+      ? (options.port && console.error(`[JARVIS] error: the specified port (${options.port}) is not valid, falling back to 1337...`) && false) || 1337
+      : options.port
   };
   this.env = {
     production: false,
