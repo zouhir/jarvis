@@ -15,6 +15,9 @@
     "build:server": "cross-env ncp src/plugin bin/plugin",
     "test": "jest"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "author": "Zouhir",
   "license": "MIT",
   "peerDependencies": {

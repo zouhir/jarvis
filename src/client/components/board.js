@@ -10,7 +10,7 @@ import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
 
 import io from "socket.io-client";
-const socket = io("localhost:1337");
+const socket = io("localhost:" + document.location.port);
 
 export default class Board extends Component {
   state = {
