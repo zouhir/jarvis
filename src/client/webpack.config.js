@@ -1,6 +1,5 @@
 const path = require("path");
 const webpack = require("webpack");
-const chalk = require("chalk");
 const WebpackMessages = require("webpack-messages");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
