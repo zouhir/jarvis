@@ -12,6 +12,7 @@ function Jarvis(options) {
     running: false, // indicator if our express server + sockets are running
     watching: false
   };
+
   this.reports = {
     stats: {},
     progress: {},
@@ -20,20 +21,15 @@ function Jarvis(options) {
 }
 
 Jarvis.prototype.apply = function(compiler) {
-  let projectInfo = {
-    name: pkg.name,
-    version: pkg.version,
-    makers: pkg.author
-  };
-
-  this.reports.projcect = projectInfo;
+  const { name, version, author: makers } = pkg;
+  this.reports.project = { name, version, makers };
 
   if (!this.env.running) {
     server.start(() => {
       this.env.running = true;
       // if a new client is connected push current bundle info
       server.io.on("connection", socket => {
-        socket.emit("project", this.reports.projcect);
+        socket.emit("project", this.reports.project);
         socket.emit("progress", this.reports.progress);
         socket.emit("stats", this.reports.stats);
       });
@@ -54,11 +50,11 @@ Jarvis.prototype.apply = function(compiler) {
   const definePlugin = compiler.options.plugins.filter(
     plugin => plugin.constructor.name === "DefinePlugin"
   )[0];
-  if (
-    definePlugin &&
-    typeof definePlugin["definitions"]["process.env.NODE_ENV"] !== "undefined"
-  ) {
-    definePlugin["definitions"]["process.env.NODE_ENV"] === "production"
+
+  const pluginNodeEnv = definePlugin["definitions"]["process.env.NODE_ENV"];
+
+  if (definePlugin && typeof pluginNodeEnv !== "undefined") {
+    pluginNodeEnv === "production"
       ? (this.env.production = true)
       : (this.env.production = false);
   }
@@ -67,23 +63,18 @@ Jarvis.prototype.apply = function(compiler) {
   compiler.apply(
     new webpack.ProgressPlugin((percentage, message) => {
       this.reports.progress = { percentage, message };
-      server.io.emit("progress", {
-        percentage,
-        message
-      });
+      server.io.emit("progress", { percentage, message });
     })
   );
 
   // extract the final reports from the stats!
   compiler.plugin("done", stats => {
-    let jsonStats = stats.toJson({ chunkModules: true });
+    const jsonStats = stats.toJson({ chunkModules: true });
     jsonStats.isDev = !this.env.production;
-    let statsReport = reporter.statsReporter(jsonStats);
-    this.reports.stats = statsReport;
-    server.io.emit("stats", statsReport);
-    if (!this.env.watching) {
-      server.close();
-    }
+    this.reports.stats = reporter.statsReporter(jsonStats);
+    server.io.emit("stats", this.reports.stats);
+
+    if (!this.env.watching) { server.close(); }
   });
 
   // that's it!
