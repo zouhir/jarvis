@@ -52,7 +52,7 @@ In your webpack config file:
 ```
 const Jarvis = require('webpack-jarvis');
 
-// the rest of your webpack configs
+/* the rest of your webpack configs */
 
 plugins: [
     new Jarvis({
