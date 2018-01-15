@@ -1,7 +1,12 @@
-
-$footer-bg: #2A3351;
-$progress-bg: #1E263F;
-$progress-fg: linear-gradient(180deg, #6E78FF 0%, #B851F3 30%, #DA6EBF 30%, #F4B8AD 100%);
+$footer-bg: #2a3351;
+$progress-bg: #1e263f;
+$progress-fg: linear-gradient(
+  180deg,
+  #6e78ff 0%,
+  #b851f3 30%,
+  #da6ebf 30%,
+  #f4b8ad 100%
+);
 footer {
   position: absolute;
   bottom: 0;
@@ -11,7 +16,7 @@ footer {
   background: $footer-bg;
   display: flex;
   align-items: center;
-  box-shadow: 0 -3px 20px 0 rgba(37,45,71,0.34);
+  box-shadow: 0 -3px 20px 0 rgba(37, 45, 71, 0.34);
   padding: 0px 80px;
   z-index: 99;
 }
@@ -32,5 +37,11 @@ footer {
   width: 100%;
   display: block;
   height: 40px;
-  background-image: linear-gradient(90deg, #6E78FF 0%, #B851F3 30%, #DA6EBF 60%, #F4B8AD 100%);
+  background-image: linear-gradient(
+    90deg,
+    #6e78ff 0%,
+    #b851f3 30%,
+    #da6ebf 60%,
+    #f4b8ad 100%
+  );
 }

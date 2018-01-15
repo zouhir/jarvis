@@ -9,7 +9,9 @@
   @for $i from 0 through 12 {
     @if $i == 0 {
       .col-#{$size},
-      .col-#{$size}-offset-#{$i} { @include base-col; }
+      .col-#{$size}-offset-#{$i} {
+        @include base-col;
+      }
 
       .col-#{$size} {
         flex-grow: 1;
@@ -17,19 +19,25 @@
         max-width: 100%;
       }
 
-      .col-#{$size}-offset-#{$i} { margin-left: 0; }
+      .col-#{$size}-offset-#{$i} {
+        margin-left: 0;
+      }
     } @else {
       $width: 8.33333333% * $i;
 
       .col-#{$size}-#{$i},
-      .col-#{$size}-offset-#{$i} { @include base-col; }
+      .col-#{$size}-offset-#{$i} {
+        @include base-col;
+      }
 
       .col-#{$size}-#{$i} {
         flex-basis: $width;
         max-width: $width;
       }
 
-      .col-#{$size}-offset-#{$i} { margin-left: $width; }
+      .col-#{$size}-offset-#{$i} {
+        margin-left: $width;
+      }
     }
   }
 }
@@ -50,13 +58,27 @@
     text-align: end;
   }
 
-  .top-#{$size} { align-items: flex-start; }
-  .middle-#{$size} { align-items: center; }
-  .bottom-#{$size} { align-items: flex-end; }
-  .around-#{$size} { justify-content: space-around; }
-  .between-#{$size} { justify-content: space-between; }
-  .first-#{$size} { order: -1; }
-  .last-#{$size} { order: 1; }
+  .top-#{$size} {
+    align-items: flex-start;
+  }
+  .middle-#{$size} {
+    align-items: center;
+  }
+  .bottom-#{$size} {
+    align-items: flex-end;
+  }
+  .around-#{$size} {
+    justify-content: space-around;
+  }
+  .between-#{$size} {
+    justify-content: space-between;
+  }
+  .first-#{$size} {
+    order: -1;
+  }
+  .last-#{$size} {
+    order: 1;
+  }
 }
 
 $medias: (
@@ -67,11 +89,14 @@ $medias: (
 );
 
 @each $size, $val in $medias {
-  @if $size == xs { @include get-columns($size); }
-  @else {
+  @if $size == xs {
+    @include get-columns($size);
+  } @else {
     @media only screen and (min-width: map-keys($val)) {
       @include get-columns($size);
-      .container { width: map-values($val); }
+      .container {
+        width: map-values($val);
+      }
       @include get-placement($size);
     }
   }
