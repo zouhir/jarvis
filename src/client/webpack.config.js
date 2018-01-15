@@ -9,7 +9,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const Jarvis = require("../plugin/index");
 
 const pkg = require("./package.json");
-const babelrc = require("./babel");
+const babelrc = require("../../babel");
 
 const ENV = process.env.NODE_ENV || "development";
 
