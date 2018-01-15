@@ -16,12 +16,7 @@
   </a>
 </div>
 
-<br />
-<br />
-
-<p>
-  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-about.png?raw=true" width="100%">
-</p>
+## About the Project
 
 J.A.R.V.I.S. (Just A Rather Very Intelligent System) will put in your browser all the relevant information you need from your webpack build whether in dev or in prod.
 
@@ -53,10 +48,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/screenshot.png?raw=true" width="100%">
 </p>
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-install.png?raw=true" width="100%">
-</p>
+## Installation
 
 ```
 $ npm i -D webpack-jarvis
@@ -84,10 +76,7 @@ localhost:1337
 
 and you are all set!
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-help.png?raw=true" width="100%">
-</p>
+## Help & Contribute
 
 **On the roadmap:**
 
@@ -100,22 +89,14 @@ and you are all set!
 **Note:**
 > I am not entirely sure how many bugs you will catch while it's in beta, but what I know for sure is the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-contrib.png?raw=true" width="100%">
-</p>
+## Contributors
+
 _a super cool design will go here listing all contributors names + GitHub avatar_
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-credits.png?raw=true" width="100%">
-</p>
+## Credits
 
 * [Webpack Dashboard by Formidable Labs](https://github.com/FormidableLabs/webpack-dashboard)
 
-<br />
-<p>
-  <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-license.png?raw=true" width="100%">
-</p>
+## License
 
 [MIT © Zouhir](https://oss.ninja/mit/zouhir)
