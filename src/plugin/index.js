@@ -74,7 +74,9 @@ Jarvis.prototype.apply = function(compiler) {
     this.reports.stats = reporter.statsReporter(jsonStats);
     server.io.emit("stats", this.reports.stats);
 
-    if (!this.env.watching) { server.close(); }
+    if (!this.env.watching) {
+      server.close();
+    }
   });
 
   // that's it!
