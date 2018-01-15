@@ -1,9 +1,9 @@
 const webpack = require("webpack");
 const server = require("./server"); // expreess and socket IO for the client
 const reporter = require("./reporter-util"); // webpack stats formatters & helpers
-const importCwd = require("import-cwd"); // used to get the users project details form their working dir
+const importFrom = require("import-from"); // used to get the users project details form their working dir
 
-const pkg = importCwd("./package.json");
+const pkg = importFrom(process.cwd(), "./package.json");
 
 function Jarvis(options) {
   // TOOD: add options for port, etc..

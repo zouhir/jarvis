@@ -24,7 +24,7 @@
   "dependencies": {
     "ansi-to-html": "^0.6.3",
     "express": "^4.15.4",
-    "import-cwd": "^2.1.0",
+    "import-from": "^2.1.0",
     "preact": "^8.2.1",
     "preact-compat": "^3.16.0",
     "preact-habitat": "^2.2.3",
