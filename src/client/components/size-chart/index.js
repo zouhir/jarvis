@@ -1,12 +1,8 @@
-import {h, Component} from 'preact';
-
-
+import { h, Component } from "preact";
 
 export default class Chart extends Component {
-  componentDidMount () {
-    
-  }
-  
+  componentDidMount() {}
+
   render() {
     return (
       <div className="chart-base">

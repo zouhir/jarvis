@@ -3,13 +3,15 @@
   "version": "0.1.1",
   "description": "A very intelligent webpack dashboard",
   "main": "bin/plugin/index.js",
+  "files": [
+    "bin"
+  ],
   "scripts": {
-    "dev":
-      "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
+    "precommit": "lint-staged",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "prebuild": "rimraf bin && mkdir bin",
     "build": "npm run build:client && npm run build:server",
-    "build:client":
-      "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
+    "build:client": "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
     "build:server": "cross-env ncp src/plugin bin/plugin",
     "test": "jest"
   },
@@ -21,24 +23,14 @@
   },
   "dependencies": {
     "ansi-to-html": "^0.6.3",
-    "chalk": "^2.0.1",
-    "cwd": "^0.10.0",
     "express": "^4.15.4",
-    "import-cwd": "^2.1.0",
-    "preact": "^8.2.1",
-    "preact-compat": "^3.16.0",
-    "preact-habitat": "^2.2.3",
-    "preact-markup": "^1.6.0",
-    "socket.io": "^2.0.3",
-    "webpack-dev-middleware": "^1.12.0",
-    "webpack-hot-middleware": "^2.20.0",
-    "webpack-messages": "^1.0.0"
+    "import-from": "^2.1.0",
+    "socket.io": "^2.0.3"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
-    "babel-eslint": "^7.2.3",
     "babel-jest": "^20.0.3",
     "babel-loader": "^7.1.1",
     "babel-plugin-jsx-pragmatic": "^1.0.2",
@@ -54,23 +46,35 @@
     "copy-webpack-plugin": "^4.2.0",
     "cross-env": "^5.0.1",
     "css-loader": "^0.28.4",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-config-standard-preact": "^1.1.6",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.5",
     "html-webpack-plugin": "^2.29.0",
+    "husky": "^0.14.3",
     "jest": "^20.0.4",
     "jest-serializer-html-string": "^1.0.1",
+    "lint-staged": "^6.0.0",
     "ncp": "^2.0.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
+    "preact": "^8.2.1",
+    "preact-compat": "^3.16.0",
+    "preact-habitat": "^2.2.3",
+    "preact-markup": "^1.6.0",
+    "prettier": "^1.10.2",
     "raw-loader": "^0.5.1",
     "rimraf": "^2.6.2",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.18.2",
     "svg-url-loader": "^2.1.1",
     "webpack": "^3.8.1",
-    "webpack-dev-server": "^2.9.3"
+    "webpack-dev-server": "^2.9.3",
+    "webpack-messages": "^1.0.0"
+  },
+  "lint-staged": {
+    "*.{js,json,scss}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "jest": {
     "verbose": true,
@@ -80,14 +84,19 @@
     "globals": {
       "NODE_ENV": "test"
     },
-    "moduleFileExtensions": ["js", "jsx"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy",
       "^react$": "preact-compat",
       "^react-dom$": "preact-compat"
     },
-    "moduleDirectories": ["node_modules", "src"]
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
   }
 }

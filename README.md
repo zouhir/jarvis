@@ -3,7 +3,22 @@
 </h1>
 
 <br />
+
+<div align="center">
+  <a href="https://www.npmjs.com/package/webpack-jarvis">
+    <img src="https://img.shields.io/npm/v/webpack-jarvis.svg" alt="version" />
+  </a>
+  <a href="https://www.npmjs.com/package/webpack-jarvis">
+    <img src="https://img.shields.io/npm/dm/webpack-jarvis.svg" alt="version" />
+  </a>
+  <a href="https://oss.ninja/mit/zouhir">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" />
+  </a>
+</div>
+
 <br />
+<br />
+
 <p>
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-about.png?raw=true" width="100%">
 </p>
@@ -17,7 +32,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 **Original Features**:
 
 * Shows you the count of ES Harmony module imports which can be treeshakable and the CJS ones which are not.
-* shows you how well your assets perform in 12 different connection types.
+* Shows you how well your assets perform in 12 different connection types.
 
 **Other Features**:
 
@@ -49,7 +64,7 @@ $ npm i -D webpack-jarvis
 
 In your webpack config file:
 
-```
+```js
 const Jarvis = require('webpack-jarvis');
 
 /* the rest of your webpack configs */
@@ -74,8 +89,6 @@ and you are all set!
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-help.png?raw=true" width="100%">
 </p>
 
-I am not entirely sure how many bugs you will catch while it's in beta, but what I know for sure is the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
-
 **On the roadmap:**
 
 * Cleanup the hacky code in the client app, it's embarassing I am sorry!.
@@ -84,11 +97,13 @@ I am not entirely sure how many bugs you will catch while it's in beta, but what
 * Build snippets page.
 * Build Oppurtunities Section to suggest loaders, plugins, etc. that can improve your build and bundle.
 
+**Note:**
+> I am not entirely sure how many bugs you will catch while it's in beta, but what I know for sure is the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
+
 <br />
 <p>
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-contrib.png?raw=true" width="100%">
 </p>
-
 _a super cool design will go here listing all contributors names + GitHub avatar_
 
 <br />
@@ -103,4 +118,4 @@ _a super cool design will go here listing all contributors names + GitHub avatar
   <img src="https://github.com/zouhir/jarvis/blob/master/.github/readme-license.png?raw=true" width="100%">
 </p>
 
-MIT © [Zouhir](https://zouhir.org)
+[MIT © Zouhir](https://oss.ninja/mit/zouhir)
