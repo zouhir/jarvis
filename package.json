@@ -3,6 +3,9 @@
   "version": "0.1.1",
   "description": "A very intelligent webpack dashboard",
   "main": "bin/plugin/index.js",
+  "files": [
+    "bin"
+  ],
   "scripts": {
     "precommit": "lint-staged",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
