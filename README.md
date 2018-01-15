@@ -32,7 +32,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 **Original Features**:
 
 * Shows you the count of ES Harmony module imports which can be treeshakable and the CJS ones which are not.
-* shows you how well your assets perform in 12 different connection types.
+* Shows you how well your assets perform in 12 different connection types.
 
 **Other Features**:
 
