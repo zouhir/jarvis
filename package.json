@@ -21,8 +21,7 @@
   "author": "Zouhir",
   "license": "MIT",
   "peerDependencies": {
-    "webpack": "*",
-    "webpack-dev-server": "*"
+    "webpack": "*"
   },
   "dependencies": {
     "ansi-to-html": "^0.6.3",
