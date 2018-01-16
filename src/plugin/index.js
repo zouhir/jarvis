@@ -6,10 +6,16 @@ const importFrom = require("import-from"); // used to get the users project deta
 const pkg = importFrom(process.cwd(), "./package.json");
 
 function Jarvis(options = {}) {
-
   this.options = {
-    port: (isNaN(parseInt(options.port))) // if port is not a number console.error if port is port given in config and fall back to 1337
-      ? (options.port && console.error(`[JARVIS] error: the specified port (${options.port}) is not valid, falling back to 1337...`) && false) || 1337
+    port: isNaN(parseInt(options.port)) // if port is not a number console.error if port is port given in config and fall back to 1337
+      ? (options.port &&
+          console.error(
+            `[JARVIS] error: the specified port (${
+              options.port
+            }) is not valid, falling back to 1337...`
+          ) &&
+          false) ||
+        1337
       : options.port
   };
   this.env = {
@@ -56,12 +62,13 @@ Jarvis.prototype.apply = function(compiler) {
     plugin => plugin.constructor.name === "DefinePlugin"
   )[0];
 
-  const pluginNodeEnv = definePlugin["definitions"]["process.env.NODE_ENV"];
-
-  if (definePlugin && typeof pluginNodeEnv !== "undefined") {
-    pluginNodeEnv === "production"
-      ? (this.env.production = true)
-      : (this.env.production = false);
+  if (definePlugin) {
+    const pluginNodeEnv = definePlugin["definitions"]["process.env.NODE_ENV"];
+    if (typeof pluginNodeEnv !== "undefined") {
+      pluginNodeEnv === "production"
+        ? (this.env.production = true)
+        : (this.env.production = false);
+    }
   }
 
   // report the webpack compiler progress
