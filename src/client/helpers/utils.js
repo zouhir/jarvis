@@ -1,4 +1,5 @@
 const readableBytes = (bytes, decimals = 2) => {
+  if (bytes === void 0) return "Bundling...";
   if (bytes == 0) return "0 Bytes";
   let k = 1000,
     dm = decimals || 2,
