@@ -3,7 +3,8 @@
 .table {
   width: 100%;
   height: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: $dark;
   overflow: hidden;
   ul {
@@ -13,7 +14,6 @@
   ul.table-body {
     height: 470px;
     overflow-y: scroll;
-    padding-bottom: 100px;
     .col {
       border-bottom: 1px solid $dark;
       border-top: 0px;
@@ -80,7 +80,6 @@
   background: $darkest;
   width: 100%;
   border-bottom: 1px solid $dark;
-  min-height: 75px;
   li {
     display: inline-block;
     font-size: 11px;
