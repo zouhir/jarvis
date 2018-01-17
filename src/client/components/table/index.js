@@ -81,9 +81,9 @@ export default class Table extends Component {
 
           {selected === "all" || selected === "mixed"
             ? table.mixed.map(module => (
-                <li>
+                <li className="flex-li">
                   <div className="col">
-                    {module.name}
+                    <p className="module-name">{module.name}</p>
                     <div className="details" />
                   </div>
                   <div className="col">{readableBytes(module.size)}</div>

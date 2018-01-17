@@ -13,6 +13,7 @@
   ul.table-body {
     height: 470px;
     overflow-y: scroll;
+    padding-bottom: 100px;
     .col {
       border-bottom: 1px solid $dark;
       border-top: 0px;
@@ -49,6 +50,26 @@
         width: 25%;
         &:first-child {
           width: 75%;
+        }
+      }
+      .flex-li {
+        display: flex;
+        .col {
+          position: static;
+          display: flex;
+          flex-grow: 1;
+          align-items: center;
+          .module-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .details {
+            position: static;
+            transform: none;
+            width: 60px;
+            margin-left: 5px;
+          }
         }
       }
     }
