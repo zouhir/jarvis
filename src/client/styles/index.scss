@@ -5,9 +5,6 @@
 
 html {
   color: #6c6d74;
-  -webkit-font-smoothing: antialiased;
-  -moz-font-smoothing: antialiased;
-  -o-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   font-family: "Lato", sans-serif;
 }
@@ -20,7 +17,6 @@ body {
 }
 
 a {
-  -webkit-text-decoration-skip: objects;
   text-decoration: none;
 }
 
