@@ -10,7 +10,7 @@ import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
 
 import io from "socket.io-client";
-const socket = io("localhost:" + document.location.port);
+const socket = io(document.location.hostname + ":" + document.location.port);
 
 export default class Board extends Component {
   state = {
@@ -64,7 +64,10 @@ export default class Board extends Component {
       if (data.message.toLowerCase() !== "idle") {
         this.setState({
           progress: data,
-          logs: [`<p>${data.message}</p>`, `<p>${(data.percentage * 100).toFixed(2)}%</p>`]
+          logs: [
+            `<p>${data.message}</p>`,
+            `<p>${(data.percentage * 100).toFixed(2)}%</p>`
+          ]
         });
       }
     });
