@@ -28,7 +28,9 @@
     "express": "^4.15.4",
     "import-from": "^2.1.0",
     "parse-authors": "^0.2.4",
-    "socket.io": "^2.0.3"
+    "react-favicon": "^0.0.11",
+    "socket.io": "^2.0.3",
+    "url-loader": "^0.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
