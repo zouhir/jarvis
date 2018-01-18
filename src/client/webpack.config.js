@@ -16,7 +16,8 @@ const plugins = [
   new WebpackMessages({ name: pkg.name }),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin({
-    "process.env.NODE_ENV": JSON.stringify(ENV)
+    "process.env.NODE_ENV": JSON.stringify(ENV),
+    "process.env.DEV_PORT": 1337
   }),
   new ExtractTextPlugin({
     filename: "style.css",

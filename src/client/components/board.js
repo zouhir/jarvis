@@ -10,7 +10,13 @@ import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
 
 import io from "socket.io-client";
-const socket = io("localhost:" + document.location.port);
+
+const PORT =
+  process.env.NODE_ENV === "development" && process.env.DEV_PORT
+    ? process.env.DEV_PORT
+    : document.location.port;
+
+const socket = io("localhost:" + PORT);
 
 export default class Board extends Component {
   state = {
