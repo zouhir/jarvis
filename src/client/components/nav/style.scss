@@ -12,7 +12,7 @@ $icons: (
 .nav {
   display: grid;
   grid-gap: 0 0.5rem;
-  grid-template-columns: minmax(min-content, max-content) 50px 1fr 80px;
+  grid-template-columns: repeat(2, minmax(min-content, max-content)) 1fr 80px;
   padding: 0 1rem;
   width: 100%;
   background: $darker;
