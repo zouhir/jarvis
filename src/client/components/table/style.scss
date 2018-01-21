@@ -1,10 +1,10 @@
-@import "../../styles/variables";
+@import "../../styles/helpers";
 
 .table {
   width: 100%;
   height: 100%;
   display: block;
-  background: $dark;
+  background: $dashboard-bg-main;
   overflow: hidden;
   ul {
     padding: 0;
@@ -14,7 +14,7 @@
     height: 470px;
     overflow-y: scroll;
     .col {
-      border-bottom: 1px solid $dark;
+      border-bottom: 1px solid $dashboard-bg-main;
       border-top: 0px;
       padding: 12px;
       font-size: 13px;
@@ -41,7 +41,7 @@
         }
       }
       &:last-child {
-        border-left: 1px dashed $dark;
+        border-left: 1px dashed $dashboard-bg-main;
       }
     }
     &.two-col {
@@ -56,14 +56,14 @@
 }
 
 .header {
-  background: $darkest;
+  background: $dashboard-bg-darkest;
   width: 100%;
-  border-bottom: 1px solid $dark;
+  border-bottom: 1px solid $dashboard-bg-main;
   min-height: 75px;
   li {
     display: inline-block;
     font-size: 11px;
-    color: #ffffff;
+    color: $foreground-main;
     letter-spacing: 0.7px;
     font-weight: bold;
     padding: 15px 20px;
@@ -76,7 +76,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid #f7857d;
+        border-bottom: 3px solid $foreground-vibrant-b;
         display: block;
         width: 100%;
         height: 3px;
@@ -88,7 +88,7 @@
         position: absolute;
         bottom: 0;
         left: 0;
-        border-bottom: 3px solid #f7857d;
+        border-bottom: 3px solid $foreground-vibrant-b;
         display: block;
         width: 100%;
         height: 3px;
@@ -103,18 +103,18 @@
   }
   li.cjs {
     .percentage {
-      color: #f55753;
+      color: $foreground-vibrant-b;
     }
   }
   li.esm {
     .percentage {
-      color: $blue;
+      color: $foreground-success;
     }
   }
 
   li.mixed {
     .percentage {
-      color: #dd71f9;
+      color: $foreground-vibrant-c;
     }
   }
 }

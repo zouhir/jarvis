@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/helpers";
 
 h3 {
   font-size: 27px;
@@ -14,8 +14,8 @@ p.note {
 
 .card-header {
   padding: 20px 20px 7px 20px;
-  font-size: $tiny;
-  color: $text-dark;
+  font-size: $font-header-xs;
+  color: $black;
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.7px;
@@ -34,13 +34,25 @@ p.note {
     margin-top: 20px;
   }
   &.fire {
-    background: linear-gradient(315deg, #fb906f 0%, #f16c9e 100%);
+    background: linear-gradient(
+      315deg,
+      $dashboard-bg-vibrant-a 0%,
+      $dashboard-bg-vibrant-b 100%
+    );
   }
   &.evening {
-    background: linear-gradient(315deg, #95a6ff 0%, #5e78fe 100%);
+    background: linear-gradient(
+      315deg,
+      $dashboard-bg-vibrant-c 0%,
+      $dashboard-bg-vibrant-d 100%
+    );
   }
   &.berry {
-    background: linear-gradient(315deg, #df74f9 0%, #b72cf6 100%);
+    background: linear-gradient(
+      315deg,
+      $dashboard-bg-vibrant-e 0%,
+      $dashboard-bg-vibrant-f 100%
+    );
   }
 }
 
@@ -57,9 +69,9 @@ p.note {
 
 .bees {
   p {
-    color: $text-dark;
+    color: $black;
   }
   .progress {
-    background: $text-dark;
+    background: $black;
   }
 }

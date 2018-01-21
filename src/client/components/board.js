@@ -64,7 +64,10 @@ export default class Board extends Component {
       if (data.message.toLowerCase() !== "idle") {
         this.setState({
           progress: data,
-          logs: [`<p>${data.message}</p>`, `<p>${(data.percentage * 100).toFixed(2)}%</p>`]
+          logs: [
+            `<p>${data.message}</p>`,
+            `<p>${(data.percentage * 100).toFixed(2)}%</p>`
+          ]
         });
       }
     });

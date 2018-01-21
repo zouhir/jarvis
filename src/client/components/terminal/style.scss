@@ -1,7 +1,7 @@
-@import "../../styles/variables";
+@import "../../styles/helpers";
 
 .terminal {
-  background: $dark;
+  background: $dashboard-bg-main;
   height: 100%;
   width: 100%;
   padding: 15px;

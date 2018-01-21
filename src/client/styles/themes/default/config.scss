@@ -1,0 +1,36 @@
+@import "variables";
+
+$font-sm: 12px;
+
+$window-bg-color-a: $dark-purple;
+$window-bg-color-b: $light-pink;
+
+$dashboard-bg-lighter: lighten($deep-dark-ocean, 10%);
+$dashboard-bg-main: $deep-dark-ocean;
+$dashboard-bg-darker: $deep-darker-ocean;
+$dashboard-bg-darkest: $deep-darkest-ocean;
+
+$dashboard-bg-vibrant-a: #fb906f;
+$dashboard-bg-vibrant-b: #f16c9e;
+$dashboard-bg-vibrant-c: #95a6ff;
+$dashboard-bg-vibrant-d: #5e78fe;
+$dashboard-bg-vibrant-e: #df74f9;
+$dashboard-bg-vibrant-f: #b72cf6;
+
+$dashboard-shadows: $ghost;
+
+$foreground-main: #fff;
+$foreground-dark: $black;
+$foreground-error: $red;
+$foreground-success: $aqua;
+
+$foreground-vibrant-a: $green;
+$foreground-vibrant-b: $orange;
+$foreground-vibrant-c: $purple;
+$foreground-vibrant-d: $yellow;
+
+$font-body-xs: $font-sm;
+$font-body-sm: $font-md;
+
+$font-header-xs: $font-xs;
+$font-header-sm: $font-sm;

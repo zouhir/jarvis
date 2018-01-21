@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/helpers";
 
 .budget {
   height: 100%;
@@ -11,7 +11,7 @@
   align-items: flex-start;
   align-content: flex-start;
   .item {
-    background: $dark;
+    background: $dashboard-bg-main;
     flex: 1 0 25%;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@
       margin-right: 0px;
     }
     h5 {
-      font-size: $tiny;
+      font-size: $font-header-xs;
       letter-spacing: 1.2;
       font-weight: bold;
       color: rgb(240, 240, 240);
@@ -48,14 +48,14 @@
         margin-right: 8px;
       }
       .high {
-        background: #ff4a50;
+        background: $foreground-error;
         color: #fff;
         padding: 4px 15px;
         border-radius: 2px;
       }
       .low {
-        background: $blue;
-        color: $dark;
+        background: $foreground-success;
+        color: $dashboard-bg-main;
         padding: 4px 15px;
         border-radius: 2px;
       }

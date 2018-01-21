@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import "../../styles/helpers";
 
 .bundle-list {
   height: 100%;
@@ -13,10 +13,10 @@
       border: none;
       padding: 10px 15px;
       &:nth-child(odd) {
-        background: #202740;
+        background: $dashboard-bg-main;
       }
       &:nth-child(even) {
-        background: #212a43;
+        background: $dashboard-bg-lighter;
       }
       display: flex;
       align-items: center;
@@ -38,9 +38,9 @@
     li.bundles {
       padding: 15px;
       padding-bottom: 0px;
-      background: $dark;
-      border: solid 1px $dark;
-      background: $dark;
+      background: $dashboard-bg-main;
+      border: solid 1px $dashboard-bg-main;
+      background: $dashboard-bg-main;
       margin-bottom: 10px;
       p {
         width: 100%;
@@ -62,11 +62,11 @@
           padding: 7px 15px;
           border-radius: 2px;
           &.big {
-            background: $red;
+            background: $foreground-error;
           }
           &.ok {
-            color: $dark;
-            background: $blue;
+            color: $dashboard-bg-main;
+            background: $foreground-success;
           }
         }
       }

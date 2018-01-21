@@ -1,10 +1,9 @@
 @import "fonts";
-@import "variables";
 @import "grid";
-@import "backgrounds";
+@import "themes/default/config.scss";
 
 html {
-  color: #6c6d74;
+  color: $foreground-dark;
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
@@ -14,7 +13,7 @@ html {
 
 body {
   margin: 0;
-  background: $dark;
+  background: $dashboard-bg-main;
   font-family: "Montserrat", sans-serif;
   color: #fff;
 }
@@ -36,7 +35,7 @@ a:hover {
 nav {
   width: 100%;
   height: 60px;
-  background: $darker;
+  background: $dashboard-bg-darker;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
   display: flex;
@@ -72,7 +71,11 @@ ul {
   position: relative;
   display: flex;
   align-items: center;
-  background-image: linear-gradient(180deg, #f476b7 0%, #8041ee 100%);
+  background-image: linear-gradient(
+    180deg,
+    $window-bg-color-b 0%,
+    $window-bg-color-a 100%
+  );
   display: flex;
   align-items: center;
   justify-content: center;
@@ -83,21 +86,21 @@ ul {
     height: 100%;
     top: 0;
     left: 0;
-    background: #000;
+    background: $foreground-dark;
     opacity: 0.1;
     z-index: 1;
   }
 }
 
 .board {
-  background: $darker;
+  background: $dashboard-bg-darker;
   width: 100%;
   max-width: 2800px;
   border-radius: 4px;
   padding-top: 5px;
   padding-bottom: 5px;
-  box-shadow: 0 6px 20px 0 rgba(37, 45, 71, 0.34);
-  color: #e1e1e5;
+  box-shadow: 0 6px 20px 0 $dashboard-shadows;
+  color: $foreground-main;
   z-index: 99;
   position: relative;
   display: flex;
@@ -114,7 +117,7 @@ ul {
 
 ::-webkit-scrollbar {
   width: 16px;
-  background: $dark;
+  background: $dashboard-bg-main;
 }
 
 ::-webkit-scrollbar-thumb {
