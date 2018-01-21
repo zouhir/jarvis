@@ -1,5 +1,6 @@
 import { h, Component } from "preact";
 import "./style.scss";
+import ConditionWrap from "../utils";
 
 import { readableBytes } from "../../helpers/utils";
 
@@ -67,41 +68,41 @@ export default class Table extends Component {
           </li>
         </ul>
         <ul class="table-body two-col">
-          {selected === "all" || selected === "esm"
-            ? table.esm.map(module => (
-                <li>
-                  <div className="col">
-                    {module.name}
-                    <div className="details" />
-                  </div>
-                  <div className="col">{readableBytes(module.size)}</div>
-                </li>
-              ))
-            : null}
+          <ConditionWrap condition={selected === "all" || selected === "esm"}>
+            {table.esm.map(module => (
+              <li>
+                <div className="col">
+                  {module.name}
+                  <div className="details" />
+                </div>
+                <div className="col">{readableBytes(module.size)}</div>
+              </li>
+            ))}
+          </ConditionWrap>
 
-          {selected === "all" || selected === "mixed"
-            ? table.mixed.map(module => (
-                <li className="flex-li">
-                  <div className="col">
-                    <p className="module-name">{module.name}</p>
-                    <div className="details" />
-                  </div>
-                  <div className="col">{readableBytes(module.size)}</div>
-                </li>
-              ))
-            : null}
+          <ConditionWrap condition={selected === "all" || selected === "mixed"}>
+            {table.mixed.map(module => (
+              <li className="flex-li">
+                <div className="col">
+                  <p className="module-name">{module.name}</p>
+                  <div className="details" />
+                </div>
+                <div className="col">{readableBytes(module.size)}</div>
+              </li>
+            ))}
+          </ConditionWrap>
 
-          {selected === "all" || selected === "cjs"
-            ? table.cjs.map(module => (
-                <li>
-                  <div className="col">
-                    {module.name}
-                    <div className="details" />
-                  </div>
-                  <div className="col">{readableBytes(module.size)}</div>
-                </li>
-              ))
-            : null}
+          <ConditionWrap condition={selected === "all" || selected === "cjs"}>
+            {table.cjs.map(module => (
+              <li>
+                <div className="col">
+                  {module.name}
+                  <div className="details" />
+                </div>
+                <div className="col">{readableBytes(module.size)}</div>
+              </li>
+            ))}
+          </ConditionWrap>
         </ul>
       </div>
     );

@@ -1,4 +1,5 @@
 import { h, Component } from "preact";
+import ConditionWrap from "../utils";
 
 // import TypeAhead from "../typeahead";
 import Table from "../table";
@@ -44,11 +45,12 @@ export default class Chart extends Component {
               <div className="values">
                 <label>{speed.speed}</label>
                 <div className="time">{speed.time}s</div>
-                {speed.time > 5 ? (
+                <ConditionWrap
+                  condition={speed.time > 5}
+                  otherwise={<div className="low">-{5 - speed.time}s</div>}
+                >
                   <div className="high">+{speed.time - 5}s</div>
-                ) : (
-                  <div className="low">-{5 - speed.time}s</div>
-                )}
+                </ConditionWrap>
               </div>
             </div>
           </div>
