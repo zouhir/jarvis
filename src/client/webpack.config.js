@@ -145,6 +145,10 @@ module.exports = {
         use: "raw-loader"
       },
       {
+        test: /\.ico$/,
+        use: "url-loader"
+      },
+      {
         test: /\.svg/,
         use: {
           loader: "svg-url-loader",
