@@ -3,7 +3,8 @@
 .table {
   width: 100%;
   height: 100%;
-  display: block;
+  display: flex;
+  flex-direction: column;
   background: $dashboard-bg-main;
   overflow: hidden;
   ul {
@@ -51,6 +52,26 @@
           width: 75%;
         }
       }
+      .flex-li {
+        display: flex;
+        .col {
+          position: static;
+          display: flex;
+          flex-grow: 1;
+          align-items: center;
+          .module-name {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .details {
+            position: static;
+            transform: none;
+            width: 60px;
+            margin-left: 5px;
+          }
+        }
+      }
     }
   }
 }
@@ -59,7 +80,6 @@
   background: $dashboard-bg-darkest;
   width: 100%;
   border-bottom: 1px solid $dashboard-bg-main;
-  min-height: 75px;
   li {
     display: inline-block;
     font-size: 11px;
