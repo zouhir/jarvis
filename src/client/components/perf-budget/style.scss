@@ -10,6 +10,7 @@
   flex-wrap: wrap;
   align-items: flex-start;
   align-content: flex-start;
+  color: $foreground-light;
   .item {
     background: $dashboard-bg-main;
     flex: 1 0 25%;
@@ -25,7 +26,7 @@
       font-size: $font-header-xs;
       letter-spacing: 1.2;
       font-weight: bold;
-      color: rgb(240, 240, 240);
+      color: $foreground-main;
       text-transform: uppercase;
       letter-spacing: 0.7px;
       margin-bottom: 10px;
@@ -41,7 +42,6 @@
       font-weight: 400;
       label {
         font-size: 14px;
-        color: rgb(240, 240, 240);
       }
       .time {
         margin-left: auto;
@@ -49,13 +49,13 @@
       }
       .high {
         background: $foreground-error;
-        color: #fff;
+        color: $foreground-main;
         padding: 4px 15px;
         border-radius: 2px;
       }
       .low {
         background: $foreground-success;
-        color: $dashboard-bg-main;
+        color: $foreground-dark;
         padding: 4px 15px;
         border-radius: 2px;
       }

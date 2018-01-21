@@ -12,7 +12,7 @@ import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
 
 import io from "socket.io-client";
-const socket = io(document.location.hostname + ":" + document.location.port);
+const socket = io(document.location.hostname + ":" + 1337);
 
 import success from "../assets/favicons/success.ico";
 import failure from "../assets/favicons/failure.ico";
