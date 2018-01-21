@@ -82,25 +82,26 @@ and you are all set!
 - `npm run dev`
 - `npm run dev:local`
 
-Why `dev` and `dev:local`? `dev` allows you to pull **jarvis** into a differentRepo via npm link and see the differentRepo's data in the **jarvis** UI. Use `dev:local` when you don't need a differentRepo's data.
+Why **dev** and **dev:local**? `dev` allows you to pull **jarvis** into a differentRepo via npm link and see the differentRepo's data in the **jarvis** UI. Use `dev:local` when you don't need a differentRepo's data; no data or fake data is enough for development.
 
 `npm run dev:local`...
 - Creates a jarvis *development* build and watches for changes.
-- Opens at `localhost:3000`, and is missing fake data.
-- Move to `localhost:1337` to see fake data.
+- Opens a browser at `localhost:3000`, and is missing some fake data.
+- Move to `localhost:1337` to see all fake data.
 
 `npm run dev`...
 First, setup [npm link](https://stackoverflow.com/questions/20888576/how-to-develop-npm-module-locally). Then point to any port *except 1337* in a differentRepo's webpack config...
 ```javascript
 plugins: [
         new Jarvis({ port: 1338 })
-    ]
+]
 ```
 ...then run `npm run dev` which will...
 - Create a jarvis *production* build and watches for changes.
-- Is served at `localhost:1337` and includes fake data.
+- Is served at `localhost:1337` and includes all fake data.
 - Once the jarvis build is done, build/serve in a differentRepo.
-- When a change occurs in `jarvis`, refresh the browser to see the change.
+- Open a browser to localhost:portYouSpecified to see a differentRepo's data in the `jarvis` UI.
+- When you make a change in `jarvis`, after it rebuilds, refresh the browser to see the changes.
 
 ### On the roadmap:
 * Cleanup the hacky code in the client app, it's embarassing, I'm sorry!
