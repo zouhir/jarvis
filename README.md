@@ -78,8 +78,31 @@ and you are all set!
 
 ## Help & Contribute
 
-**On the roadmap:**
+**Development Options**
+- `npm run watch`
+- `npm run dev`
 
+Why `watch` and `dev`? `dev` allows you to pull **jarvis** into a differentRepo via npm link and see the differentRepo's data in the **jarvis** UI. Use `watch` when you don't need a differentRepo's data.
+
+`npm run watch`...
+- Creates a jarvis *development* build and watches for changes.
+- Opens at `localhost:3000`, and is missing fake data.
+- Move to `localhost:1337` to see fake data.
+
+`npm run dev`...
+First, setup [npm link](https://stackoverflow.com/questions/20888576/how-to-develop-npm-module-locally). Then point to any port *except 1337* in a differentRepo's webpack config...
+```javascript
+plugins: [
+        new Jarvis({ port: 1338 })
+    ]
+```
+...then run `npm run dev` which will...
+- Create a jarvis *production* build and watches for changes.
+- Is served at `localhost:1337` and includes fake data.
+- Once the jarvis build is done, build/serve in a differentRepo.
+- When a change occurs in `jarvis`, refresh the browser to see the change.
+
+### On the roadmap:
 * Cleanup the hacky code in the client app, it's embarassing, I'm sorry!
 * Enforce best practices, structure and higher code quality standards.
 * Bundle size analyzer like feature in the table.

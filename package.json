@@ -6,13 +6,15 @@
   "files": ["bin"],
   "scripts": {
     "precommit": "lint-staged",
-    "dev":
-      "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "prebuild": "rimraf bin && mkdir bin",
     "build": "npm run build:client && npm run build:server",
     "build:client":
       "cross-env NODE_ENV=production webpack --config='./src/client/webpack.config.js' -p --progress",
     "build:server": "cross-env ncp src/plugin bin/plugin",
+    "dev":
+      "npm run prebuild && npm run build:server && npm run build:client -- --watch",
+    "watch":
+      "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest"
   },
   "engines": {
