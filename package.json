@@ -13,7 +13,7 @@
     "build:server": "cross-env ncp src/plugin bin/plugin",
     "dev":
       "npm run prebuild && npm run build:server && npm run build:client -- --watch",
-    "watch":
+    "dev:local":
       "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "test": "jest"
   },

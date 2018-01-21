@@ -79,12 +79,12 @@ and you are all set!
 ## Help & Contribute
 
 **Development Options**
-- `npm run watch`
 - `npm run dev`
+- `npm run dev:local`
 
-Why `watch` and `dev`? `dev` allows you to pull **jarvis** into a differentRepo via npm link and see the differentRepo's data in the **jarvis** UI. Use `watch` when you don't need a differentRepo's data.
+Why `dev` and `dev:local`? `dev` allows you to pull **jarvis** into a differentRepo via npm link and see the differentRepo's data in the **jarvis** UI. Use `dev:local` when you don't need a differentRepo's data.
 
-`npm run watch`...
+`npm run dev:local`...
 - Creates a jarvis *development* build and watches for changes.
 - Opens at `localhost:3000`, and is missing fake data.
 - Move to `localhost:1337` to see fake data.
