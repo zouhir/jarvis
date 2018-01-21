@@ -80,8 +80,8 @@ and you are all set!
 
 **On the roadmap:**
 
-* Cleanup the hacky code in the client app, it's embarassing I am sorry!.
-* enforce best practices, structure and higher code quality standards.
+* Cleanup the hacky code in the client app, it's embarassing, I'm sorry!
+* Enforce best practices, structure and higher code quality standards.
 * Bundle size analyzer like feature in the table.
 * Build snippets page.
 * Build Oppurtunities Section to suggest loaders, plugins, etc. that can improve your build and bundle.
@@ -91,7 +91,7 @@ and you are all set!
 
 ## Contributors
 
-_a super cool design will go here listing all contributors names + GitHub avatar_
+_A super cool design will go here listing all contributors names + GitHub avatar_
 
 ## Credits
 
