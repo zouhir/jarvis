@@ -1,25 +1,26 @@
 import { h } from "preact";
 import "./style.scss";
+import ConditionWrap from "../utils";
 
-let Nav = ({
+const Nav = ({
   name = "",
   version = "NaN",
   makers = { name: "", email: "", url: "" }
 }) => {
-  const emailLink = makers.email ? (
-    <a href={`mailto:${makers.email}`} className="nav-link">
-      {makers.email}
-    </a>
-  ) : (
-    ""
+  const emailLink = (
+    <ConditionWrap condition={makers.email}>
+      <a href={`mailto:${makers.email}`} className="nav-link">
+        {makers.email}
+      </a>
+    </ConditionWrap>
   );
 
-  const webLink = makers.url ? (
-    <a target="_blank" href={makers.url} className="nav-link">
-      {makers.url}
-    </a>
-  ) : (
-    ""
+  const webLink = (
+    <ConditionWrap condition={makers.url}>
+      <a target="_blank" href={makers.url} className="nav-link">
+        {makers.url}
+      </a>
+    </ConditionWrap>
   );
 
   return (
