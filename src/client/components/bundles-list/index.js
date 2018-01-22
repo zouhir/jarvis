@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 import { readableBytes } from "../../helpers/utils";
-import ConditionWrap from "../utils";
+import If from "../utils";
 
 import "./style.scss";
 
@@ -26,12 +26,11 @@ const Asset = props => {
         <span>
           {bundle.chunks.length} chunks, {readableBytes(bundle.size)}
         </span>
-        <ConditionWrap
+        <If
           condition={bundle.isOverSizeLimit}
+          then={<span className="size big">big</span>}
           otherwise={<span className="size ok">ok</span>}
-        >
-          <span className="size big">big</span>
-        </ConditionWrap>
+        />
       </p>
       <ChunkList chunks={bundle.chunks} chunkNames={bundle.chunkNames} />
     </li>

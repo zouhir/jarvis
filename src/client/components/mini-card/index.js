@@ -1,5 +1,5 @@
 import { h, Component } from "preact";
-import ConditionWrap from "../utils";
+import If from "../utils";
 
 import "./style.scss";
 
@@ -11,11 +11,14 @@ export default class MiniCard extends Component {
         <div className="card-header">{title}</div>
         <h3>{status}</h3>
         <p className="note">{note}</p>
-        <ConditionWrap condition={progress}>
-          <div className="progress-bar">
-            <div className="progress" style={{ width: `${progress}%` }} />
-          </div>
-        </ConditionWrap>
+        <If
+          condition={progress}
+          then={
+            <div className="progress-bar">
+              <div className="progress" style={{ width: `${progress}%` }} />
+            </div>
+          }
+        />
       </div>
     );
   }

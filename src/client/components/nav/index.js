@@ -1,6 +1,6 @@
 import { h } from "preact";
 import "./style.scss";
-import ConditionWrap from "../utils";
+import If from "../utils";
 
 const Nav = ({
   name = "",
@@ -8,19 +8,25 @@ const Nav = ({
   makers = { name: "", email: "", url: "" }
 }) => {
   const emailLink = (
-    <ConditionWrap condition={makers.email}>
-      <a href={`mailto:${makers.email}`} className="nav-link">
-        {makers.email}
-      </a>
-    </ConditionWrap>
+    <If
+      condition={makers.email}
+      then={
+        <a href={`mailto:${makers.email}`} className="nav-link">
+          {makers.email}
+        </a>
+      }
+    />
   );
 
   const webLink = (
-    <ConditionWrap condition={makers.url}>
-      <a target="_blank" href={makers.url} className="nav-link">
-        {makers.url}
-      </a>
-    </ConditionWrap>
+    <If
+      condition={makers.url}
+      then={
+        <a target="_blank" href={makers.url} className="nav-link">
+          {makers.url}
+        </a>
+      }
+    />
   );
 
   return (

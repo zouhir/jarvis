@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 import "./style.scss";
-import ConditionWrap from "../utils";
+import If from "../utils";
 
 import { readableBytes } from "../../helpers/utils";
 
@@ -68,8 +68,9 @@ export default class Table extends Component {
           </li>
         </ul>
         <ul class="table-body two-col">
-          <ConditionWrap condition={selected === "all" || selected === "esm"}>
-            {table.esm.map(module => (
+          <If
+            condition={selected === "all" || selected === "esm"}
+            then={table.esm.map(module => (
               <li>
                 <div className="col">
                   {module.name}
@@ -78,10 +79,11 @@ export default class Table extends Component {
                 <div className="col">{readableBytes(module.size)}</div>
               </li>
             ))}
-          </ConditionWrap>
+          />
 
-          <ConditionWrap condition={selected === "all" || selected === "mixed"}>
-            {table.mixed.map(module => (
+          <If
+            condition={selected === "all" || selected === "mixed"}
+            then={table.mixed.map(module => (
               <li className="flex-li">
                 <div className="col">
                   <p className="module-name">{module.name}</p>
@@ -90,10 +92,11 @@ export default class Table extends Component {
                 <div className="col">{readableBytes(module.size)}</div>
               </li>
             ))}
-          </ConditionWrap>
+          />
 
-          <ConditionWrap condition={selected === "all" || selected === "cjs"}>
-            {table.cjs.map(module => (
+          <If
+            condition={selected === "all" || selected === "cjs"}
+            then={table.cjs.map(module => (
               <li>
                 <div className="col">
                   {module.name}
@@ -102,7 +105,7 @@ export default class Table extends Component {
                 <div className="col">{readableBytes(module.size)}</div>
               </li>
             ))}
-          </ConditionWrap>
+          />
         </ul>
       </div>
     );
