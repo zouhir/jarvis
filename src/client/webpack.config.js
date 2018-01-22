@@ -11,13 +11,14 @@ const pkg = require("./package.json");
 const babelrc = require("../../babel");
 
 const ENV = process.env.NODE_ENV || "development";
+const PORT = process.env.DEV_PORT || 1337;
 
 const plugins = [
   new WebpackMessages({ name: pkg.name }),
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.DefinePlugin({
     "process.env.NODE_ENV": JSON.stringify(ENV),
-    "process.env.DEV_PORT": 1337
+    "process.env.DEV_PORT": PORT
   }),
   new ExtractTextPlugin({
     filename: "style.css",
