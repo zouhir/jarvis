@@ -2,6 +2,7 @@ const webpack = require("webpack");
 const server = require("./server"); // expreess and socket IO for the client
 const reporter = require("./reporter-util"); // webpack stats formatters & helpers
 const importFrom = require("import-from"); // used to get the users project details form their working dir
+const authors = require("parse-authors");
 
 const pkg = importFrom(process.cwd(), "./package.json");
 
@@ -33,8 +34,9 @@ function Jarvis(options = {}) {
 
 Jarvis.prototype.apply = function(compiler) {
   const { name, version, author: makers } = pkg;
-  this.reports.project = { name, version, makers };
+  const normalizedAuthor = parseAuthor(makers);
 
+  this.reports.project = { name, version, makers: normalizedAuthor };
   if (!this.env.running) {
     server.start(this.options, () => {
       this.env.running = true;
@@ -94,4 +96,16 @@ Jarvis.prototype.apply = function(compiler) {
   // that's it!
 };
 
+const parseAuthor = function(author) {
+  if (typeof author === "string") {
+    const authorsArray = authors(author);
+    if (authorsArray.length > 0) {
+      return authorsArray[0];
+    }
+  } else if (author.name) {
+    return author;
+  }
+
+  return { name: "", email: "", url: "" };
+};
 module.exports = Jarvis;
