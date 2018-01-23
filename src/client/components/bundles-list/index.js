@@ -1,6 +1,6 @@
 import { h, Component } from "preact";
 import { readableBytes } from "../../helpers/utils";
-import If from "../utils";
+import If from "../utils/condition-component";
 
 import "./style.scss";
 
