@@ -31,6 +31,8 @@ export default class Board extends Component {
       esm: [],
       mixed: []
     },
+    customCommandsList: [],
+    customCommandsOutput: {},
     logs: [],
     performance: {},
     project: {}
@@ -62,6 +64,27 @@ export default class Board extends Component {
         assetsSize: report.assetsSize || "NaN",
         logs: logs
       });
+    });
+    socket.on("custom_command_data", data => {
+      console.log("DATA", data);
+
+      // new command
+      if (
+        !this.state.customCommandsList ||
+        this.state.customCommandsList.indexOf(data.command) < 0
+      ) {
+        const customCommandsList = this.state.customCommandsList.push(
+          data.command
+        );
+        let customCommandsOutput = this.state.customCommandsOutput;
+        customCommandsOutput[data.command] = data.data;
+        this.setState({
+          customCommandsList,
+          customCommandsOutput
+        });
+      } else {
+        console.warn("TODO");
+      }
     });
     socket.on("progress", data => {
       this.setState({
