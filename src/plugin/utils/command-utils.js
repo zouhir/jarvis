@@ -20,7 +20,7 @@ module.exports = (commands, socket) => {
     proc.stdout.on("data", data => {
       socket.emit("custom_command_data", {
         command: cmd,
-        data
+        data: `${data}`
       });
     });
 
@@ -28,7 +28,7 @@ module.exports = (commands, socket) => {
     proc.stderr.on("data", error => {
       socket.emit("custom_command_error", {
         command: cmd,
-        error
+        error: `${error}`
       });
     });
 
@@ -36,7 +36,7 @@ module.exports = (commands, socket) => {
     proc.on("close", code => {
       socket.emit("custom_command_exit", {
         command: cmd,
-        code
+        code: `${code}`
       });
     });
   });

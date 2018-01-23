@@ -31,8 +31,6 @@ export default class Board extends Component {
       esm: [],
       mixed: []
     },
-    customCommandsList: [],
-    customCommandsOutput: {},
     logs: [],
     performance: {},
     project: {}
@@ -64,27 +62,6 @@ export default class Board extends Component {
         assetsSize: report.assetsSize || "NaN",
         logs: logs
       });
-    });
-    socket.on("custom_command_data", data => {
-      console.log("DATA", data);
-
-      // new command
-      if (
-        !this.state.customCommandsList ||
-        this.state.customCommandsList.indexOf(data.command) < 0
-      ) {
-        const customCommandsList = this.state.customCommandsList.push(
-          data.command
-        );
-        let customCommandsOutput = this.state.customCommandsOutput;
-        customCommandsOutput[data.command] = data.data;
-        this.setState({
-          customCommandsList,
-          customCommandsOutput
-        });
-      } else {
-        console.warn("TODO");
-      }
     });
     socket.on("progress", data => {
       this.setState({
@@ -139,7 +116,7 @@ export default class Board extends Component {
           />
         </div>
         <div className="widget col-xs-12 col-md-4 col-lg-6">
-          <Terminal logs={state.logs} />
+          <Terminal logs={state.logs} socket={socket} />
         </div>
         <div className="widget  col-xs-12 col-md-4 col-lg-3">
           <Bundlelist assets={state.assets} />
