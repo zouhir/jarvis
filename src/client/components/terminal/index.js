@@ -3,13 +3,29 @@ import Markup from "preact-markup";
 
 import "./style.scss";
 
+class CustomOutput extends Component {
+  render({ state }) {
+    return (
+      <div>
+        <span>$ {state.selectedTab}</span>
+        <br />
+        <br />
+        {state.output[state.selectedTab] &&
+          state.output[state.selectedTab].map(output => <div>{output}</div>)}
+      </div>
+    );
+  }
+}
+
 export default class Chart extends Component {
   state = {
-    commands: []
+    commands: [],
+    output: {},
+    selectedTab: "webpack"
   };
 
   setActiveTab(tab) {
-    console.log(tab);
+    this.setState({ selectedTab: tab });
   }
 
   componentDidMount() {
@@ -18,8 +34,11 @@ export default class Chart extends Component {
       if (this.state.commands.includes(data.command))
         console.log("TODO: handle this");
       else {
+        let output = this.state.output;
+        output[data.command] = [data.data];
         this.setState(prevState => ({
-          commands: [...prevState.commands, data.command]
+          commands: [...prevState.commands, data.command],
+          output
         }));
         console.log(this.state.commands);
       }
@@ -36,16 +55,25 @@ export default class Chart extends Component {
     return (
       <section className="terminals">
         <div className="tabs">
-          {this.state.commands.map(command => (
-            <div className="tab" onClick={() => this.setActiveTab(command)}>
+          {["webpack"].concat(this.state.commands).map(command => (
+            <div
+              className={
+                "tab " + (command == this.state.selectedTab ? "active" : "")
+              }
+              onClick={() => this.setActiveTab(command)}
+            >
               {command.split(" ")[0]}
             </div>
           ))}
         </div>
         <div className="terminal">
-          {props.logs.map(log => (
-            <Markup trim={false} markup={`<div>${log}</div>`} />
-          ))}
+          {this.state.selectedTab === "webpack" ? (
+            props.logs.map(log => (
+              <Markup trim={false} markup={`<div>${log}</div>`} />
+            ))
+          ) : (
+            <CustomOutput state={this.state} />
+          )}
         </div>
       </section>
     );
