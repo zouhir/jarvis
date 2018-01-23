@@ -15,17 +15,22 @@
     "build:server": "cross-env ncp src/plugin bin/plugin",
     "test": "jest"
   },
+  "engines": {
+    "node": ">=6.0.0"
+  },
   "author": "Zouhir",
   "license": "MIT",
   "peerDependencies": {
-    "webpack": "*",
-    "webpack-dev-server": "*"
+    "webpack": "*"
   },
   "dependencies": {
     "ansi-to-html": "^0.6.3",
     "express": "^4.15.4",
     "import-from": "^2.1.0",
-    "socket.io": "^2.0.3"
+    "parse-authors": "^0.2.4",
+    "react-favicon": "^0.0.11",
+    "socket.io": "^2.0.3",
+    "url-loader": "^0.6.2"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
