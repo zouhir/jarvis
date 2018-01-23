@@ -21,7 +21,7 @@ function Jarvis(options = {}) {
       : options.port,
 
     // these commands will be executed in the background and their output displayed in JARVIS
-    commands: ["ls", "git status", "hello-world -rf --fix"]
+    commands: options.commands || parseScripts(pkg.scripts)
   };
 
   this.env = {
@@ -117,4 +117,19 @@ const parseAuthor = function(author) {
 
   return { name: "", email: "", url: "" };
 };
+
+/**
+ * @param {Object} scripts - The scripts object from package.json.
+ * @returns {Array} - An array of the scripts in package.json.
+ */
+const parseScripts = function(scripts) {
+  let scriptsArray = [];
+  if (typeof scripts === "object") {
+    Object.keys(scripts).forEach(function(key) {
+      scriptsArray.push(scripts[key]);
+    });
+  }
+  return scriptsArray.length > 0 ? scriptsArray : null;
+};
+
 module.exports = Jarvis;
