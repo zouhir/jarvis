@@ -160,7 +160,7 @@ module.exports = {
   plugins: ENV === "production" ? prodPlugins : plugins,
   devtool: ENV === "production" ? "source-map" : "eval",
   devServer: {
-    port: 3005,
+    port: 3000,
     host: "localhost",
     publicPath: "/",
     contentBase: "./src/client",
