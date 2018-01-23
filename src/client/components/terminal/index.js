@@ -18,26 +18,26 @@ class CommandsList extends Component {
 
 class CustomOutput extends Component {
   render({ state }) {
+    const terminalRunning = state.runningCommands[state.selectedTab]
+      ? "terminal-running" // adds hearbeat animation when running
+      : "";
+    const color = state.runningCommands[state.selectedTab]
+      ? "#06ffff" // cyan while running
+      : state.failedCommands[state.selectedTab]
+        ? "#ff4a50" // red if it did fail
+        : "#0df9a3"; // green if didn't fail
+    console.log(terminalRunning);
     return (
       <div>
-        <span
-          class={
-            "terminal-input " + state.runningCommands[state.selectedTab]
-              ? "terminal-running"
-              : ""
-          }
-          style={{
-            color: state.failedCommands[state.selectedTab]
-              ? "#ff4a50"
-              : "#06ffff"
-          }}
-        >
+        <span className={`terminal-input ${terminalRunning}`} style={{ color }}>
           $ {state.selectedTab}
         </span>
         <br />
         <br />
         {state.outputs[state.selectedTab] &&
-          state.outputs[state.selectedTab].map(output => <div>{output}</div>)}
+          state.outputs[state.selectedTab].map(output => (
+            <Markup trim={false} markup={`<div>${output}</div>`} />
+          ))}
       </div>
     );
   }
@@ -62,11 +62,25 @@ export default class Chart extends Component {
     this.props.socket.emit("custom_command_run", {
       command: cmd
     });
-    console.log("LOLOLLLLfewnnnnnnnnnnnLL");
+
+    let runningCommands = this.state.runningCommands;
+    runningCommands[cmd] = true;
+
+    this.setState({
+      runningCommands,
+      selectedTab: cmd
+    });
+
     if (!this.state.tabs.includes(cmd)) {
-      console.log("LOLOLLLLLLLLLLLLLLLL");
-      this.setState(prevState => {
-        tabs: [...prevState.tabs, cmd];
+      this.setState(prevState => ({
+        tabs: [...prevState.tabs, cmd],
+        selectedTab: cmd
+      }));
+    } else {
+      let { outputs } = this.state;
+      outputs[cmd] = [];
+      this.setState({
+        outputs
       });
     }
   };
@@ -74,13 +88,11 @@ export default class Chart extends Component {
   componentDidMount() {
     const { socket } = this.props;
 
-    // register that a command got registered
-    socket.on("custom_command_register", data => {
-      if (!this.state.commands.includes(data.command)) {
-        this.setState(prevState => ({
-          commands: [...prevState.commands, data.command]
-        }));
-      }
+    // put array of commands into state
+    socket.on("custom_command_register_all", data => {
+      this.setState({
+        commands: data.commands
+      });
     });
 
     socket.on("custom_command_data", data => console.log("DATA: ", data));
@@ -91,12 +103,42 @@ export default class Chart extends Component {
     socket.on("custom_command_exit", data => console.log("EXIT: ", data));
 
     socket.on("custom_command_data", e => {
-      let outputs = this.state.outputs;
+      let { outputs } = this.state;
 
       if (!outputs[e.command]) outputs[e.command] = [];
       outputs[e.command].push(e.data);
 
       this.setState({ outputs });
+    });
+
+    socket.on("custom_command_error", e => {
+      let { outputs } = this.state;
+
+      if (!outputs[e.command]) outputs[e.command] = [];
+      outputs[e.command].push(`<div style="color:#ff4a50">${e.error}</div>`);
+
+      this.setState({ outputs });
+    });
+
+    socket.on("custom_command_critical_error", e => {
+      let { outputs } = this.state;
+
+      if (!outputs[e.command]) outputs[e.command] = [];
+      outputs[e.command].push(`<div style="color:#ff4a50">${e.error}</div>`);
+
+      this.setState({ outputs });
+    });
+
+    socket.on("custom_command_exit", e => {
+      let { runningCommands, failedCommands } = this.state;
+      runningCommands[e.command] = false;
+      failedCommands[e.command] = Number(e.code) !== 0;
+      console.log("FAILED: ", failedCommands);
+
+      this.setState({
+        failedCommands,
+        runningCommands
+      });
     });
 
     // socket.on("custom_command_data", data => {

@@ -1,26 +1,18 @@
 const { spawn } = require("child_process");
+const readline = require("readline");
 
 /**
- * Loop through commands and spawn a child process for each of them.
- * @param {Array} commands - An array of all commands to spawn. Like this: ['ls -lh /usr', 'git status'].
- * @param {Class} socket . Internal: the server socket that connects plugin to server command.
+ * Register commands to client and spawn them when client wants to
+ * @param {Array} commands - An array of all commands to register. Like this: ['ls -lh /usr', 'git status'].
+ * @param {Class} socket - Internal: the server socket that connects plugin to server command.
  */
 module.exports = (commands, socket) => {
   if (!commands) return false; // we don't have any commands to run
   let runningCommands = [];
 
-  commands.forEach(cmd => {
-    // try to register command
-    try {
-      // register the command to the client
-      socket.emit("custom_command_register", {
-        command: cmd
-      });
-
-      // catch any unexpected errors
-    } catch (error) {
-      console.error(`[JARVIS] Error registering command to browser: ${error}`);
-    }
+  // register the commands to the client
+  socket.emit("custom_command_register_all", {
+    commands
   });
 
   // client requests to run command:
@@ -39,20 +31,32 @@ module.exports = (commands, socket) => {
       runningCommands[cmd] = true;
 
       // handle normal output by command
-      proc.stdout.on("data", data => {
-        socket.emit("custom_command_data", {
-          command: cmd,
-          data: `${data}`
+      proc.stdout.on("data", data => false);
+      readline
+        .createInterface({
+          input: proc.stdout,
+          terminal: true
+        })
+        .on("line", line => {
+          socket.emit("custom_command_data", {
+            command: cmd,
+            data: line
+          });
         });
-      });
 
       // handle error output that doesn't break the script by command
-      proc.stderr.on("data", error => {
-        socket.emit("custom_command_error", {
-          command: cmd,
-          error: `${error}`
+      proc.stderr.on("data", error => false);
+      readline
+        .createInterface({
+          input: proc.stderr,
+          terminal: true
+        })
+        .on("line", line => {
+          socket.emit("custom_command_error", {
+            command: cmd,
+            error: `${error}`
+          });
         });
-      });
 
       // handle errors that actually caused the command to crash
       proc.on("error", error => {
@@ -72,6 +76,7 @@ module.exports = (commands, socket) => {
       });
     } catch (error) {
       console.error(`[JARVIS] Error spawning command in node: ${error}`);
+
       runningCommands[cmd] = false;
       socket.emit("custom_command_critical_error", {
         command: cmd,

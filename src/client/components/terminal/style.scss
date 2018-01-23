@@ -33,6 +33,9 @@
     overflow-y: scroll;
     font-family: "Source Code Pro", monospace;
     font-size: 14px;
+    .terminal-input {
+      transition: color 0.13s;
+    }
     .terminal-running {
       animation: Heartbeat 0.618s infinite alternate;
     }
