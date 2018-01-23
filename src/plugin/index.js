@@ -1,6 +1,7 @@
 const webpack = require("webpack");
 const server = require("./server"); // expreess and socket IO for the client
-const reporter = require("./reporter-util"); // webpack stats formatters & helpers
+const reporter = require("./utils/reporter-util"); // webpack stats formatters & helpers
+const spawnProcesses = require("./utils/command-utils"); // spawn custom commands and listen to their output
 const importFrom = require("import-from"); // used to get the users project details form their working dir
 const authors = require("parse-authors");
 
@@ -17,8 +18,12 @@ function Jarvis(options = {}) {
           ) &&
           false) ||
         1337
-      : options.port
+      : options.port,
+
+    // these commands will be executed in the background and their output displayed in JARVIS
+    commands: ["ls", "git status"]
   };
+
   this.env = {
     production: false,
     running: false, // indicator if our express server + sockets are running
@@ -40,11 +45,15 @@ Jarvis.prototype.apply = function(compiler) {
   if (!this.env.running) {
     server.start(this.options, () => {
       this.env.running = true;
+
       // if a new client is connected push current bundle info
       server.io.on("connection", socket => {
         socket.emit("project", this.reports.project);
         socket.emit("progress", this.reports.progress);
         socket.emit("stats", this.reports.stats);
+
+        // spawn child processes for all commands in options.commands
+        spawnProcesses(this.options.commands, socket);
       });
     });
   }
