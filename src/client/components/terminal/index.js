@@ -7,11 +7,24 @@ class CustomOutput extends Component {
   render({ state }) {
     return (
       <div>
-        <span>$ {state.selectedTab}</span>
+        <span
+          class={
+            "terminal-input " + state.runningCommands[state.selectedTab]
+              ? "terminal-running"
+              : ""
+          }
+          style={{
+            color: state.failedCommands[state.selectedTab]
+              ? "#ff4a50"
+              : "#06ffff"
+          }}
+        >
+          $ {state.selectedTab}
+        </span>
         <br />
         <br />
-        {state.output[state.selectedTab] &&
-          state.output[state.selectedTab].map(output => <div>{output}</div>)}
+        {state.outputs[state.selectedTab] &&
+          state.outputs[state.selectedTab].map(output => <div>{output}</div>)}
       </div>
     );
   }
@@ -20,7 +33,9 @@ class CustomOutput extends Component {
 export default class Chart extends Component {
   state = {
     commands: [],
-    output: {},
+    outputs: {},
+    runningCommands: {},
+    failedCommands: {},
     selectedTab: "webpack"
   };
 
@@ -31,23 +46,35 @@ export default class Chart extends Component {
   componentDidMount() {
     const { socket } = this.props;
     socket.on("custom_command_data", data => {
-      if (this.state.commands.includes(data.command))
+      if (this.state.commands.includes(data.command)) {
         console.log("TODO: handle this");
-      else {
-        let output = this.state.output;
-        output[data.command] = [data.data];
+      } else {
+        let outputs = this.state.outputs;
+        outputs[data.command] = [data.data];
+
+        let runningCommands = this.state.runningCommands;
+        runningCommands[data.command] = true;
+
         this.setState(prevState => ({
           commands: [...prevState.commands, data.command],
-          output
+          runningCommands,
+          outputs
         }));
-        console.log(this.state.commands);
       }
     });
     socket.on("custom_command_error", data => {
-      console.log(`Recieved output from command ${data.command}: `, data.error);
+      console.log(
+        `Recieved outputs from command ${data.command}: `,
+        data.error
+      );
     });
     socket.on("custom_command_exit", data => {
-      console.log(`Command ${data.command} exited with code ${data.code}`);
+      console.log(data);
+      let runningCommands = this.state.runningCommands;
+      let failedCommands = this.state.failedCommands;
+      runningCommands[data.command] = false;
+      if (Number(data.code) > 0) failedCommands[data.command] = true;
+      this.setState({ runningCommands, failedCommands });
     });
   }
 

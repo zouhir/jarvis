@@ -21,7 +21,7 @@ function Jarvis(options = {}) {
       : options.port,
 
     // these commands will be executed in the background and their output displayed in JARVIS
-    commands: ["ls", "git status"]
+    commands: ["ls", "git status", "hello-world -rf --fix"]
   };
 
   this.env = {

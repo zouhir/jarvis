@@ -14,30 +14,51 @@ module.exports = (commands, socket) => {
     _cmd_first = _cmd.shift(); // ['ls', '-lh', '/usr'] => 'ls' && cmd == ['-lh', '/usr']
 
     // spawn actual command
-    const proc = spawn(_cmd_first, _cmd);
+    try {
+      const proc = spawn(_cmd_first, _cmd);
 
-    // handle normal output by command
-    proc.stdout.on("data", data => {
+      socket.emit("custom_command_register", {
+        command: cmd
+      });
+
+      // handle normal output by command
+      proc.stdout.on("data", data => {
+        socket.emit("custom_command_data", {
+          command: cmd,
+          data: `${data}`
+        });
+      });
+
+      // handle error output by command
+      proc.stderr.on("data", error => {
+        socket.emit("custom_command_error", {
+          command: cmd,
+          error: `${error}`
+        });
+      });
+      proc.on("error", error => {
+        socket.emit("custom_command_error", {
+          command: cmd,
+          error: `${error}`
+        });
+      });
+
+      // handle if command exits
+      proc.on("close", code => {
+        socket.emit("custom_command_exit", {
+          command: cmd,
+          code: `${code}`
+        });
+      });
+    } catch (e) {
       socket.emit("custom_command_data", {
         command: cmd,
-        data: `${data}`
+        data: `${e}`
       });
-    });
-
-    // handle error output by command
-    proc.stderr.on("data", error => {
-      socket.emit("custom_command_error", {
-        command: cmd,
-        error: `${error}`
-      });
-    });
-
-    // handle if command exits
-    proc.on("close", code => {
       socket.emit("custom_command_exit", {
         command: cmd,
-        code: `${code}`
+        code: `1`
       });
-    });
+    }
   });
 };

@@ -33,5 +33,17 @@
     overflow-y: scroll;
     font-family: "Source Code Pro", monospace;
     font-size: 14px;
+    .terminal-running {
+      animation: Heartbeat 0.618s infinite alternate;
+    }
+  }
+}
+
+@keyframes Heartbeat {
+  from {
+    opacity: 0.47;
+  }
+  to {
+    opacity: 1;
   }
 }
