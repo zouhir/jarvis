@@ -1,14 +1,19 @@
 const { spawn } = require("child_process");
+const path = require("path");
 const readline = require("readline");
 
 /**
  * Register commands to client and spawn them when client wants to
- * @param {Array} commands - An array of all commands to register. Like this: ['ls -lh /usr', 'git status'].
+ * @param {Object} commands - An array of all commands to register. Like this: {label: 'test', script: 'jest'}.
  * @param {Class} socket - Internal: the server socket that connects plugin to server command.
  */
 module.exports = (commands, socket) => {
   if (!commands) return false; // we don't have any commands to run
   let runningCommands = [];
+
+  commands.forEach(
+    (cmd, i) => (commands[i].script = cmd.script.replace(/(\'|\")/g, ""))
+  );
 
   // register the commands to the client
   socket.emit("custom_command_register_all", {
@@ -17,15 +22,17 @@ module.exports = (commands, socket) => {
 
   // client requests to run command:
   socket.on("custom_command_run", browserData => {
-    if (runningCommands[browserData.command]) return false;
+    const cmd = browserData.command.replace(/(\'|\")/g, "");
+    if (runningCommands[cmd]) return false;
     try {
       // prepare cmd to be accepted by spawn()
-      const cmd = browserData.command;
       _cmd = cmd.split(" "); // 'ls -lh /usr' => ['ls', '-lh', '/usr']
       _cmd_first = _cmd.shift(); // ['ls', '-lh', '/usr'] => 'ls' && cmd == ['-lh', '/usr']
 
-      console.log(`[JARVIS] starting command ${cmd}...`);
-      const proc = spawn(_cmd_first, _cmd);
+      console.debug(`[JARVIS] starting command ${cmd}...`);
+      const proc = spawn(_cmd_first, _cmd, {
+        cwd: process.cwd()
+      });
 
       // add command to runningcommands
       runningCommands[cmd] = true;
@@ -54,7 +61,7 @@ module.exports = (commands, socket) => {
         .on("line", line => {
           socket.emit("custom_command_error", {
             command: cmd,
-            error: `${error}`
+            error: line
           });
         });
 
@@ -73,6 +80,11 @@ module.exports = (commands, socket) => {
           command: cmd,
           code: `${code}`
         });
+      });
+
+      // kill process when requested
+      socket.on("custom_command_kill", e => {
+        if (e.cmd) proc.kill("SIGINT");
       });
     } catch (error) {
       console.error(`[JARVIS] Error spawning command in node: ${error}`);

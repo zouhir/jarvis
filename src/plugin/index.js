@@ -21,7 +21,9 @@ function Jarvis(options = {}) {
       : options.port,
 
     // these commands will be executed in the background and their output displayed in JARVIS
-    commands: options.commands || parseScripts(pkg.scripts)
+    commands: options.commands
+      ? options.commands.concat(parseScripts(pkg.scripts))
+      : parseScripts(pkg.scripts)
   };
 
   this.env = {
@@ -96,6 +98,7 @@ Jarvis.prototype.apply = function(compiler) {
     jsonStats.isDev = !this.env.production;
     this.reports.stats = reporter.statsReporter(jsonStats);
     server.io.emit("stats", this.reports.stats);
+    server.io.emit("compiler_done", null);
 
     if (!this.env.watching) {
       server.close();
@@ -126,7 +129,10 @@ const parseScripts = function(scripts) {
   let scriptsArray = [];
   if (typeof scripts === "object") {
     Object.keys(scripts).forEach(function(key) {
-      scriptsArray.push(scripts[key]);
+      scriptsArray.push({
+        label: key,
+        script: scripts[key]
+      });
     });
   }
   return scriptsArray.length > 0 ? scriptsArray : null;

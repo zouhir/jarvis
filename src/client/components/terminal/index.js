@@ -6,10 +6,21 @@ import "./style.scss";
 class CommandsList extends Component {
   render({ state, runCommand }) {
     return (
-      <div>
+      <div className="commands">
         {state.commands.length > 0 &&
           state.commands.map(cmd => (
-            <button onClick={() => runCommand(cmd)}>{cmd}</button>
+            <button
+              key={cmd}
+              className={state.runningCommands[cmd] && "command-running"}
+              title={
+                state.runningCommands[cmd] ? `Running ${cmd}` : `start ${cmd}`
+              }
+              onClick={() => runCommand(cmd, true)}
+            >
+              {state.commandLabels[cmd]}
+              <br />
+              <span className="script">{cmd}</span>
+            </button>
           ))}
       </div>
     );
@@ -46,6 +57,10 @@ class CustomOutput extends Component {
 export default class Chart extends Component {
   state = {
     commands: [],
+    commandLabels: {
+      webpack: "webpack",
+      "+": "+"
+    },
     tabs: [],
     outputs: {},
     runningCommands: {},
@@ -54,21 +69,36 @@ export default class Chart extends Component {
   };
 
   setActiveTab = tab => {
-    this.setState({ selectedTab: tab });
+    if (this.state.tabs.indexOf(tab) >= 0 || tab === "webpack" || tab === "+")
+      this.setState({ selectedTab: tab });
   };
 
-  runCommand = cmd => {
-    console.log(cmd);
+  closeTab = tab => {
+    const { tabs } = this.state;
+    const i = tabs.indexOf(tab);
+    if (this.state.runningCommands[tab]) this.killCommand(tab);
+    if (i >= 0) {
+      tabs.splice(i, 1);
+      this.setState(prevState => ({
+        selectedTab: i > 0 ? prevState.tabs[i - 1] : "webpack",
+        tabs
+      }));
+    }
+  };
+
+  runCommand = (cmd, switchTabs) => {
     this.props.socket.emit("custom_command_run", {
       command: cmd
     });
 
-    let runningCommands = this.state.runningCommands;
+    let { runningCommands, failedCommands } = this.state;
     runningCommands[cmd] = true;
+    failedCommands[cmd] = false;
 
     this.setState({
       runningCommands,
-      selectedTab: cmd
+      failedCommands,
+      selectedTab: switchTabs ? cmd : this.state.selectedTab
     });
 
     if (!this.state.tabs.includes(cmd)) {
@@ -85,13 +115,38 @@ export default class Chart extends Component {
     }
   };
 
+  killCommand = cmd => {
+    this.props.socket.emit("custom_command_kill", {
+      cmd
+    });
+  };
+
+  handleKeyDown = e => {
+    console.log(e);
+    if (e.ctrlKey && e.code === "KeyC" && !e.altKey) {
+      if (this.state.commands.includes(this.state.selectedTab)) {
+        this.killCommand(this.state.selectedTab);
+      }
+    }
+  };
+
   componentDidMount() {
     const { socket } = this.props;
 
     // put array of commands into state
     socket.on("custom_command_register_all", data => {
+      let commands = [];
+      let commandLabels = {
+        webpack: "webpack",
+        "+": "+"
+      };
+      data.commands.forEach(cmd => {
+        commands.push(cmd.script);
+        commandLabels[cmd.script] = cmd.label;
+      });
       this.setState({
-        commands: data.commands
+        commands,
+        commandLabels
       });
     });
 
@@ -118,6 +173,7 @@ export default class Chart extends Component {
       outputs[e.command].push(`<div style="color:#ff4a50">${e.error}</div>`);
 
       this.setState({ outputs });
+      console.log(this.state.outputs);
     });
 
     socket.on("custom_command_critical_error", e => {
@@ -133,7 +189,6 @@ export default class Chart extends Component {
       let { runningCommands, failedCommands } = this.state;
       runningCommands[e.command] = false;
       failedCommands[e.command] = Number(e.code) !== 0;
-      console.log("FAILED: ", failedCommands);
 
       this.setState({
         failedCommands,
@@ -141,36 +196,14 @@ export default class Chart extends Component {
       });
     });
 
-    // socket.on("custom_command_data", data => {
-    //   if (this.state.commands.includes(data.command)) {
-    //     console.log("TODO: handle this");
-    //   } else {
-    //     let outputs = this.state.outputs;
-    //     outputs[data.command] = [data.data];
+    socket.on("compiler_done", e => {
+      this.state.tabs.forEach(cmd => {
+        if (this.state.runningCommands[cmd]) return false;
+        this.runCommand(cmd, false);
+      });
+    });
 
-    //     let runningCommands = this.state.runningCommands;
-    //     runningCommands[data.command] = true;
-
-    //     this.setState(prevState => ({
-    //       runningCommands,
-    //       outputs
-    //     }));
-    //   }
-    // });
-    // socket.on("custom_command_error", data => {
-    //   console.log(
-    //     `Recieved outputs from command ${data.command}: `,
-    //     data.error
-    //   );
-    // });
-    // socket.on("custom_command_exit", data => {
-    //   console.log(data);
-    //   let runningCommands = this.state.runningCommands;
-    //   let failedCommands = this.state.failedCommands;
-    //   runningCommands[data.command] = false;
-    //   if (Number(data.code) > 0) failedCommands[data.command] = true;
-    //   this.setState({ runningCommands, failedCommands });
-    // });
+    document.body.onkeydown = this.handleKeyDown;
   }
 
   render(props) {
@@ -182,24 +215,41 @@ export default class Chart extends Component {
             .concat(["+"])
             .map(command => (
               <div
+                key={command}
                 className={
-                  "tab " + (command == this.state.selectedTab ? "active" : "")
+                  "tab " +
+                  (command == this.state.selectedTab && " active ") +
+                  (this.state.failedCommands[command] && " failed ")
                 }
                 onClick={() => this.setActiveTab(command)}
               >
-                {command.split(" ")[0]}
+                {this.state.commandLabels[command]}
+                {command !== "webpack" &&
+                  command !== "+" &&
+                  this.state.selectedTab === command && (
+                    <span
+                      onClick={() => this.closeTab(command)}
+                      className="close"
+                    >
+                      X
+                    </span>
+                  )}
               </div>
             ))}
         </div>
         <div className="terminal">
           {this.state.selectedTab === "webpack" ? (
-            props.logs.map(log => (
-              <Markup trim={false} markup={`<div>${log}</div>`} />
-            ))
+            <div className="output">
+              {props.logs.map(log => (
+                <Markup trim={false} markup={`<div>${log}</div>`} />
+              ))}
+            </div>
           ) : this.state.selectedTab === "+" ? (
             <CommandsList state={this.state} runCommand={this.runCommand} />
           ) : (
-            <CustomOutput state={this.state} />
+            <div className="output">
+              <CustomOutput state={this.state} />
+            </div>
           )}
         </div>
       </section>

@@ -108,6 +108,7 @@ export default class Board extends Component {
             }
             color="berry"
           />
+
           <MiniCard
             title="Total Assets Size"
             status={readableBytes(state.assetsSize)}

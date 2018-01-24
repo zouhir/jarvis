@@ -6,6 +6,7 @@ h3 {
   color: #fff;
   line-height: 35px;
 }
+
 p.note {
   font-weight: 300;
   font-size: 12px;
@@ -26,6 +27,9 @@ p.note {
   height: 145px;
   width: 100%;
   margin-bottom: 5px;
+  &:last-of-type {
+    margin-bottom: 0;
+  }
   p,
   h3 {
     padding-left: 20px;
