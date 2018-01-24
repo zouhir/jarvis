@@ -17,7 +17,9 @@ function Jarvis(options = {}) {
           ) &&
           false) ||
         1337
-      : options.port
+      : options.port,
+
+    host: "host" in options ? options.host : "localhost"
   };
   this.env = {
     production: false,

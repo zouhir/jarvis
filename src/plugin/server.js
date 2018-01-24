@@ -36,11 +36,11 @@ if (process.env.NODE_ENV !== "jarvis_dev") {
 }
 
 const start = (options, next) => {
-
   PORT = options.port;
+  HOST = options.host;
 
-  return server.listen(PORT, () => {
-    console.log(`[JARVIS] Starting dashboard on: http://localhost:${PORT}`);
+  return server.listen(PORT, HOST, () => {
+    console.log(`[JARVIS] Starting dashboard on: http://${HOST}:${PORT}`);
     next();
   });
 };
