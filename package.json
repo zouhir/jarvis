@@ -28,10 +28,11 @@
   "dependencies": {
     "all-contributors-cli": "^4.10.1",
     "ansi-to-html": "^0.6.3",
-    "express": "^4.15.4",
     "import-from": "^2.1.0",
     "parse-authors": "^0.2.4",
+    "polka": "^0.3.0",
     "react-favicon": "^0.0.11",
+    "serve-static": "^1.13.1",
     "socket.io": "^2.0.3",
     "url-loader": "^0.6.2"
   },
