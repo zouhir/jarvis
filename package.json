@@ -7,6 +7,8 @@
     "bin"
   ],
   "scripts": {
+    "contributors:add": "all-contributors add",
+    "contributors:generate": "all-contributors generate",
     "precommit": "lint-staged",
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config='./src/client/webpack.config.js' --inline --hot --progress",
     "prebuild": "rimraf bin && mkdir bin",
@@ -24,11 +26,13 @@
     "webpack": "*"
   },
   "dependencies": {
+    "all-contributors-cli": "^4.10.1",
     "ansi-to-html": "^0.6.3",
-    "express": "^4.15.4",
     "import-from": "^2.1.0",
     "parse-authors": "^0.2.4",
+    "polka": "^0.3.0",
     "react-favicon": "^0.0.11",
+    "serve-static": "^1.13.1",
     "socket.io": "^2.0.3",
     "url-loader": "^0.6.2"
   },
