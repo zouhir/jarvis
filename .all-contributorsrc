@@ -1,0 +1,166 @@
+{
+  "projectName": "jarvis",
+  "projectOwner": "zouhir",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "zouhir",
+      "name": "Zouhir ⚡️",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5052316?v=4",
+      "profile": "https://zouhir.org",
+      "contributions": [
+        "code",
+        "ideas"
+      ]
+    },
+    {
+      "login": "lukeed",
+      "name": "Luke Edwards",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5855893?v=4",
+      "profile": "https://lukeed.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Pickra",
+      "name": "Ari Picker",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5226549?v=4",
+      "profile": "https://twitter.com/Pickra5000",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "m4r1vs",
+      "name": "Marius Niveri",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/26097311?v=4",
+      "profile": "https://maniyt.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "gagan0723",
+      "name": "Gagan",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/6944095?v=4",
+      "profile": "https://github.com/gagan0723",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "safarishi",
+      "name": "石发磊",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9312426?v=4",
+      "profile": "https://github.com/safarishi",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Sunshine168",
+      "name": "ZiYingMai",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/15126380?v=4",
+      "profile": "https://github.com/Sunshine168",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "rachmulvey",
+      "name": "rachmulvey",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/10326464?v=4",
+      "profile": "https://github.com/rachmulvey",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "zcei",
+      "name": "Stephan Schneider",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1705507?v=4",
+      "profile": "https://github.com/zcei",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "Cap32",
+      "name": "Christopher Peng",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1403911?v=4",
+      "profile": "https://github.com/Cap32",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "phra",
+      "name": "Francesco Soncina",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/984628?v=4",
+      "profile": "https://www.linkedin.com/in/phraa/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "monsonjeremy",
+      "name": "Jeremy Monson",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/8846086?v=4",
+      "profile": "http://www.forecastme.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "gust42",
+      "name": "Gusten",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1333999?v=4",
+      "profile": "https://github.com/gust42",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "xjmdoo",
+      "name": "Tamas Sule",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/11145949?v=4",
+      "profile": "https://github.com/xjmdoo",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "remhume",
+      "name": "remmy hume",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/3317423?v=4",
+      "profile": "http://remics.net",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mippzon",
+      "name": "Michael Persson",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/2655379?v=4",
+      "profile": "https://github.com/mippzon",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "ZachGawlik",
+      "name": "Zach Gawlik",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5553498?v=4",
+      "profile": "https://zachgawlik.com/",
+      "contributions": [
+        "code",
+        "doc"
+      ]
+    }
+  ]
+}
