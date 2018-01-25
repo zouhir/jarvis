@@ -6,53 +6,53 @@
   position: relative;
   font-size: 13px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
   align-items: flex-start;
-  align-content: flex-start;
+  align-content: space-between;
+  flex-flow: row wrap;
+
   .item {
     background: $dark;
-    flex: 1 0 25%;
-    align-items: center;
-    justify-content: center;
-    margin: 0 15px 15px 0px;
+    flex: 1;
+    margin: 0.5rem;
     height: 90px;
     padding: 20px;
-    &:nth-child(3n + 3) {
-      margin-right: 0px;
-    }
+
     h5 {
       font-size: $tiny;
-      letter-spacing: 1.2;
       font-weight: bold;
       color: rgb(240, 240, 240);
       text-transform: uppercase;
       letter-spacing: 0.7px;
       margin-bottom: 10px;
+
       span {
         font-size: 12px;
         font-weight: 300;
         text-transform: none;
       }
     }
+
     .values {
       display: flex;
       align-items: center;
       font-weight: 400;
+
       label {
         font-size: 14px;
         color: rgb(240, 240, 240);
       }
+
       .time {
-        margin-left: auto;
-        margin-right: 8px;
+        margin: 0 0.5rem;
       }
+
       .high {
         background: #ff4a50;
         color: #fff;
         padding: 4px 15px;
         border-radius: 2px;
       }
+
       .low {
         background: $blue;
         color: $dark;
