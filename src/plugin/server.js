@@ -37,7 +37,7 @@ if (process.env.NODE_ENV !== "jarvis_dev") {
 exports.start = (options, next) => {
   HOST = options.host;
   PORT = options.port;
-  return app.listen(PORT).then(() => {
+  return app.listen(PORT, HOST).then(() => {
     console.log(`[JARVIS] Starting dashboard on: http://${HOST}:${PORT}`);
     next();
   });
