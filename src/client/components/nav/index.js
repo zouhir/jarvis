@@ -1,25 +1,32 @@
 import { h } from "preact";
 import "./style.scss";
+import If from "../utils/condition-component";
 
-let Nav = ({
+const Nav = ({
   name = "",
   version = "NaN",
   makers = { name: "", email: "", url: "" }
 }) => {
-  const emailLink = makers.email ? (
-    <a href={`mailto:${makers.email}`} className="nav-link">
-      {makers.email}
-    </a>
-  ) : (
-    ""
+  const emailLink = (
+    <If
+      condition={makers.email}
+      then={
+        <a href={`mailto:${makers.email}`} className="nav-link">
+          {makers.email}
+        </a>
+      }
+    />
   );
 
-  const webLink = makers.url ? (
-    <a target="_blank" href={makers.url} className="nav-link">
-      {makers.url}
-    </a>
-  ) : (
-    ""
+  const webLink = (
+    <If
+      condition={makers.url}
+      then={
+        <a target="_blank" href={makers.url} className="nav-link">
+          {makers.url}
+        </a>
+      }
+    />
   );
 
   return (
