@@ -1,5 +1,3 @@
-@import "../../styles/variables";
-
 .budget {
   height: 100%;
   width: 100%;
@@ -11,16 +9,16 @@
   flex-flow: row wrap;
 
   .item {
-    background: $dark;
+    background: var(--dashboard-bg-main);
     flex: 1;
     margin: 0.5rem;
     height: 90px;
     padding: 20px;
 
     h5 {
-      font-size: $tiny;
+      font-size: var(--font-body-xs);
       font-weight: bold;
-      color: rgb(240, 240, 240);
+      color: var(--foreground-main);
       text-transform: uppercase;
       letter-spacing: 0.7px;
       margin-bottom: 10px;
@@ -29,6 +27,7 @@
         font-size: 12px;
         font-weight: 300;
         text-transform: none;
+        opacity: 0.6;
       }
     }
 
@@ -39,23 +38,25 @@
 
       label {
         font-size: 14px;
-        color: rgb(240, 240, 240);
+        color: var(foreground-light);
+        opacity: 0.6;
       }
 
       .time {
         margin: 0 0.5rem;
+        color: var(foreground-main);
       }
 
       .high {
-        background: #ff4a50;
+        background: var(--foreground-error);
         color: #fff;
         padding: 4px 15px;
         border-radius: 2px;
       }
 
       .low {
-        background: $blue;
-        color: $dark;
+        background: var(--foreground-success);
+        color: var(--dashboard-bg-main);
         padding: 4px 15px;
         border-radius: 2px;
       }

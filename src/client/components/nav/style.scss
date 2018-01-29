@@ -1,6 +1,4 @@
-@import "../../styles/variables";
-
-$text-color: rgba(255, 255, 255, 0.7);
+$text-color: var(--foreground-light);
 
 $icons: (
   project: "../../assets/project.svg",
@@ -15,18 +13,18 @@ $icons: (
   grid-template-columns: repeat(2, minmax(min-content, max-content)) 1fr 80px;
   padding: 0 1rem;
   width: 100%;
-  background: $darker;
+  background: var(--dashboard-bg-darker);
   border-radius: 16px 16px 0 0;
 
   li {
-    color: $text-color;
+    color: var(--foreground-main);
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
   }
 
   &-link {
-    color: $text-color;
+    color: var(--foreground-main);
     padding-left: 5px;
     padding-right: 5px;
 

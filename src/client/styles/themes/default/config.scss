@@ -1,1 +1,37 @@
+@import "variables";
 
+:root {
+  --window-bg-color-a: $dark-purple;
+  --window-bg-color-b: $light-pink;
+
+  --dashboard-bg-lightest: lighten($deep-dark-ocean, 90%);
+  --dashboard-bg-lighter: lighten($deep-dark-ocean, 10%);
+  --dashboard-bg-main: $deep-dark-ocean;
+  --dashboard-bg-darker: $deep-darker-ocean;
+  --dashboard-bg-darkest: $deep-darkest-ocean;
+
+  --color-data-1: #fb906f;
+  --color-data-2: #f16c9e;
+  --color-data-3: #95a6ff;
+  --color-data-4: #5e78fe;
+  --color-data-5: #df74f9;
+  --color-data-6: #b72cf6;
+  --color-data-7: $green;
+  --color-data-8: $orange;
+  --color-data-9: $purple;
+  --color-data-10: $yellow;
+
+  --dashboard-shadows: $ghost;
+
+  --foreground-main: #fff;
+  --foreground-light: rgba(255, 255, 255, 0.7);
+  --foreground-dark: $black;
+  --foreground-error: $red;
+  --foreground-success: $aqua;
+
+  --font-body-xs: $font-sm;
+  --font-body-sm: $font-md;
+
+  --font-header-xs: $font-xs;
+  --font-header-sm: $font-sm;
+}

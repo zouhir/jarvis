@@ -12,7 +12,16 @@ import { readableBytes } from "../helpers/utils";
 import Nav from "./nav";
 
 import io from "socket.io-client";
-const socket = io(document.location.hostname + ":" + document.location.port);
+
+/**
+ * for JARVIS DEVELOPER
+ * Enforcing port is allowed and force_socket_port takes highest priority
+ *
+ */
+var _params = new URLSearchParams(window.location.search);
+let port = _params.get("force_socket_port") || document.location.port;
+
+const socket = io(document.location.hostname + ":" + port);
 
 import success from "../assets/favicons/success.ico";
 import failure from "../assets/favicons/failure.ico";
