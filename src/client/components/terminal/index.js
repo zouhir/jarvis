@@ -91,13 +91,15 @@ export default class Chart extends Component {
       command: cmd
     });
 
-    let { runningCommands, failedCommands } = this.state;
+    let { runningCommands, failedCommands, outputs } = this.state;
     runningCommands[cmd] = true;
     failedCommands[cmd] = false;
+    outputs[cmd] = [];
 
     this.setState({
       runningCommands,
       failedCommands,
+      outputs,
       selectedTab: switchTabs ? cmd : this.state.selectedTab
     });
 
@@ -106,12 +108,6 @@ export default class Chart extends Component {
         tabs: [...prevState.tabs, cmd],
         selectedTab: cmd
       }));
-    } else {
-      let { outputs } = this.state;
-      outputs[cmd] = [];
-      this.setState({
-        outputs
-      });
     }
   };
 
