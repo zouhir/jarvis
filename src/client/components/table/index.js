@@ -21,6 +21,7 @@ export default class Table extends Component {
     /**
      * I am really really really sorry for this mess.
      */
+    console.log(selected);
     return (
       <div className="table">
         <ul className="header">
@@ -70,41 +71,53 @@ export default class Table extends Component {
         <ul class="table-body two-col">
           <If
             condition={selected === "all" || selected === "esm"}
-            then={table.esm.map(module => (
-              <li>
-                <div className="col">
-                  {module.name}
-                  <div className="details" />
-                </div>
-                <div className="col">{readableBytes(module.size)}</div>
-              </li>
-            ))}
+            then={
+              <div>
+                {table.esm.map(module => (
+                  <li>
+                    <div className="col">
+                      {module.name}
+                      <div className="details" />
+                    </div>
+                    <div className="col">{readableBytes(module.size)}</div>
+                  </li>
+                ))}
+              </div>
+            }
           />
 
           <If
             condition={selected === "all" || selected === "mixed"}
-            then={table.mixed.map(module => (
-              <li className="flex-li">
-                <div className="col">
-                  <p className="module-name">{module.name}</p>
-                  <div className="details" />
-                </div>
-                <div className="col">{readableBytes(module.size)}</div>
-              </li>
-            ))}
+            then={
+              <div>
+                {table.mixed.map(module => (
+                  <li className="flex-li">
+                    <div className="col">
+                      <p className="module-name">{module.name}</p>
+                      <div className="details" />
+                    </div>
+                    <div className="col">{readableBytes(module.size)}</div>
+                  </li>
+                ))}
+              </div>
+            }
           />
 
           <If
             condition={selected === "all" || selected === "cjs"}
-            then={table.cjs.map(module => (
-              <li>
-                <div className="col">
-                  {module.name}
-                  <div className="details" />
-                </div>
-                <div className="col">{readableBytes(module.size)}</div>
-              </li>
-            ))}
+            then={
+              <div>
+                {table.cjs.map(module => (
+                  <li>
+                    <div className="col">
+                      {module.name}
+                      <div className="details" />
+                    </div>
+                    <div className="col">{readableBytes(module.size)}</div>
+                  </li>
+                ))}
+              </div>
+            }
           />
         </ul>
       </div>

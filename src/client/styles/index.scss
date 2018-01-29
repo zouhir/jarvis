@@ -1,19 +1,18 @@
 @import "fonts";
-@import "variables";
 @import "grid";
 @import "backgrounds";
-
+@import "themes/default/config.scss";
 html {
-  color: #6c6d74;
+  color: var(--color-dark);
   text-rendering: optimizeLegibility;
   font-family: "Lato", sans-serif;
 }
 
 body {
   margin: 0;
-  background: $dark;
+  background: var(--dashboard-bg-main);
   font-family: "Montserrat", sans-serif;
-  color: #fff;
+  color: var(--color-main);
 }
 
 a {
@@ -75,7 +74,7 @@ ul {
 }
 
 .board {
-  background: $darker;
+  background: var(--dashboard-bg-darker);
   width: 100%;
   max-width: 2800px;
   border-radius: 4px;
@@ -99,7 +98,7 @@ ul {
 
 ::-webkit-scrollbar {
   width: 16px;
-  background: $dark;
+  background: var(--dashboard-bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -108,7 +107,6 @@ ul {
   padding: 2px;
   border-radius: 8px;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.3);
-
   &:hover {
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.6);
   }
@@ -119,12 +117,10 @@ ul {
     color: #06ffff;
     margin-bottom: 1rem;
   }
-
   &-dev {
     color: #f3f661;
     margin-bottom: 1rem;
   }
-
   &-footer {
     color: #0df9a3;
     margin-bottom: 1rem;

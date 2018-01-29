@@ -1,21 +1,20 @@
-@import "../../styles/variables";
-
 h3 {
   font-size: 27px;
   font-weight: 300;
-  color: #fff;
+  color: var(--color-main);
   line-height: 35px;
 }
 p.note {
   font-weight: 300;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--color-main);
+  opacity: 0.7;
 }
 
 .card-header {
   padding: 20px 20px 7px 20px;
-  font-size: $tiny;
-  color: $text-dark;
+  font-size: var(--font-body-xs);
+  color: var(--color-dark);
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.7px;
@@ -34,13 +33,25 @@ p.note {
     margin-top: 20px;
   }
   &.fire {
-    background: linear-gradient(315deg, #fb906f 0%, #f16c9e 100%);
+    background: linear-gradient(
+      315deg,
+      var(--color-data-1) 0%,
+      var(--color-data-2) 100%
+    );
   }
   &.evening {
-    background: linear-gradient(315deg, #95a6ff 0%, #5e78fe 100%);
+    background: linear-gradient(
+      315deg,
+      var(--color-data-3) 0%,
+      var(--color-data-4) 100%
+    );
   }
   &.berry {
-    background: linear-gradient(315deg, #df74f9 0%, #b72cf6 100%);
+    background: linear-gradient(
+      315deg,
+      var(--color-data-5) 0%,
+      var(--color-data-6) 100%
+    );
   }
 }
 
@@ -48,18 +59,18 @@ p.note {
   width: 100%;
   height: 3px;
   position: relative;
-  background: rgba(0, 0, 0, 0.1);
+  background: var(--dashboard-bg-lightest);
   .progress {
-    background: #fff;
+    background: var(--color-main);
     height: 100%;
   }
 }
 
 .bees {
   p {
-    color: $text-dark;
+    color: var(--color-dark);
   }
   .progress {
-    background: $text-dark;
+    background: var(--dashboard-bg-main);
   }
 }
