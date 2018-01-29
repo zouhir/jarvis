@@ -121,18 +121,18 @@
   }
   li.cjs {
     .percentage {
-      color: var(--foreground-error);
+      color: var(--color-error);
     }
   }
   li.esm {
     .percentage {
-      color: var(--foreground-success);
+      color: var(--color-success);
     }
   }
 
   li.mixed {
     .percentage {
-      color: var(--foreground-vibrant-c);
+      color: var(--color-data-9);
     }
   }
 }

@@ -1,4 +1,4 @@
-$text-color: var(--foreground-light);
+$text-color: var(--color-light);
 
 $icons: (
   project: "../../assets/project.svg",
@@ -17,14 +17,14 @@ $icons: (
   border-radius: 16px 16px 0 0;
 
   li {
-    color: var(--foreground-main);
+    color: var(--color-main);
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
   }
 
   &-link {
-    color: var(--foreground-main);
+    color: var(--color-main);
     padding-left: 5px;
     padding-right: 5px;
 

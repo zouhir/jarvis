@@ -18,7 +18,7 @@
     h5 {
       font-size: var(--font-body-xs);
       font-weight: bold;
-      color: var(--foreground-main);
+      color: var(--color-main);
       text-transform: uppercase;
       letter-spacing: 0.7px;
       margin-bottom: 10px;
@@ -48,14 +48,14 @@
       }
 
       .high {
-        background: var(--foreground-error);
+        background: var(--color-error);
         color: #fff;
         padding: 4px 15px;
         border-radius: 2px;
       }
 
       .low {
-        background: var(--foreground-success);
+        background: var(--color-success);
         color: var(--dashboard-bg-main);
         padding: 4px 15px;
         border-radius: 2px;

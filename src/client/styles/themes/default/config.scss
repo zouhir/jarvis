@@ -9,6 +9,7 @@
   --dashboard-bg-main: $deep-dark-ocean;
   --dashboard-bg-darker: $deep-darker-ocean;
   --dashboard-bg-darkest: $deep-darkest-ocean;
+  --dashboard-shadows: $ghost;
 
   --color-data-1: #fb906f;
   --color-data-2: #f16c9e;
@@ -20,14 +21,11 @@
   --color-data-8: $orange;
   --color-data-9: $purple;
   --color-data-10: $yellow;
-
-  --dashboard-shadows: $ghost;
-
-  --foreground-main: #fff;
-  --foreground-light: rgba(255, 255, 255, 0.7);
-  --foreground-dark: $black;
-  --foreground-error: $red;
-  --foreground-success: $aqua;
+  --color-main: #fff;
+  --color-light: rgba(255, 255, 255, 0.7);
+  --color-dark: $black;
+  --color-error: $red;
+  --color-success: $aqua;
 
   --font-body-xs: $font-sm;
   --font-body-sm: $font-md;

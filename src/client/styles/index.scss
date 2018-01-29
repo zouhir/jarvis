@@ -3,7 +3,7 @@
 @import "backgrounds";
 @import "themes/default/config.scss";
 html {
-  color: var(--foreground-dark);
+  color: var(--color-dark);
   text-rendering: optimizeLegibility;
   font-family: "Lato", sans-serif;
 }
@@ -12,7 +12,7 @@ body {
   margin: 0;
   background: var(--dashboard-bg-main);
   font-family: "Montserrat", sans-serif;
-  color: var(--foreground-main);
+  color: var(--color-main);
 }
 
 a {

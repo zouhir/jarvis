@@ -42,7 +42,7 @@
       margin-bottom: 10px;
       p {
         width: 100%;
-        color: var(--foreground-light);
+        color: var(--color-light);
         font-size: 14px;
         &:last-child {
           margin-bottom: 0px;
@@ -56,15 +56,15 @@
         .size {
           font-size: 11px;
           margin-left: auto;
-          color: var(--foreground-main);
+          color: var(--color-main);
           padding: 7px 15px;
           border-radius: 2px;
           &.big {
-            background: var(--foreground-error);
+            background: var(--color-error);
           }
           &.ok {
-            color: var(--foreground-dark);
-            background: var(--foreground-success);
+            color: var(--color-dark);
+            background: var(--color-success);
           }
         }
       }

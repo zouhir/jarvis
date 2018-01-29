@@ -1,20 +1,20 @@
 h3 {
   font-size: 27px;
   font-weight: 300;
-  color: var(--foreground-main);
+  color: var(--color-main);
   line-height: 35px;
 }
 p.note {
   font-weight: 300;
   font-size: 12px;
-  color: var(--foreground-main);
+  color: var(--color-main);
   opacity: 0.7;
 }
 
 .card-header {
   padding: 20px 20px 7px 20px;
   font-size: var(--font-body-xs);
-  color: var(--foreground-dark);
+  color: var(--color-dark);
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.7px;
@@ -61,14 +61,14 @@ p.note {
   position: relative;
   background: var(--dashboard-bg-lightest);
   .progress {
-    background: var(--foreground-main);
+    background: var(--color-main);
     height: 100%;
   }
 }
 
 .bees {
   p {
-    color: var(--foreground-dark);
+    color: var(--color-dark);
   }
   .progress {
     background: var(--dashboard-bg-main);
