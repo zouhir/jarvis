@@ -23,7 +23,9 @@ function Jarvis(options = {}) {
     // these commands will be executed in the background and their output displayed in JARVIS
     commands: options.commands
       ? options.commands.concat(parseScripts(pkg.scripts))
-      : parseScripts(pkg.scripts)
+      : parseScripts(pkg.scripts),
+
+    host: "host" in options ? options.host : "localhost"
   };
 
   this.env = {

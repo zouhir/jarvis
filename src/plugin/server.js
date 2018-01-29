@@ -8,46 +8,42 @@
 /**
  * External Dependencies
  */
-const express = require("express");
-const http = require("http");
-const path = require("path");
+const polka = require("polka");
 const socket = require("socket.io");
+const statics = require("serve-static");
+const { join } = require("path");
 
 /**
- * Setup express with web sockets
+ * Setup Polka w/ Socket.io
  *
  * socket.io docs: https://socket.io/docs/server-api/
  */
-const app = express();
-const server = http.Server(app);
-const io = socket(server);
+const app = polka();
+const io = socket(app.server);
 
-let PORT = undefined;
+let PORT;
+const client = join(__dirname, "../../bin/client");
 
 exports.io = io;
 
 if (process.env.NODE_ENV !== "jarvis_dev") {
-  app.use("/", express.static(path.join(__dirname, "../../bin/client")));
-  app.get("/", (_, res) =>
-    res.sendFile(path.join(__dirname + "../../dist/bin/index.html"))
-  );
+  app.use(statics(client));
 } else {
-  app.get("/", (_, res) => res.send(`Jarvis client is running on: ${PORT}`));
+  app.get("/", (_, res) => {
+    res.end(`Jarvis client is running on: ${PORT}`);
+  });
 }
 
-const start = (options, next) => {
-
+exports.start = (options, next) => {
+  HOST = options.host;
   PORT = options.port;
-
-  return server.listen(PORT, () => {
-    console.log(`[JARVIS] Starting dashboard on: http://localhost:${PORT}`);
+  return app.listen(PORT, HOST).then(() => {
+    console.log(`[JARVIS] Starting dashboard on: http://${HOST}:${PORT}`);
     next();
   });
 };
 
-const close = () => {
-  server.close();
+exports.close = () => {
+  app.server.close();
   io.close();
 };
-exports.start = start;
-exports.close = close;
