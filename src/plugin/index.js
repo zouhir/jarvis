@@ -6,6 +6,7 @@ const authors = require("parse-authors");
 const fs = require('fs');
 
 function Jarvis(options = {}) {
+  const currentWorkingDirectory = process.cdw();
   this.options = {
     port: isNaN(parseInt(options.port)) // if port is not a number console.error if port is port given in config and fall back to 1337
       ? (options.port &&
@@ -20,8 +21,11 @@ function Jarvis(options = {}) {
 
     host: "host" in options ? options.host : "localhost",
 
-    packageJsonPath: fs.existsSync(options.packageJsonPath) //Check if path actually exists otherwise fallback to currenty
-      ? options.packageJsonPath : process.cdw(),
+    packageJsonPath: options.packageJsonPath //Check if option is passed
+      ? fs.existsSync(options.packageJsonPath) //Check if path exists
+        ? options.packageJsonPath
+        : (currentWorkingDirectory && console.warn(`[JARVIS] warning: the specified path (${options.packageJsonPath}) does not exist. Falling back to ${currentWorkingDirectory}`)) //Fallback to cwd and warn
+      : currentWorkingDirectory, //Fallback to cwd
   };
   this.env = {
     production: false,
