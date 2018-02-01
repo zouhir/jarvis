@@ -1,6 +1,6 @@
 {
   "name": "webpack-jarvis",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "description": "A very intelligent webpack dashboard",
   "main": "bin/plugin/index.js",
   "files": [
@@ -20,8 +20,16 @@
   "engines": {
     "node": ">=6.0.0"
   },
-  "author": "Zouhir",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zouhir/jarvis.git"
+  },
   "license": "MIT",
+  "author": {
+    "email": "zouhir@zouhir.org",
+    "name": "Zouhir",
+    "url": "https://zouhir.org"
+  },
   "peerDependencies": {
     "webpack": "*"
   },
