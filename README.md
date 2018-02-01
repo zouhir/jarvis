@@ -81,18 +81,9 @@ and you are all set!
 
 Setting up the dev environment
 
-##### Insall Dependencies:
-
-Node and Plugin dependencies:
+Insall Dependencies:
 
 ```
-$ npm install
-```
-
-Client app depencencies:
-
-```
-$ cd src/client
 $ npm install
 ```
 
