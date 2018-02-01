@@ -9,13 +9,14 @@ import "./style.scss";
 
 const DOWNLOAD_TIME_THRESHOLD_SECONDS = 5;
 
-const calculatePerformance = memoize(assetsSizeInKB =>
+const calculatePerformance = memoize(assetsSizeInBytes =>
   performanceConstants.map(datapoint => {
+    const assetsSizeInMB = assetsSizeInBytes / 1024 / 1024;
     const bandwidthInMbps = datapoint.internet_speed;
-    const bandwidthInKBps = bandwidthInMbps * 1024 / 8;
+    const bandwidthInMBps = bandwidthInMbps / 8;
     const rttInSeconds = datapoint.rtt / 1000;
 
-    const totalDownloadTime = assetsSizeInKB / bandwidthInKBps + rttInSeconds;
+    const totalDownloadTime = assetsSizeInMB / bandwidthInMBps + rttInSeconds;
 
     const isDownloadTimeOverThreshold =
       totalDownloadTime > DOWNLOAD_TIME_THRESHOLD_SECONDS;
