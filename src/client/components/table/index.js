@@ -21,7 +21,6 @@ export default class Table extends Component {
     /**
      * I am really really really sorry for this mess.
      */
-    console.log(selected);
     return (
       <div className="table">
         <ul className="header">

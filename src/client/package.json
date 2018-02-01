@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev:hot":
-      "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress",
+    "dev:hot": "cross-env NODE_ENV=development webpack-dev-server --inline --hot --progress",
     "dev": "cross-env NODE_ENV=development webpack --watch",
     "build": "cross-env NODE_ENV=production webpack -p --progress",
     "test": "jest"
@@ -49,6 +48,7 @@
     "jest-serializer-html-string": "^1.0.1",
     "mri": "^1.1.0",
     "node-sass": "^4.5.3",
+    "obj-str": "^1.0.0",
     "postcss-loader": "^2.0.6",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
@@ -66,14 +66,19 @@
     "globals": {
       "NODE_ENV": "test"
     },
-    "moduleFileExtensions": ["js", "jsx"],
+    "moduleFileExtensions": [
+      "js",
+      "jsx"
+    ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
-        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy",
       "^react$": "preact-compat",
       "^react-dom$": "preact-compat"
     },
-    "moduleDirectories": ["node_modules", "src"]
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ]
   }
 }

@@ -28,6 +28,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 
 * Shows you the count of ES Harmony module imports which can be treeshakable and the CJS ones which are not.
 * Shows you how well your assets perform in 12 different connection types.
+* Google or Stackoverflow Search for programming errors in 1 button click.
 
 **Other Features**:
 
@@ -77,6 +78,35 @@ localhost:1337
 and you are all set!
 
 ## Help & Contribute
+
+Setting up the dev environment
+
+##### Insall Dependencies:
+
+Node and Plugin dependencies:
+
+```
+$ npm install
+```
+
+Client app depencencies:
+
+```
+$ cd src/client
+$ npm install
+```
+
+Run Jarvis in your browser, Jarvis root:
+
+```
+npm run dev
+```
+
+Finally, in your browser (notice the force post option for Jarvis developers):
+
+```
+localhost:3000/?force_socket_port=1337
+```
 
 **On the roadmap:**
 
