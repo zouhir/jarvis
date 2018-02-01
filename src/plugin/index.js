@@ -10,8 +10,8 @@ function Jarvis(opts = {}) {
   opts.host = opts.host || "localhost";
   opts.port = parseInt(opts.port || 1337, 10);
 
-  if (opts.port && isNaN(port)) {
-    console.error(`[JARVIS] error: the specified port (${port}) is invalid. Reverting to 1337`);
+  if (opts.port && isNaN(opts.port)) {
+    console.error(`[JARVIS] error: the specified port (${opts.port}) is invalid. Reverting to 1337`);
     opts.port = 1337;
   }
 
