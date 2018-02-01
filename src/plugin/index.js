@@ -2,9 +2,7 @@ const webpack = require("webpack");
 const server = require("./server"); // expreess and socket IO for the client
 const reporter = require("./reporter-util"); // webpack stats formatters & helpers
 const importFrom = require("import-from"); // used to get the users project details form their working dir
-const authors = require("parse-authors");
-
-const pkg = importFrom(process.cwd(), "./package.json");
+const fs = require('fs');
 
 function Jarvis(options = {}) {
   this.options = {
@@ -18,9 +16,10 @@ function Jarvis(options = {}) {
           false) ||
         1337
       : options.port,
-
-    host: "host" in options ? options.host : "localhost"
+    packageJsonPath: fs.existsSync(options.packageJsonPath) //Check if path actually exists otherwise fallback to currenty
+      ? options.packageJsonPath : process.cdw(),
   };
+
   this.env = {
     production: false,
     running: false, // indicator if our express server + sockets are running
@@ -32,13 +31,14 @@ function Jarvis(options = {}) {
     progress: {},
     project: {}
   };
+
+  this.pkg = importFrom(this.options.packageJsonPath, "./package.json");
 }
 
 Jarvis.prototype.apply = function(compiler) {
-  const { name, version, author: makers } = pkg;
-  const normalizedAuthor = parseAuthor(makers);
+  const { name, version, author: makers } = this.pkg;
+  this.reports.project = { name, version, makers };
 
-  this.reports.project = { name, version, makers: normalizedAuthor };
   if (!this.env.running) {
     server.start(this.options, () => {
       this.env.running = true;
@@ -98,16 +98,4 @@ Jarvis.prototype.apply = function(compiler) {
   // that's it!
 };
 
-const parseAuthor = function(author) {
-  if (typeof author === "string") {
-    const authorsArray = authors(author);
-    if (authorsArray.length > 0) {
-      return authorsArray[0];
-    }
-  } else if (author.name) {
-    return author;
-  }
-
-  return { name: "", email: "", url: "" };
-};
 module.exports = Jarvis;
