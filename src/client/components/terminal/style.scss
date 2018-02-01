@@ -7,4 +7,13 @@
   overflow-y: scroll;
   font-family: "Source Code Pro", monospace;
   font-size: 14px;
+  position: relative;
+  .buttons-bar {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    display: flex;
+    width: 100px;
+    height: 40px;
+  }
 }

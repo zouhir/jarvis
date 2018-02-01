@@ -1,0 +1,18 @@
+.superlink {
+  width: 38px;
+  height: 38px;
+  margin-left: 10px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 28px;
+  border-radius: 2px;
+  &.google {
+    background-image: url("../../assets/google.svg");
+    background-color: var(--dashboard-bg-darkest);
+  }
+
+  &.stackoverflow {
+    background-image: url("../../assets/stackoverflow.svg");
+    background-color: var(--dashboard-bg-darkest);
+  }
+}
