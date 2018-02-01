@@ -6,21 +6,17 @@ const authors = require("parse-authors");
 
 const pkg = importFrom(process.cwd(), "./package.json");
 
-function Jarvis(options = {}) {
-  this.options = {
-    port: isNaN(parseInt(options.port)) // if port is not a number console.error if port is port given in config and fall back to 1337
-      ? (options.port &&
-          console.error(
-            `[JARVIS] error: the specified port (${
-              options.port
-            }) is not valid, falling back to 1337...`
-          ) &&
-          false) ||
-        1337
-      : options.port,
+function Jarvis(opts = {}) {
+  opts.host = opts.host || "localhost";
+  opts.port = parseInt(opts.port || 1337, 10);
 
-    host: "host" in options ? options.host : "localhost"
-  };
+  if (opts.port && isNaN(port)) {
+    console.error(`[JARVIS] error: the specified port (${port}) is invalid. Reverting to 1337`);
+    opts.port = 1337;
+  }
+
+  this.options = opts;
+
   this.env = {
     production: false,
     running: false, // indicator if our express server + sockets are running
