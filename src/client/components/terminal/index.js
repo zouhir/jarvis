@@ -17,24 +17,19 @@ export default class Chart extends Component {
     started: false,
     mouseX: 0
   };
-  componentDidMount() {
-    // mousedown on our tag === potential highlight
-    this.base.addEventListener("mousedown", this.onHighlightStart);
-    // a click anywhere === potential highlight end or highlight dismiss
-    window.addEventListener("mouseup", this.highlightEnd);
-  }
-  onHighlightStart = e => {
+
+  highlightStart = e => {
     this._highlightState.mouseX = e.clientX;
     this._highlightState.start = true;
   };
 
   highlightEnd = e => {
     if (!this._highlightState.start) return;
-    // get selected bit
+
     let _selection = window.getSelection();
-    // as text
+
     let text = _selection.toString();
-    // text has been captured
+
     if (text.length > 0) {
       this.setState({
         showActionBtn: true,
@@ -50,13 +45,14 @@ export default class Chart extends Component {
       text: ""
     });
   };
-  componentWillUnmount() {
-    this.base.removeEventListener("mousedown", this.onHighlightStart);
-    window.removeEventListener("mouseup", this.highlightEnd);
-  }
+
   render(props, { showActionBtn, text, googleBaseUrl, stackBaseUrl }) {
     return (
-      <div className="terminal">
+      <div
+        className="terminal"
+        onmousedown={this.highlightStart}
+        onmouseup={this.highlightEnd}
+      >
         {props.logs.map(log => (
           <Markup trim={false} markup={`<div>${log}</div>`} />
         ))}

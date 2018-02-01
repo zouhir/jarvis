@@ -6,13 +6,12 @@
   background-position: center;
   background-size: 28px;
   border-radius: 2px;
+  background-color: var(--dashboard-bg-darkest);
   &.google {
     background-image: url("../../assets/google.svg");
-    background-color: var(--dashboard-bg-darkest);
   }
 
   &.stackoverflow {
     background-image: url("../../assets/stackoverflow.svg");
-    background-color: var(--dashboard-bg-darkest);
   }
 }

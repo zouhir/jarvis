@@ -59,7 +59,6 @@ export default class Board extends Component {
       if (report.success && report.success.length > 0) {
         logs = report.success;
       }
-      console.log(report);
       this.setState({
         assets: report.assets || [],
         errors: report.errors || [],

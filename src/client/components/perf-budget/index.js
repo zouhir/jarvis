@@ -33,7 +33,6 @@ export default class Chart extends Component {
     this.setState({ speeds: this.calc(newProps.assetsSize) });
   }
   render({ assetsSize }, { speeds }) {
-    console.log(assetsSize);
     return (
       <div className="budget unset">
         {speeds.map(speed => (
