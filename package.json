@@ -37,6 +37,7 @@
     "all-contributors-cli": "^4.10.1",
     "ansi-to-html": "^0.6.3",
     "import-from": "^2.1.0",
+    "obj-str": "^1.0.0",
     "parse-authors": "^0.2.4",
     "polka": "^0.3.0",
     "react-favicon": "^0.0.11",
