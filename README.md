@@ -28,7 +28,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 
 * Shows you the count of ES Harmony module imports which can be treeshakable and the CJS ones which are not.
 * Shows you how well your assets perform in 12 different connection types.
-* Google or Stackoverflow Search for programming errors in 1 button click.
+* Google or StackOverflow search for programming errors in 1 button click.
 
 **Other Features**:
 
@@ -41,7 +41,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 
 * Preact with Sass pre-processor.
 * Socket IO.
-* Express Server.
+* Polka Web Server.
 
 **Screenshot:**
 
@@ -79,27 +79,20 @@ and you are all set!
 
 ## Help & Contribute
 
-Setting up the dev environment
+### Setting up the Dev Environment
 
-##### Insall Dependencies:
 
-Node and Plugin dependencies:
-
-```
+```bash
+# Install Webpack plugin dependencies (in Jarvis root)
 $ npm install
-```
 
-Client app depencencies:
-
-```
+# Install client app depencencies (in client sub-directory)
 $ cd src/client
 $ npm install
-```
 
-Run Jarvis in your browser, Jarvis root:
-
-```
-npm run dev
+# Run Jarvis in dev mode (in Jarvis root)
+$ cd ../..
+$ npm run dev
 ```
 
 Finally, in your browser (notice the force post option for Jarvis developers):
@@ -108,7 +101,7 @@ Finally, in your browser (notice the force post option for Jarvis developers):
 localhost:3000/?force_socket_port=1337
 ```
 
-**On the roadmap:**
+### On the roadmap
 
 * Cleanup the hacky code in the client app, it's embarassing, I'm sorry!
 * Enforce best practices, structure and higher code quality standards.
