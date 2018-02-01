@@ -35,6 +35,15 @@ Jarvis.prototype.apply = function(compiler) {
   const normalizedAuthor = parseAuthor(makers);
 
   this.reports.project = { name, version, makers: normalizedAuthor };
+
+  // check if the current build is production, via defined plugin
+  const definePlugin = compiler.options.plugins.find(fn => fn.constructor.name === "DefinePlugin");
+
+  if (definePlugin) {
+    const pluginNodeEnv = definePlugin["definitions"]["process.env.NODE_ENV"];
+    this.env.production = pluginNodeEnv === "production";
+  }
+
   if (!this.env.running) {
     server.start(this.options, () => {
       this.env.running = true;
@@ -56,20 +65,6 @@ Jarvis.prototype.apply = function(compiler) {
     this.env.watching = false;
     done();
   });
-
-  // check if the current build is production, via defined plugin
-  const definePlugin = compiler.options.plugins.filter(
-    plugin => plugin.constructor.name === "DefinePlugin"
-  )[0];
-
-  if (definePlugin) {
-    const pluginNodeEnv = definePlugin["definitions"]["process.env.NODE_ENV"];
-    if (typeof pluginNodeEnv !== "undefined") {
-      pluginNodeEnv === "production"
-        ? (this.env.production = true)
-        : (this.env.production = false);
-    }
-  }
 
   // report the webpack compiler progress
   compiler.apply(
