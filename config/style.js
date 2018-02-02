@@ -2,7 +2,7 @@ const browsers = require("./browsers");
 
 module.exports = isProd => {
   // assume dev/HMR values initially
-  let css={}, arr=[{ loader:'style-loader' }];
+  let css={ minimize:isProd }, arr=[{ loader:'style-loader' }];
 
   if (isProd) {
     arr = [];
