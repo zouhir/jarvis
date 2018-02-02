@@ -41,7 +41,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 
 * Preact with Sass pre-processor.
 * Socket IO.
-* Express Server.
+* [Polka](https://github.com/lukeed/polka) Server.
 
 **Screenshot:**
 
@@ -90,14 +90,10 @@ $ npm install
 Run Jarvis in your browser, Jarvis root:
 
 ```
-npm run dev
+npm run watch
 ```
 
-Finally, in your browser (notice the force post option for Jarvis developers):
-
-```
-localhost:3000/?force_socket_port=1337
-```
+Finally, open a browser to `http://localhost:1337`!
 
 **On the roadmap:**
 
