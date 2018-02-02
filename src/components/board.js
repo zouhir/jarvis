@@ -23,10 +23,6 @@ let port = _params.get("force_socket_port") || document.location.port;
 
 const socket = io(document.location.hostname + ":" + port);
 
-import success from "../assets/favicons/success.ico";
-import failure from "../assets/favicons/failure.ico";
-import building from "../assets/favicons/building.ico";
-
 export default class Board extends Component {
   state = {
     assetsSize: 0,
@@ -72,10 +68,7 @@ export default class Board extends Component {
       });
     });
     socket.on("progress", data => {
-      this.setState({
-        progress: data,
-        favicon: building
-      });
+      this.setState({ progress:data });
       if (data.message.toLowerCase() !== "idle") {
         this.setState({
           progress: data,
@@ -88,13 +81,15 @@ export default class Board extends Component {
     });
   }
   render(props, state) {
-    const favicon =
+    const ico =
       state.progress.percentage >= 1
-        ? state.errors.length > 0 ? failure : success
-        : building;
+        ? state.errors.length > 0 ? 'failure' : 'success'
+        : 'building';
+
     return (
       <div className="board">
-        <Favicon url={favicon} animated={false} />
+        <Favicon url={ `/assets/favicons/${ico}.ico` } animated={false} />
+
         <Nav {...state.project} />
 
         <div className="widget col-xs-12 col-md-4 col-lg-3">

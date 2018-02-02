@@ -8,10 +8,10 @@
   border-radius: 2px;
   background-color: var(--dashboard-bg-darkest);
   &.google {
-    background-image: url("../../assets/google.svg");
+    background-image: url("/assets/google.svg");
   }
 
   &.stackoverflow {
-    background-image: url("../../assets/stackoverflow.svg");
+    background-image: url("/assets/stackoverflow.svg");
   }
 }
