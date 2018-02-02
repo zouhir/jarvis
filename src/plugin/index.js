@@ -96,17 +96,17 @@ class Jarvis {
   }
 }
 
+function parseAuthor(author) {
+  if (author && author.name) return author;
 
-const parseAuthor = function(author) {
   if (typeof author === "string") {
     const authorsArray = authors(author);
     if (authorsArray.length > 0) {
       return authorsArray[0];
     }
-  } else if (author.name) {
-    return author;
   }
 
   return { name: "", email: "", url: "" };
 };
+
 module.exports = Jarvis;
