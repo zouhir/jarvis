@@ -30,7 +30,6 @@
     "webpack": "*"
   },
   "dependencies": {
-    "all-contributors-cli": "^4.10.1",
     "ansi-to-html": "^0.6.3",
     "import-from": "^2.1.0",
     "obj-str": "^1.0.0",
@@ -42,6 +41,7 @@
     "url-loader": "^0.6.2"
   },
   "devDependencies": {
+    "all-contributors-cli": "^4.10.1",
     "autoprefixer": "^7.1.2",
     "babel": "^6.23.0",
     "babel-core": "^6.25.0",
