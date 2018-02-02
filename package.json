@@ -7,11 +7,11 @@
     "lib"
   ],
   "scripts": {
+    "precommit": "lint-staged",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "build": "webpack --env.production",
-    "precommit": "lint-staged",
-    "watch": "webpack --watch"
+    "build": "webpack --env.production --config config/webpack",
+    "watch": "webpack --watch --config config/webpack"
   },
   "engines": {
     "node": ">=6.0.0"

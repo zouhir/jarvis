@@ -2,14 +2,14 @@ const { join } = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const Jarvis = require("./lib/server");
-const pkg = require("./package.json");
+const Jarvis = require("../lib/server");
+const pkg = require("../package.json");
 
-const babel = require("./config/babel");
-const styles = require("./config/style");
-const uglify = require("./config/uglify");
+const babel = require("./babel");
+const styles = require("./style");
+const uglify = require("./uglify");
 
-const dist = join(__dirname, "lib");
+const dist = join(__dirname, "../lib");
 
 module.exports = env => {
   const isProd = env && env.production;
