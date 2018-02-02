@@ -86,7 +86,7 @@
     "webpack-messages": "^1.0.0"
   },
   "lint-staged": {
-    "*.{js,json,scss}": [
+    "src/**/*.{js,json,scss}": [
       "prettier --write",
       "git add"
     ]
