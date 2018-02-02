@@ -5,10 +5,10 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const autoprefixer = require("autoprefixer");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
-const Jarvis = require("../plugin/index");
+const Jarvis = require("./src/plugin");
 
 const pkg = require("./package.json");
-const babelrc = require("../../babel");
+const babelrc = require("./babel");
 
 const ENV = process.env.NODE_ENV || "development";
 
@@ -98,7 +98,6 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
         use: {
           loader: "babel-loader",
           options: babelrc(ENV)
