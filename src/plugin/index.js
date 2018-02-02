@@ -3,10 +3,10 @@ const server = require("./server"); // expreess and socket IO for the client
 const reporter = require("./reporter-util"); // webpack stats formatters & helpers
 const importFrom = require("import-from"); // used to get the users project details form their working dir
 const authors = require("parse-authors");
-
-const pkg = importFrom(process.cwd(), "./package.json");
+const fs = require('fs');
 
 function Jarvis(options = {}) {
+  const currentWorkingDirectory = process.cdw();
   this.options = {
     port: isNaN(parseInt(options.port)) // if port is not a number console.error if port is port given in config and fall back to 1337
       ? (options.port &&
@@ -18,7 +18,14 @@ function Jarvis(options = {}) {
           false) ||
         1337
       : options.port,
-    host: options.host || "localhost"
+
+    host: options.host || "localhost",
+
+    packageJsonPath: options.packageJsonPath //Check if option is passed
+      ? fs.existsSync(options.packageJsonPath) //Check if path exists
+        ? options.packageJsonPath
+        : (currentWorkingDirectory && console.warn(`[JARVIS] warning: the specified path (${options.packageJsonPath}) does not exist. Falling back to ${currentWorkingDirectory}`)) //Fallback to cwd and warn
+      : currentWorkingDirectory //Fallback to cwd
   };
   this.env = {
     production: false,
@@ -31,10 +38,12 @@ function Jarvis(options = {}) {
     progress: {},
     project: {}
   };
+
+  this.pkg = importFrom(this.options.packageJsonPath, "./package.json");
 }
 
 Jarvis.prototype.apply = function(compiler) {
-  const { name, version, author: makers } = pkg;
+  const { name, version, author: makers } = this.pkg;
   const normalizedAuthor = parseAuthor(makers);
 
   this.reports.project = { name, version, makers: normalizedAuthor };
