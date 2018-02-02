@@ -1,3 +1,5 @@
+const browsers = require("./browsers");
+
 module.exports = [
   {
     loader: "css-loader",
@@ -12,9 +14,7 @@ module.exports = [
     options: {
       sourceMap: "inline",
       plugins: [
-        require("autoprefixer")({
-          browsers: ["> 1%", "IE >= 10"]
-        })
+        require("autoprefixer")({ browsers })
       ]
     }
   }, {

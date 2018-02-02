@@ -1,23 +1,26 @@
+const browsers = require("./browsers");
+
 module.exports = {
   babelrc: false,
   presets: [
     [
-      'babel-preset-env',
+      "babel-preset-env",
       {
         loose: true,
         uglify: true,
         modules: false, 
-        targets: {
-          browsers: ['> 1%', 'last 2 versions', 'IE >= 9']
-        },
-        exclude: ['transform-regenerator', 'transform-es2015-typeof-symbol']
+        targets: { browsers },
+        exclude: [
+          "transform-regenerator",
+          "transform-es2015-typeof-symbol"
+        ]
       }
     ],
-    'stage-0'
+    "stage-0"
   ],
   plugins: [
-    'babel-plugin-transform-object-assign',
-    'babel-plugin-transform-decorators-legacy',
-    ['babel-plugin-transform-react-jsx', { pragma: 'h' }]
+    "babel-plugin-transform-object-assign",
+    "babel-plugin-transform-decorators-legacy",
+    ["babel-plugin-transform-react-jsx", { pragma: "h" }]
   ]
 };
