@@ -13,7 +13,10 @@ const dist = join(__dirname, "../lib");
 
 module.exports = env => {
   const isProd = env && env.production;
-
+  
+  // Our style-loader chain
+  const cssGroup = styles(isProd);
+  
   // Our entry file
   let entry = './src/index.js';
 
@@ -36,8 +39,6 @@ module.exports = env => {
   } else {
     // Add HMR client
     entry = ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', entry];
-    // Allow styles HMR
-    styles.unshift({ loader:'style-loader' });
     // Add dev-only plugins
     plugins.push(
       new webpack.HotModuleReplacementPlugin(),
@@ -72,7 +73,7 @@ module.exports = env => {
           }
         }, {
           test: /(\.css|\.scss)$/,
-          use: isProd ? ExtractTextPlugin.extract({ fallback: "style-loader", use:styles }) : styles
+          use: isProd ? ExtractTextPlugin.extract({ fallback: "style-loader", use:cssGroup }) : cssGroup
         }, {
           test: /\.json$/,
           use: "json-loader"
