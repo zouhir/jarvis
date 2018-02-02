@@ -1,8 +1,8 @@
 const webpack = require("webpack");
-const server = require("./server"); // expreess and socket IO for the client
-const reporter = require("./reporter-util"); // webpack stats formatters & helpers
-const importFrom = require("import-from"); // used to get the users project details form their working dir
 const authors = require("parse-authors");
+const importFrom = require("import-from"); // used to get the users project details form their working dir
+const reporter = require("./reporter-util"); // webpack stats formatters & helpers
+const server = require("./server"); // client server
 
 const pkg = importFrom(process.cwd(), "./package.json");
 
@@ -44,12 +44,18 @@ class Jarvis {
       const pluginNodeEnv = definePlugin["definitions"]["process.env.NODE_ENV"];
       this.env.production = pluginNodeEnv === "production";
     }
+    
+    let jarvis;
+    let isDev = !this.env.production;
+    let { port, host } = this.options;
 
     if (!this.env.running) {
-      server.start(this.options, () => {
+      jarvis = this.server = server.init(compiler, isDev);
+      jarvis.http.listen(port, host, _ => {
+        console.log(`[JARVIS] Starting dashboard on: http://${host}:${port}`);
         this.env.running = true;
         // if a new client is connected push current bundle info
-        server.io.on("connection", socket => {
+        jarvis.io.on("connection", socket => {
           socket.emit("project", this.reports.project);
           socket.emit("progress", this.reports.progress);
           socket.emit("stats", this.reports.stats);
@@ -71,7 +77,7 @@ class Jarvis {
     compiler.apply(
       new webpack.ProgressPlugin((percentage, message) => {
         this.reports.progress = { percentage, message };
-        server.io.emit("progress", { percentage, message });
+        jarvis.io.emit("progress", { percentage, message });
       })
     );
 
@@ -80,14 +86,13 @@ class Jarvis {
       const jsonStats = stats.toJson({ chunkModules: true });
       jsonStats.isDev = !this.env.production;
       this.reports.stats = reporter.statsReporter(jsonStats);
-      server.io.emit("stats", this.reports.stats);
+      jarvis.io.emit("stats", this.reports.stats);
 
       if (!this.env.watching) {
-        server.close();
+        jarvis.http.close();
+        jarvis.io.close();
       }
     });
-
-    // that's it!
   }
 }
 
