@@ -18,8 +18,7 @@ function Jarvis(options = {}) {
           false) ||
         1337
       : options.port,
-
-    host: "host" in options ? options.host : "localhost"
+    host: options.host || "localhost"
   };
   this.env = {
     production: false,
@@ -104,7 +103,7 @@ const parseAuthor = function(author) {
     if (authorsArray.length > 0) {
       return authorsArray[0];
     }
-  } else if (author.name) {
+  } else if (author && author.name) {
     return author;
   }
 
