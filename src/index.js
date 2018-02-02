@@ -3,10 +3,10 @@ import "./styles/index.scss";
 
 import App from "./components/app";
 
-let root = null;
+let root;
 
 function init() {
-  render(<App />, document.getElementById("app"), root);
+  root = render(<App />, document.getElementById("app"), root);
 }
 
 if (module.hot) {
