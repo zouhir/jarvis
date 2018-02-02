@@ -2,9 +2,9 @@
   "name": "webpack-jarvis",
   "version": "0.3.0",
   "description": "A very intelligent webpack dashboard",
-  "main": "bin/plugin/index.js",
+  "main": "lib/server/index.js",
   "files": [
-    "bin"
+    "lib"
   ],
   "scripts": {
     "contributors:add": "all-contributors add",
