@@ -19,13 +19,13 @@ function Jarvis(options = {}) {
         1337
       : options.port,
 
-    host: "host" in options ? options.host : "localhost",
+    host: options.host || "localhost",
 
     packageJsonPath: options.packageJsonPath //Check if option is passed
       ? fs.existsSync(options.packageJsonPath) //Check if path exists
         ? options.packageJsonPath
         : (currentWorkingDirectory && console.warn(`[JARVIS] warning: the specified path (${options.packageJsonPath}) does not exist. Falling back to ${currentWorkingDirectory}`)) //Fallback to cwd and warn
-      : currentWorkingDirectory, //Fallback to cwd
+      : currentWorkingDirectory //Fallback to cwd
   };
   this.env = {
     production: false,
@@ -112,7 +112,7 @@ const parseAuthor = function(author) {
     if (authorsArray.length > 0) {
       return authorsArray[0];
     }
-  } else if (author.name) {
+  } else if (author && author.name) {
     return author;
   }
 

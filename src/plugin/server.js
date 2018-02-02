@@ -27,7 +27,7 @@ const client = join(__dirname, "../../bin/client");
 exports.io = io;
 
 if (process.env.NODE_ENV !== "jarvis_dev") {
-  app.use(statics(client));
+  app.get("*", statics(client));
 } else {
   app.get("/", (_, res) => {
     res.end(`Jarvis client is running on: ${PORT}`);
@@ -35,8 +35,8 @@ if (process.env.NODE_ENV !== "jarvis_dev") {
 }
 
 exports.start = (options, next) => {
-  HOST = options.host;
-  PORT = options.port;
+  let HOST = options.host;
+  let PORT = options.port;
   return app.listen(PORT, HOST).then(() => {
     console.log(`[JARVIS] Starting dashboard on: http://${HOST}:${PORT}`);
     next();

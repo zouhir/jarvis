@@ -1,53 +1,72 @@
 import { h, Component } from "preact";
 import If from "../utils/condition-component";
+import memoize from "../../helpers/memoize";
 
-// import TypeAhead from "../typeahead";
 import Table from "../table";
-import data from "../../DATA/global-speed.json";
+import performanceConstants from "../../DATA/global-speed.json";
 
 import "./style.scss";
+
+const DOWNLOAD_TIME_THRESHOLD_SECONDS = 5;
+
+const calculatePerformance = memoize(assetsSizeInBytes =>
+  performanceConstants.map(datapoint => {
+    const assetsSizeInMB = assetsSizeInBytes / 1024 / 1024;
+    const bandwidthInMbps = datapoint.internet_speed;
+    const bandwidthInMBps = bandwidthInMbps / 8;
+    const rttInSeconds = datapoint.rtt / 1000;
+
+    const totalDownloadTime = assetsSizeInMB / bandwidthInMBps + rttInSeconds;
+
+    const isDownloadTimeOverThreshold =
+      totalDownloadTime > DOWNLOAD_TIME_THRESHOLD_SECONDS;
+    const timeDifferenceToThreshold =
+      (isDownloadTimeOverThreshold ? "+" : "-") +
+      Math.abs(totalDownloadTime - DOWNLOAD_TIME_THRESHOLD_SECONDS).toFixed(2) +
+      "s";
+
+    return {
+      title: datapoint.title,
+      bandwidth: `${bandwidthInMbps}mbps`,
+      downloadTime: `${totalDownloadTime.toFixed(2)}s`,
+      rtt: `${datapoint.rtt}ms`,
+      isDownloadTimeOverThreshold,
+      timeDifferenceToThreshold
+    };
+  })
+);
 
 export default class Chart extends Component {
   state = {
     speeds: []
   };
-  componentDidMount() {
-    this.setState({ speeds: this.calc(this.props.assetsSize) });
-  }
-  calc = assetsSize => {
-    let bars = data.map(i => {
-      let title = i.title;
-      let speed = i.internet_speed + "mbps";
-      let time = assetsSize / 1024 / (i.internet_speed * 1024 / 8) + i.rtt;
-      time = Math.round(time);
-      return {
-        title,
-        speed,
-        time: +time,
-        rtt: i.rtt
-      };
-    });
-    return bars;
-  };
-  componentWillReceiveProps(newProps) {
-    this.setState({ speeds: this.calc(newProps.assetsSize) });
-  }
-  render({ assetsSize }, { speeds }) {
+
+  render({ assetsSize }) {
+    const performanceDatapoints = calculatePerformance(assetsSize);
+
     return (
       <div className="budget unset">
-        {speeds.map(speed => (
+        {performanceDatapoints.map(datapoint => (
           <div className="item">
             <div className="info">
               <h5>
-                {speed.title} <span>{speed.rtt}ms RTT</span>
+                {datapoint.title} <span>{datapoint.rtt} RTT</span>
               </h5>
               <div className="values">
-                <label>{speed.speed}</label>
-                <div className="time">{speed.time}s</div>
+                <label>{datapoint.bandwidth}</label>
+                <div className="time">{datapoint.downloadTime}</div>
                 <If
-                  condition={speed.time > 5}
-                  then={<div className="high">+{speed.time - 5}s</div>}
-                  otherwise={<div className="low">-{5 - speed.time}s</div>}
+                  condition={datapoint.isDownloadTimeOverThreshold}
+                  then={
+                    <div className="high">
+                      {datapoint.timeDifferenceToThreshold}
+                    </div>
+                  }
+                  otherwise={
+                    <div className="low">
+                      {datapoint.timeDifferenceToThreshold}
+                    </div>
+                  }
                 />
               </div>
             </div>
