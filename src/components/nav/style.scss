@@ -1,10 +1,10 @@
 $text-color: var(--color-light);
 
 $icons: (
-  project: "../../assets/project.svg",
-  version: "../../assets/version.svg",
-  makers: "../../assets/team.svg",
-  snippets: "../../assets/snippets.svg"
+  project: "/assets/project.svg",
+  version: "/assets/version.svg",
+  makers: "/assets/team.svg",
+  snippets: "/assets/snippets.svg"
 );
 
 .nav {

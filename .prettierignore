@@ -1,5 +1,0 @@
-bin/
-package.json
-package-lock.json
-src/client/package.json
-src/client/package-lock.json
