@@ -81,7 +81,7 @@ and you are all set!
 
 Setting up the dev environment
 
-Insall Dependencies:
+Install Dependencies:
 
 ```
 $ npm install
