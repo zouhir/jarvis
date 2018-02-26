@@ -4,7 +4,7 @@
   "description": "A very intelligent webpack dashboard",
   "main": "lib/server/index.js",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "precommit": "lint-staged",

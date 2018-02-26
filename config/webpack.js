@@ -9,7 +9,7 @@ const babel = require("./babel");
 const styles = require("./style");
 const uglify = require("./uglify");
 
-const dist = join(__dirname, "../lib");
+const dist = join(__dirname, "../dist");
 
 module.exports = env => {
   const isProd = env && env.production;
