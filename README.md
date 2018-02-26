@@ -77,6 +77,35 @@ localhost:1337
 
 and you are all set!
 
+## Options
+
+Options are (optionally) passed in to the constructor
+
+```javascript
+new Jarvis(options);
+```
+
+### `options.port`
+
+Type: `Number`<br>
+Default: `1337`
+
+The Jarvis dashboard will open on a localhost server at this port.
+
+### `options.host`
+
+Type: `String`<br>
+Default: `localhost`
+
+The Jarvis dashboard will attach to this host, e.g. `0.0.0.0`.
+
+## `options.keepAlive`
+
+Type: `Boolean`<br>
+Default: `false`
+
+If set to true, then Jarvis will keep running (rather than closing when the webpack build finishes).
+
 ## Help & Contribute
 
 Setting up the dev environment
