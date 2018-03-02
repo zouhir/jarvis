@@ -119,7 +119,7 @@ $ npm install
 Run Jarvis in your browser, Jarvis root:
 
 ```
-npm run watch
+$ npm run watch
 ```
 
 Finally, open a browser to `http://localhost:1337`!
