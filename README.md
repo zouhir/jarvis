@@ -110,7 +110,7 @@ If set to true, then Jarvis will keep running (rather than closing when the webp
 
 Setting up the dev environment
 
-Insall Dependencies:
+Install Dependencies:
 
 ```
 $ npm install
