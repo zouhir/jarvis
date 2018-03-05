@@ -43,7 +43,9 @@ module.exports = env => {
     plugins.push(
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
-      new Jarvis()
+      new Jarvis({
+        packageJsonPath: './config'
+      })
     )
   }
   
