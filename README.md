@@ -112,6 +112,7 @@ Type: `String`<br>
 Default: `process.cwd()`
 
 Jarvis will look inside this directory for your package.json.
+
 ## Help & Contribute
 
 Setting up the dev environment
