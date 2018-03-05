@@ -15,9 +15,7 @@ yarn.lock
 # misc
 .DS_*
 .idea/
-lib
-lib/bundle.js
-lib/style.css
+dist
 .DS_Store
 .idea
 .vscode

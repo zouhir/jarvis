@@ -4,13 +4,14 @@
   "description": "A very intelligent webpack dashboard",
   "main": "lib/server/index.js",
   "files": [
-    "lib"
+    "dist"
   ],
   "scripts": {
     "precommit": "lint-staged",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
     "build": "webpack --env.production --config config/webpack",
+    "build:dev": "webpack --config config/webpack",
     "watch": "webpack --watch --config config/webpack"
   },
   "engines": {
