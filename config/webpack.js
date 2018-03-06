@@ -13,10 +13,10 @@ const dist = join(__dirname, "../dist");
 
 module.exports = env => {
   const isProd = env && env.production;
-  
+
   // Our style-loader chain
   const cssGroup = styles(isProd);
-  
+
   // Our entry file
   let entry = './src/index.js';
 
@@ -46,7 +46,7 @@ module.exports = env => {
       new Jarvis()
     )
   }
-  
+
   return {
     entry,
     output: {
