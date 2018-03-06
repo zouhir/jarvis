@@ -110,7 +110,7 @@ If set to true, then Jarvis will keep running (rather than closing when the webp
 
 Setting up the dev environment
 
-Insall Dependencies:
+Install Dependencies:
 
 ```
 $ npm install
@@ -119,7 +119,7 @@ $ npm install
 Run Jarvis in your browser, Jarvis root:
 
 ```
-npm run watch
+$ npm run watch
 ```
 
 Finally, open a browser to `http://localhost:1337`!
