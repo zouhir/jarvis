@@ -99,12 +99,12 @@ Default: `localhost`
 
 The Jarvis dashboard will attach to this host, e.g. `0.0.0.0`.
 
-## `options.keepAlive`
+## `options.watchOnly`
 
 Type: `Boolean`<br>
-Default: `false`
+Default: `true`
 
-If set to true, then Jarvis will keep running (rather than closing when the webpack build finishes).
+If set to false, then Jarvis will also run for non-watch builds, and keep running after the build completes.
 
 ## Help & Contribute
 
