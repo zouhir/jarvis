@@ -1,6 +1,6 @@
 {
   "name": "webpack-jarvis",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A very intelligent webpack dashboard",
   "main": "dist/server/index.js",
   "files": ["dist"],

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="75px" height="75px" viewBox="0 0 75 75" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46.2 (44496) - http://www.bohemiancoding.com/sketch -->
+    <title>Artboard</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFF437" offset="2.48126594%"></stop>
+            <stop stop-color="#FFF038" offset="10.7122927%"></stop>
+            <stop stop-color="#FDBD40" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" fill-rule="nonzero" fill="url(#linearGradient-1)">
+            <path d="M43.325,8 C42.225,6.1 40.325,5 38.125,5 C35.925,5 34.025,6.1 32.925,8 L2.825,60.9 C1.725,62.8 1.725,65 2.825,66.9 C3.925,68.8 5.825,69.9 8.025,69.9 L68.225,69.9 C70.425,69.9 72.325,68.8 73.425,66.9 C74.525,65 74.525,62.8 73.425,60.9 L43.325,8 Z M69.925,64.9 C69.725,65.2 69.225,65.9 68.225,65.9 L8.025,65.9 C7.025,65.9 6.425,65.2 6.325,64.9 C6.125,64.6 5.825,63.8 6.325,62.9 L36.425,10 C36.925,9.1 37.825,9 38.125,9 C38.425,9 39.325,9.1 39.825,10 L69.925,62.9 C70.525,63.8 70.125,64.6 69.925,64.9 Z M38,29 C36.9,29 36,29.9 36,31 L36,45 C36,46.1 36.9,47 38,47 C39.1,47 40,46.1 40,45 L40,31 C40,29.9 39.1,29 38,29 Z M38,51 C36.9,51 36,51.9 36,53 L36,56 C36,57.1 36.9,58 38,58 C39.1,58 40,57.1 40,56 L40,53 C40,51.9 39.1,51 38,51 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>
