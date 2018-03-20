@@ -1,18 +1,20 @@
 {
   "name": "webpack-jarvis",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A very intelligent webpack dashboard",
-  "main": "lib/server/index.js",
-  "files": [
-    "dist"
-  ],
+  "main": "dist/server/index.js",
+  "files": ["dist"],
   "scripts": {
     "precommit": "lint-staged",
     "contributors:add": "all-contributors add",
     "contributors:generate": "all-contributors generate",
-    "build": "webpack --env.production --config config/webpack",
-    "build:dev": "webpack --config config/webpack",
-    "watch": "webpack --watch --config config/webpack"
+    "prebuild": "rm -rf dist",
+    "copy:server": "ncp src/server dist/server",
+    "copy:assets":
+      "ncp src/index.html dist/index.html && ncp src/assets dist/assets",
+    "build":
+      "webpack --env.production --config config/webpack && npm run copy:server && npm run copy:assets",
+    "watch": "JARVIS_ENV=development webpack --watch --config config/webpack"
   },
   "engines": {
     "node": ">=6.0.0"
@@ -60,6 +62,7 @@
     "file-loader": "^1.1.5",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0",
+    "ncp": "^2.0.0",
     "node-sass": "^4.5.3",
     "postcss-loader": "^2.0.6",
     "preact": "^8.2.1",
@@ -76,9 +79,6 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "lint-staged": {
-    "src/**/*.{js,json,scss}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,json,scss}": ["prettier --write", "git add"]
   }
 }
