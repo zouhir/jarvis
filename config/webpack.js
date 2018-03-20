@@ -2,7 +2,7 @@ const { join } = require("path");
 const webpack = require("webpack");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const Jarvis = require("../lib/server");
+const Jarvis = require("../src/server");
 const pkg = require("../package.json");
 
 const babel = require("./babel");
@@ -18,17 +18,19 @@ module.exports = env => {
   const cssGroup = styles(isProd);
 
   // Our entry file
-  let entry = './src/index.js';
+  let entry = "./src/client/index.js";
 
   // Base plugins
   let plugins = [
     new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify(isProd ? 'production' : 'development')
+      "process.env.NODE_ENV": JSON.stringify(
+        isProd ? "production" : "development"
+      )
     })
   ];
 
   if (isProd) {
-    babel.plugins.push('babel-plugin-transform-react-remove-prop-types');
+    babel.plugins.push("babel-plugin-transform-react-remove-prop-types");
     plugins.push(
       new webpack.optimize.UglifyJsPlugin(uglify),
       new ExtractTextPlugin({
@@ -38,13 +40,16 @@ module.exports = env => {
     );
   } else {
     // Add HMR client
-    entry = ['webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000', entry];
+    entry = [
+      "webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000",
+      entry
+    ];
     // Add dev-only plugins
     plugins.push(
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin(),
       new Jarvis()
-    )
+    );
   }
 
   return {
@@ -57,12 +62,12 @@ module.exports = env => {
     resolve: {
       extensions: [".jsx", ".js", ".json", ".scss"],
       alias: {
-        "react": "preact-compat",
+        react: "preact-compat",
         "react-dom": "preact-compat"
       }
     },
     plugins,
-    devtool: !isProd && 'eval',
+    devtool: !isProd && "eval",
     module: {
       rules: [
         {
@@ -71,19 +76,29 @@ module.exports = env => {
             loader: "babel-loader",
             options: babel
           }
-        }, {
+        },
+        {
           test: /(\.css|\.scss)$/,
-          use: isProd ? ExtractTextPlugin.extract({ fallback: "style-loader", use:cssGroup }) : cssGroup
-        }, {
+          use: isProd
+            ? ExtractTextPlugin.extract({
+                fallback: "style-loader",
+                use: cssGroup
+              })
+            : cssGroup
+        },
+        {
           test: /\.json$/,
           use: "json-loader"
-        }, {
+        },
+        {
           test: /\.(xml|html|txt|md)$/,
           use: "raw-loader"
-        }, {
+        },
+        {
           test: /\.ico$/,
           use: "url-loader"
-        }, {
+        },
+        {
           test: /\.svg/,
           use: {
             loader: "svg-url-loader",
