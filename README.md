@@ -106,6 +106,13 @@ Default: `true`
 
 If set to false, then Jarvis will also run for non-watch builds, and keep running after the build completes.
 
+## `options.packageJsonPath`
+
+Type: `String`<br>
+Default: `process.cwd()`
+
+Jarvis will look inside this directory for your package.json.
+
 ## Help & Contribute
 
 Setting up the dev environment
