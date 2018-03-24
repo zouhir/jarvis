@@ -26,7 +26,7 @@ It is hugely inspired by other webpack dashboards and the core idea is not origi
 
 **Original Features**:
 
-* Shows you the count of ES Harmony module imports which can be treeshakable and the CJS ones which are not.
+* Shows you the count of ES Harmony module imports which can be treeshake-able and the CJS ones which are not.
 * Shows you how well your assets perform in 12 different connection types.
 * Google or Stackoverflow Search for programming errors in 1 button click.
 
@@ -133,15 +133,10 @@ Finally, open a browser to `http://localhost:1337`!
 
 **On the roadmap:**
 
-* Cleanup the hacky code in the client app, it's embarassing, I'm sorry!
 * Enforce best practices, structure and higher code quality standards.
 * Bundle size analyzer like feature in the table.
 * Build snippets page.
-* Build Oppurtunities Section to suggest loaders, plugins, etc. that can improve your build and bundle.
-
-**Note:**
-
-> I am not entirely sure how many bugs you will catch while it's in beta, but what I know for sure is the whole app, especially the client Preact app can be dramatically improved, JS & CSS and structure wise as the whole thing has been built in a rush in a very hacky way.
+* Build Opportunities Section to suggest loaders, plugins, etc. that can improve your build and bundle.
 
 ## Contributors
 
