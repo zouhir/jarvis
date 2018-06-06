@@ -136,3 +136,44 @@
     }
   }
 }
+
+.sort-buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--dashboard-bg-main);
+  border-top: 3px solid var(--dashboard-bg-lighter);
+  h5 {
+    text-transform: uppercase;
+    font-size: 11px;
+    color: #ffffff;
+    letter-spacing: 0.7px;
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  .button {
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, 0.1);
+    font-size: 11px;
+    color: #ffffff;
+    letter-spacing: 0.7px;
+    font-weight: bold;
+    border: 0;
+    margin-right: 10px;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    padding: 4px 10px;
+    border-radius: 2px;
+    outline: 0;
+    cursor: pointer;
+    &:hover,
+    &:active,
+    &:focus,
+    &.selected {
+      background: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}

@@ -6,18 +6,32 @@ import { readableBytes } from "../../helpers/utils";
 
 export default class Table extends Component {
   state = {
-    selected: "all"
+    selected: "all",
+    sortBy: "name"
   };
   selectModuleType = type => {
     this.setState({ selected: type });
   };
+  selectSortMode = mode => {
+    this.setState({ sortBy: mode });
+  };
+  sortData = (a, b) => {
+    if (this.state.sortBy === "size") {
+      return b.size - a.size;
+    }
+    return a - b;
+  };
   render(props, state) {
-    let table = props.data || {};
-    let cjsCount = table.cjs.length || 0;
-    let esmCount = table.esm.length || 0;
-    let mixedCount = table.mixed.length || 0;
-    let totalCount = cjsCount + esmCount + mixedCount || 0;
+    let data = props.data || {};
     let { selected } = state;
+    let allData = [...data.cjs, ...data.esm, ...data.mixed];
+    let currentData = selected === "all" ? allData : data[selected];
+    let sortedData = currentData.sort(this.sortData);
+    let cjsCount = data.cjs.length || 0;
+    let esmCount = data.esm.length || 0;
+    let mixedCount = data.mixed.length || 0;
+    let totalCount = allData.length || 0;
+
     /**
      * I am really really really sorry for this mess.
      */
@@ -68,57 +82,33 @@ export default class Table extends Component {
           </li>
         </ul>
         <ul class="table-body two-col">
-          <If
-            condition={selected === "all" || selected === "esm"}
-            then={
-              <div>
-                {table.esm.map(module => (
-                  <li>
-                    <div className="col">
-                      {module.name}
-                      <div className="details" />
-                    </div>
-                    <div className="col">{readableBytes(module.size)}</div>
-                  </li>
-                ))}
-              </div>
-            }
-          />
-
-          <If
-            condition={selected === "all" || selected === "mixed"}
-            then={
-              <div>
-                {table.mixed.map(module => (
-                  <li className="flex-li">
-                    <div className="col">
-                      <p className="module-name">{module.name}</p>
-                      <div className="details" />
-                    </div>
-                    <div className="col">{readableBytes(module.size)}</div>
-                  </li>
-                ))}
-              </div>
-            }
-          />
-
-          <If
-            condition={selected === "all" || selected === "cjs"}
-            then={
-              <div>
-                {table.cjs.map(module => (
-                  <li>
-                    <div className="col">
-                      {module.name}
-                      <div className="details" />
-                    </div>
-                    <div className="col">{readableBytes(module.size)}</div>
-                  </li>
-                ))}
-              </div>
-            }
-          />
+          <div>
+            {sortedData.map(module => (
+              <li>
+                <div className="col">
+                  {module.name}
+                  <div className="details" />
+                </div>
+                <div className="col">{readableBytes(module.size)}</div>
+              </li>
+            ))}
+          </div>
         </ul>
+        <div className="sort-buttons">
+          <h5>Sort by:</h5>
+          <button
+            className={state.sortBy === "name" ? "button selected" : "button"}
+            onClick={() => this.selectSortMode("name")}
+          >
+            Name
+          </button>
+          <button
+            className={state.sortBy === "size" ? "button selected" : "button"}
+            onClick={() => this.selectSortMode("size")}
+          >
+            Size
+          </button>
+        </div>
       </div>
     );
   }
