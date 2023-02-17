@@ -100,7 +100,7 @@ class Jarvis {
       bootJarvis();
     }
 
-    compiler.plugin("watch-run", (c, done) => {
+    compiler.hooks.watchRun.tap("Jarvis", (c, done) => {
       if (this.options.watchOnly) {
         bootJarvis();
       }
@@ -108,7 +108,7 @@ class Jarvis {
       done();
     });
 
-    compiler.plugin("run", (c, done) => {
+    compiler.hooks.run.tap("Jarvis", (c, done) => {
       this.env.watching = false;
       done();
     });
@@ -124,7 +124,7 @@ class Jarvis {
     );
 
     // extract the final reports from the stats!
-    compiler.plugin("done", stats => {
+    compiler.hooks.run.tap("Jarvis", stats => {
       if (!this.env.running) return;
 
       const jsonStats = stats.toJson({ chunkModules: true });
