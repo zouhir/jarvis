@@ -10,7 +10,7 @@ function configAnalyser(configs) {
 function _formattedError(errors = []) {
   const newFormat = { newline: true, escapeXML: true };
   const formatter = new Formatter(newFormat);
-  return errors.map(error => formatter.toHtml(error));
+  return errors.map(error => formatter.toHtml(error.message || ''));
 }
 
 const successFooter = `<div class="stats-success-footer">
