@@ -114,14 +114,12 @@ class Jarvis {
     });
 
     // report the webpack compiler progress
-    compiler.apply(
-      new webpack.ProgressPlugin((percentage, message) => {
-        this.reports.progress = { percentage, message };
-        if (this.env.running) {
-          jarvis.io.emit("progress", { percentage, message });
-        }
-      })
-    );
+    new webpack.ProgressPlugin((percentage, message) => {
+      this.reports.progress = { percentage, message };
+      if (this.env.running) {
+        jarvis.io.emit("progress", { percentage, message });
+      }
+    }).apply(compiler);
 
     // extract the final reports from the stats!
     compiler.hooks.run.tap("Jarvis", stats => {
